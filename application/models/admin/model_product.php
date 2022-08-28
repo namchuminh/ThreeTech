@@ -34,6 +34,25 @@ class model_product extends CI_Model {
 		return $result;
 	}
 
+	public function getUpdateProduct($sanPhamId){
+		$sql = "SELECT * FROM sanpham WHERE sanPhamId = ?";
+		$result = $this->db->query($sql, array($sanPhamId));
+		return $result->result_array();
+	}
+
+	public function updateProduct($tenSanPham,$giaGoc,$giaBan,$moTa,$duongDan,$trangThai,$soLuong,$anhChinh,$anhPhu1,$anhPhu2,$chuyenMucId,$loaiSanPham, $sanPhamId){
+		$sql = "UPDATE `sanpham` SET `tenSanPham`= ?,`giaGoc`= ?,`giaBan`= ?,`moTa`= ?,`duongDan`= ?,`trangThai`= ?,`soLuong`= ?,`anhChinh`= ?,`anhPhu1`= ?,`anhPhu2`= ?,`chuyenMucId`= ?,`loaiSanPham`= ? WHERE `sanPhamId`= ?";
+		$result = $this->db->query($sql, array($tenSanPham,$giaGoc,$giaBan,$moTa,$duongDan,$trangThai,$soLuong,$anhChinh,$anhPhu1,$anhPhu2,$chuyenMucId,$loaiSanPham,$sanPhamId));
+		return $result;
+	}
+
+	public function deleteProduct($sanPhamId){
+		$sql = "DELETE FROM `sanpham` WHERE sanPhamId = ?";
+		$result = $this->db->query($sql, array($sanPhamId));
+		return $result;
+	}
+
+
 }
 
 /* End of file model_product.php */
