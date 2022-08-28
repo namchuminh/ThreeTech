@@ -52,5 +52,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'index';
 $route['404_override'] = 'errors/page_missing';
 $route['translate_uri_dashes'] = FALSE;
-
-$route['admin'] = 'admin';
+ 
+$route['admin'] = 'admin/admin';
+$route['admin/dang-nhap'] = 'admin/auth';
+$route['admin/dang-xuat'] = 'admin/admin/logout';
+$route['admin/laptop'] = 'admin/admin/laptop';
+$route['admin/may-tinh'] = 'admin/admin/computer';
+$route['admin/linh-kien'] = 'admin/admin/accessory';
+$route['(:any)/them'] = 'admin/admin/addProduct';
+$route['admin/actionAddProduct'] = 'admin/admin/actionAddProduct';
