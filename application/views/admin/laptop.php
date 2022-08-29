@@ -22,7 +22,7 @@
                                 	</div>
                                 	<div class="col-sm-12 col-md-6">
                                 		<div id="dataTable_filter" class="dataTables_filter">
-	                                		<a href="<?php echo base_url('san-pham/them');?>" class="btn btn-primary float-right">Thêm Sản Phẩm</a>
+	                                		<a href="<?php echo base_url('san-pham/them/');?>" class="btn btn-primary float-right">Thêm Sản Phẩm</a>
                                 		</div>
                                 	</div>
                                 </div>

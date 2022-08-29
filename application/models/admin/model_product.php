@@ -28,9 +28,9 @@ class model_product extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function addProduct($tenSanPham,$giaGoc,$giaBan,$moTa,$duongDan,$soLuong,$anhChinh,$anhPhu1,$anhPhu2,$chuyenMucId,$loaiSanPham){
-		$sql = "INSERT INTO `sanpham`(`tenSanPham`, `giaGoc`, `giaBan`, `moTa`, `duongDan`,`soLuong`, `anhChinh`, `anhPhu1`, `anhPhu2`, `chuyenMucId`, `loaiSanPham`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		$result = $this->db->query($sql,array($tenSanPham,$giaGoc,$giaBan,$moTa,$duongDan,$soLuong,$anhChinh,$anhPhu1,$anhPhu2,$chuyenMucId,$loaiSanPham));
+	public function addProduct($tenSanPham,$giaGoc,$giaBan,$moTa,$duongDan,$soLuong,$anhChinh,$anhPhu1,$anhPhu2,$chuyenMucId,$loaiSanPham, $nhanVienId){
+		$sql = "INSERT INTO `sanpham`(`tenSanPham`, `giaGoc`, `giaBan`, `moTa`, `duongDan`,`soLuong`, `anhChinh`, `anhPhu1`, `anhPhu2`, `chuyenMucId`, `loaiSanPham`, `nhanVienId`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$result = $this->db->query($sql,array($tenSanPham,$giaGoc,$giaBan,$moTa,$duongDan,$soLuong,$anhChinh,$anhPhu1,$anhPhu2,$chuyenMucId,$loaiSanPham, $nhanVienId));
 		return $result;
 	}
 

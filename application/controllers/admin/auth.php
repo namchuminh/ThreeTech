@@ -19,13 +19,20 @@ class auth extends CI_Controller {
 		$this->load->library('admin');
 		if($this->admin->checkUserpPass($this->input->post('taikhoan'),$this->input->post('matkhau'))){
 			$this->load->model('admin/model_auth');
-			$result = $this->model_auth->checkLoginDB($this->input->post('taikhoan'),$this->input->post('matkhau'));
+			$taikhoan = $this->input->post('taikhoan');
+			$matkhau = md5($this->input->post('matkhau'));
+			$result = $this->model_auth->checkLoginDB($taikhoan,$matkhau);
 			if($result == 1){
 				$newdata = array(
 				    'taikhoan'  => $this->input->post('taikhoan'),
 				);
 				$this->session->set_userdata($newdata);
 				return redirect(base_url('admin/'));
+			}else{
+				$data = array(
+					'error' => "Sai tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại!"
+				);
+				return $this->load->view('admin/login', $data);
 			}
 		}else{
 			$data = array(

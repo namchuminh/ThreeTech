@@ -11,7 +11,7 @@
     <form method="POST" action="<?php echo base_url('admin/actionAddProduct'); ?>" enctype="multipart/form-data">
       <div class="form-group">
         <label for="exampleFormControlInput1">Tên Sản Phẩm</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="tenSanPham" placeholder="Nhập tên sản phẩm..." required> 
+        <input type="text" class="form-control tenSanPham" id="exampleFormControlInput1" name="tenSanPham" placeholder="Nhập tên sản phẩm..." required> 
       </div>
       <div class="form-group">
         <label for="exampleFormControlInput1">Giá Gốc</label>
@@ -26,8 +26,8 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="moTa"></textarea>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlInput1">Đường Dẫn</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="duongDan" placeholder="Nhập giá đường dẫn, VD: duong-dan-san-pham" required> 
+        <label for="exampleFormControlInput1"><span>Đường Dẫn </span> || <span class="auto-url" style="color: blue; cursor: pointer;"> Tạo Đường Dẫn Tự Động</span></label>
+        <input type="text" class="form-control duongDan" id="exampleFormControlInput1" name="duongDan" placeholder="Nhập giá đường dẫn, VD: duong-dan-san-pham" required> 
       </div>
       <div class="form-group">
         <label for="exampleFormControlInput1">Số Lượng</label>

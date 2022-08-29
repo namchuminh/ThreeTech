@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('static/');?>css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
 
 <body id="page-top">
@@ -53,23 +53,15 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                THÔNG TIN
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                <a class="nav-link " href="<?php echo base_url('admin/ca-nhan/');?>" >
+                    <i class="fa fa-user"></i>
+                    <span>Cá Nhân</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -109,9 +101,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Danh Mục:</h6>
-                        <a class="collapse-item" href="<?php echo base_url('admin/laptop'); ?>">Laptop</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/may-tinh'); ?>">Máy Tính</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/linh-kien'); ?>">Linh Kiện</a>
+                        <a class="collapse-item" href="<?php echo base_url('admin/laptop/'); ?>">Laptop</a>
+                        <a class="collapse-item" href="<?php echo base_url('admin/may-tinh/'); ?>">Máy Tính</a>
+                        <a class="collapse-item" href="<?php echo base_url('admin/linh-kien/'); ?>">Linh Kiện</a>
                     </div>
                 </div>
             </li>

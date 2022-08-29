@@ -53,14 +53,16 @@ $route['default_controller'] = 'index';
 $route['404_override'] = 'errors/page_missing';
 $route['translate_uri_dashes'] = FALSE;
  
-$route['admin'] = 'admin/admin';
+$route['admin'] = 'admin/admin/index';
 $route['admin/dang-nhap'] = 'admin/auth';
 $route['admin/dang-xuat'] = 'admin/admin/logout';
-$route['admin/laptop'] = 'admin/admin/laptop';
-$route['admin/may-tinh'] = 'admin/admin/computer';
-$route['admin/linh-kien'] = 'admin/admin/accessory';
-$route['san-pham/them'] = 'admin/admin/addProduct';
-$route['admin/actionAddProduct'] = 'admin/admin/actionAddProduct';
-$route['san-pham/sua/(:any)'] = 'admin/admin/updateProduct/$1';
-$route['admin/actionUpdateProduct'] = 'admin/admin/actionUpdateProduct';
-$route['san-pham/xoa/(:any)/(:any)'] = 'admin/admin/actionDeleteProduct/$1/$2';
+$route['admin/laptop'] = 'admin/adminProduct/laptop';
+$route['admin/may-tinh'] = 'admin/adminProduct/computer';
+$route['admin/linh-kien'] = 'admin/adminProduct/accessory';
+$route['san-pham/them'] = 'admin/adminProduct/addProduct';
+$route['admin/actionAddProduct'] = 'admin/adminProduct/actionAddProduct';
+$route['san-pham/sua/(:any)'] = 'admin/adminProduct/updateProduct/$1';
+$route['admin/actionUpdateProduct'] = 'admin/adminProduct/actionUpdateProduct';
+$route['san-pham/xoa/(:any)/(:any)'] = 'admin/adminProduct/actionDeleteProduct/$1/$2';
+
+$route['admin/ca-nhan'] = 'admin/adminProfile/index';
