@@ -65,7 +65,7 @@
 				<?php foreach ($myProduct as $key => $value): ?>
 					   <div class="card" style="margin-bottom: 30px;box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%);">
 				        <div class="card-body">
-				          	<h4 class="card-title" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #36b9cc;font-size: 17px; width: 100%; color: black; font-weight: bold;"><?php echo $value['tenSanPham']; ?></h4>
+				          	<a href="<?php echo base_url('san-pham/').$value['duongDan'].'/'; ?>"><h4 class="card-title" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #36b9cc;font-size: 17px; width: 100%; color: black; font-weight: bold;"><?php echo $value['tenSanPham']; ?></h4></a>
 				          <small class="text-muted cat">
 				            <i class="fa-solid fa-signs-post"></i> Mã Sản Phẩm: <?php echo $value['sanPhamId']; ?>
 				           	 - 
@@ -73,9 +73,6 @@
 				          </small>
 				          <p class="card-text" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; color: black;"><?php echo $value['moTa']; ?></p>
 				        </div>
-				        <div class="card-footer text-right">
-						    <a href="<?php echo base_url('san-pham/').$value['duongDan'].'/'; ?>">Xem Chi Tiết</a>
-						</div>
 				      </div>
 				<?php endforeach ?>
 				</div>
@@ -86,7 +83,7 @@
 				<?php foreach ($myNews as $key => $value): ?>
 					   <div class="card" style="margin-bottom: 10px; box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%);">
 				        <div class="card-body">
-				          	<h4 class="card-title" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #36b9cc; font-size: 17px; width: 100%; color: black; font-weight: bold;"><?php echo $value['tieuDe']; ?></h4>
+				          	<a href="<?php echo base_url('tin-tuc/').$value['duongDan'].'/'; ?>"><h4 class="card-title" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #36b9cc; font-size: 17px; width: 100%; color: black; font-weight: bold;"><?php echo $value['tieuDe']; ?></h4></a>
 				          <small class="text-muted cat">
 				            <i class="fa-solid fa-signs-post"></i> Mã Tin Tức: <?php echo $value['tinTucId']; ?>
 				           	 - 
@@ -94,9 +91,6 @@
 				          </small>
 				          <p class="card-text" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; color: black;"><?php echo $value['trichDan']; ?></p>
 				        </div>
-				        <div class="card-footer text-right">
-						    <a href="<?php echo base_url('tin-tuc/').$value['duongDan'].'/'; ?>">Xem Chi Tiết</a>
-						</div>
 				      </div>
 				<?php endforeach ?>
 				</div>
