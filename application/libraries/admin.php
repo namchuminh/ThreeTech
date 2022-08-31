@@ -15,6 +15,10 @@ class admin {
 
 		return $result;
 	} 
+
+	public function checkPassNullOrEmpty($matKhau){
+		return ($matKhau === null || trim($matKhau) === '');
+	}
 }
 
 

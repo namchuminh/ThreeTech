@@ -12,7 +12,15 @@ class admin extends CI_Controller {
 
 	public function index()
 	{
-		return $this->load->view('admin/index');
+		$tieuDe = "ThreeTech - Trang quản trị Admin!";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+
+		$data = array(
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
+		);
+		return $this->load->view('admin/index', $data);
 	}
 
 	public function logout(){

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ThreeTech - Trang quản trị Admin!</title>
+    <title><?php if(isset($tieuDe)){ echo $tieuDe; }else { echo "ThreeTech - Trang quản trị Admin!"; } ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url('static/');?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -67,7 +67,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link " href="<?php echo base_url('admin/cai-dat-ca-nhan/'); ?>">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fa-solid fa-gear"></i>
                     <span>Cài Đặt Cá Nhân</span>
                 </a>
             </li>
@@ -89,7 +89,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Danh Mục:</h6>
+                        <h6 class="collapse-header">Danh Mục</h6>
                         <a class="collapse-item" href="<?php echo base_url('admin/laptop/'); ?>">Laptop</a>
                         <a class="collapse-item" href="<?php echo base_url('admin/may-tinh/'); ?>">Máy Tính</a>
                         <a class="collapse-item" href="<?php echo base_url('admin/linh-kien/'); ?>">Linh Kiện</a>
@@ -300,24 +300,20 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-size: 15px;"><?php echo $adminLogin[0]['hoTen']; ?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="<?php echo $adminLogin[0]['avatar']; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="<?php echo base_url('admin/ca-nhan/'); ?>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    Cá Nhân
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                <a class="dropdown-item" href="<?php echo base_url('admin/cai-dat-ca-nhan/'); ?>">
+                                    <i class="fa-solid fa-gear fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cài Đặt Cá Nhân
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
