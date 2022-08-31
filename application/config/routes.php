@@ -65,6 +65,6 @@ $route['san-pham/sua/(:any)'] = 'admin/adminProduct/updateProduct/$1';
 $route['admin/actionUpdateProduct'] = 'admin/adminProduct/actionUpdateProduct';
 $route['san-pham/xoa/(:any)/(:any)'] = 'admin/adminProduct/actionDeleteProduct/$1/$2';
 $route['admin/ca-nhan'] = 'admin/adminProfile/index';
-
+$route['admin/cai-dat-ca-nhan'] = 'admin/adminSetting';
 
 $route['dang-nhap'] = 'user/userLogin/index';
