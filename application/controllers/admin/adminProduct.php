@@ -11,37 +11,68 @@ class adminProduct extends CI_Controller {
 	}
 
 	public function laptop(){
+		$tieuDe = "ThreeTech - Quản Lý Laptop";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+		$this->session->set_userdata('referred_from', current_url());
 		$this->load->model('admin/model_product');
 		$product = $this->model_product->getLaptop();
 		$data = array(
 			'product' => $product,
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
 		);
 		return $this->load->view('admin/laptop', $data);
 	}
 
 	public function computer(){
+		$tieuDe = "ThreeTech - Quản Lý Máy Tính";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+		$this->session->set_userdata('referred_from', current_url());
 		$this->load->model('admin/model_product');
 		$product = $this->model_product->getComputer();
 		$data = array(
 			'product' => $product,
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
 		);
 		return $this->load->view('admin/computer', $data);
 	}
 
 	public function accessory(){
+		$tieuDe = "ThreeTech - Quản Lý Linh Kiện";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+		$this->session->set_userdata('referred_from', current_url());
 		$this->load->model('admin/model_product');
 		$product = $this->model_product->getAccessory();
 		$data = array(
 			'product' => $product,
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
 		);
 		return $this->load->view('admin/accessory', $data);
 	}
 
 	public function addProduct(){
-		return $this->load->view('admin/addProduct');
+		$tieuDe = "ThreeTech - Thêm Sản Phẩm";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+
+		$data = array(
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
+		);
+		return $this->load->view('admin/addProduct',$data);
 	}
 
 	public function actionAddProduct(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('san-pham/them/'));
+		}
+		$tieuDe = "ThreeTech - Thêm Sản Phẩm";
+		$taiKhoan = $this->session->userdata('taikhoan');
 		$this->load->model('admin/model_admin');
 		$result = array();
 		$tenSanPham = $this->input->post('tenSanPham');
@@ -81,26 +112,42 @@ class adminProduct extends CI_Controller {
 		$result = $this->model_product->addProduct($tenSanPham,$giaGoc,$giaBan,$moTa,$duongDan,$soLuong,$anhChinh,$anhPhu1,$anhPhu2,$chuyenMucId,$loaiSanPham, $nhanVienId);
 		if($result == True){
 			$data = array(
-				'mess' => "Thêm sản phẩm thành công!"
+				'mess' => "Thêm sản phẩm thành công!",
+				'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+				'tieuDe' => $tieuDe,
 			);
 			return $this->load->view('admin/addProduct', $data);
 		}else{
 			$data = array(
-				'mess' => "Thêm sản phẩm không thành công! Vui lòng kiểm tra lại thông tin!"
+				'mess' => "Thêm sản phẩm không thành công! Vui lòng kiểm tra lại thông tin!",
+				'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+				'tieuDe' => $tieuDe,
 			);
 			return $this->load->view('admin/addProduct', $data);
 		}
 	}
 
 	public function updateProduct($sanPhamId){
+		$tieuDe = "ThreeTech - Sửa Sản Phẩm";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
 		$this->load->model('admin/model_product');
 		$data = array(
 			'product' => $this->model_product->getUpdateProduct($sanPhamId),
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
 		);
 		return $this->load->view('admin/updateProduct', $data);
 	}
 
 	public function actionUpdateProduct(){
+		if(empty($_POST) || !isset($_POST)){
+			$referred_from = $this->session->userdata('referred_from');
+			redirect($referred_from, 'refresh');		
+		}
+		$tieuDe = "ThreeTech - Sửa Sản Phẩm";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
 		$sanPhamId = $this->input->post('sanPhamId');
 		$tenSanPham = $this->input->post('tenSanPham');
 		$giaGoc = $this->input->post('giaGoc');
@@ -142,12 +189,16 @@ class adminProduct extends CI_Controller {
 			$data = array(
 				'mess' => "Cập nhật sản phẩm thành công!",
 				'product' => $this->model_product->getUpdateProduct($sanPhamId),
+				'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+				'tieuDe' => $tieuDe,
 			);
 			return $this->load->view('admin/updateProduct', $data);
 		}else{
 			$data = array(
 				'mess' => "Cập nhật sản phẩm không thành công! Vui lòng kiểm tra lại thông tin!",
 				'product' => $this->model_product->getUpdateProduct($sanPhamId),
+				'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+				'tieuDe' => $tieuDe,
 			);
 			return $this->load->view('admin/updateProduct', $data);
 		}
