@@ -68,3 +68,10 @@ $route['admin/ca-nhan'] = 'admin/adminProfile/index';
 
 
 $route['dang-nhap'] = 'user/userLogin/index';
+$route['xu-ly-dang-nhap'] = 'user/userLogin/actionLogin';
+$route['dang-xuat'] = 'user/userLogout/logout';
+$route['dang-ky'] = 'user/userRegister/index';
+$route['xu-ly-dang-ky'] = 'user/userRegister/actionRegister';
+
+
+$route['khach-hang']= 'user/userInfo/index';
