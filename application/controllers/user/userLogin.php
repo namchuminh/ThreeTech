@@ -30,7 +30,7 @@ class userLogin extends CI_Controller {
 			$result = $this->model_login->checkUserLoginDB($taikhoan, $matkhau);
 			if($result == 1){
 				$newdata = array(
-			        'taikhoan'  => $taikhoan,
+			        'khachhang'  => $taikhoan,
 			        'logged_in' => TRUE
 				);
 				$this->session->set_userdata($newdata);

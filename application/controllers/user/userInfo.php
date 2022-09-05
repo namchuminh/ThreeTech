@@ -9,13 +9,12 @@ class userInfo extends CI_Controller {
 
 	public function index()
 	{
-		$taikhoan = $this->session->userdata('taikhoan');
+		$khachhang = $this->session->userdata('khachhang');
 		$this->load->model('model_index');
 
-		$result = $this->model_index->getCustomerLogin($taikhoan);
+		$result = $this->model_index->getCustomerLogin($khachhang);
 		$data = array(
 			'customer' => $result,
-
 		);
 		echo '<pre>';
 		var_dump($result);

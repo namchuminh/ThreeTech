@@ -9,11 +9,11 @@ class index extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->has_userdata('taikhoan')){
-			$taikhoan = $this->session->userdata('taikhoan');
+		if($this->session->has_userdata('khachhang')){
+			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
 			$data = array(
-				'taikhoan' => $taikhoan,
+				'khachhang' => $khachhang,
 				'logged_in' => $logged_in
 			);
 			return $this->load->view('view_index', $data);

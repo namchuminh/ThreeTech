@@ -37,7 +37,7 @@
 							<?php if(isset($logged_in) ){ ?>
 								<div class="top_bar_user">
 									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Xin chào, <?php echo $taikhoan; ?>!</a></div>
+									<div><a href="#">Xin chào, <?php echo $khachhang; ?>!</a></div>
 									<div><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></div>
 								</div>
 							<?php } else {?>
