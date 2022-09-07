@@ -23,7 +23,8 @@ body {
   float: none;
   margin: 0 auto;
   width: 100px;
-  height: 50%;
+  height: 100px;
+  image-rendering: -webkit-optimize-contrast;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;

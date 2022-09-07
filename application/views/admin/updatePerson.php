@@ -1,24 +1,25 @@
 <?php require(__DIR__.'/layouts/header.php'); ?>
+
 <div class="container" style="box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%); background: white; border-radius: 5px; padding-top: 30px; padding-bottom: 30px; color: black; width: 90%;">
-  <form action="<?php echo base_url('admin/cap-nhat-ca-nhan/'); ?>" method="POST" enctype='multipart/form-data'>
-    <h4 class="text-center">Thông Tin Cá Nhân</h4>
+  <form action="<?php echo base_url('nhan-vien/cap-nhat/'); ?>" method="POST" enctype='multipart/form-data'>
+    <h4 class="text-center">Thông Tin Nhân Viên - Mã NV: <?php echo $person[0]['nhanVienId']; ?> <input type="hidden" value="<?php echo $person[0]['taiKhoan'];?>" name="taiKhoan" ></h4>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <label for="first">Họ Tên</label>
-          <input type="text" class="form-control" placeholder="họ tên" id="first" value="<?php echo $profile[0]['hoTen'];?>" name="hoTen">
+          <input type="text" class="form-control" placeholder="họ tên" id="first" value="<?php echo $person[0]['hoTen'];?>" name="hoTen">
         </div>
         <div class="form-group">
           <label for="last">Tài Khoản</label>
-          <input type="text" class="form-control" placeholder="tài khoản" id="last" value="<?php echo $profile[0]['taiKhoan'];?>" disabled >
+          <input type="text" class="form-control" placeholder="tài khoản" id="last" value="<?php echo $person[0]['taiKhoan'];?>" disabled >
         </div>
       </div>
       <!--  col-md-6   -->
 
       <div class="col-md-6">
-        <image style="image-rendering: -webkit-optimize-contrast; border-radius: 50%; width: 94px;height: 94px;display: block;margin-left: auto;margin-right: auto;" src="<?php echo $profile[0]['avatar'];?>" />
+        <image style="image-rendering: -webkit-optimize-contrast; border-radius: 50%; width: 94px;height: 94px;display: block;margin-left: auto;margin-right: auto;" src="<?php echo $person[0]['avatar'];?>" />
         <label for="exampleFormControlFile1">Thay Đổi Ảnh</label>
-    	    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar" >
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar" >
       </div>
       <!--  col-md-6   -->
     </div>
@@ -39,7 +40,7 @@
 
         <div class="form-group">
           <label for="phone">Số Điện Thoại</label>
-          <input type="tel" class="form-control" id="phone" placeholder="số điện thoại" value="<?php echo $profile[0]['soDienThoai'];?>" name="soDienThoai">
+          <input type="tel" class="form-control" id="phone" placeholder="số điện thoại" value="<?php echo $person[0]['soDienThoai'];?>" name="soDienThoai">
         </div>
       </div>
       <!--  col-md-6   -->
@@ -52,7 +53,7 @@
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="email" value="<?php echo $profile[0]['email'];?>" name="email">
+          <input type="email" class="form-control" id="email" placeholder="email" value="<?php echo $person[0]['email'];?>" name="email">
         </div>
       </div>
       <!--  col-md-6   -->
@@ -60,7 +61,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="url">Facebook</label>
-          <input type="url" class="form-control" id="url" placeholder="url facebook" value="<?php echo $profile[0]['facebook'];?>" name="facebook">
+          <input type="url" class="form-control" id="url" placeholder="url facebook" value="<?php echo $person[0]['facebook'];?>" name="facebook">
         </div>
 
       </div>
@@ -75,25 +76,25 @@
   </form>
 </div>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Đăng Xuất</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Bạn có chắc chắn rằng mình sẽ đăng xuất?</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('admin/dang-xuat'); ?>">Đăng Xuất</a>
-                </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đăng Xuất</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn rằng mình sẽ đăng xuất?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-primary" href="<?php echo base_url('admin/dang-xuat'); ?>">Đăng Xuất</a>
             </div>
         </div>
     </div>
+</div>
 
 
 <script src="<?php echo base_url('static/');?>vendor/jquery/jquery.min.js"></script>

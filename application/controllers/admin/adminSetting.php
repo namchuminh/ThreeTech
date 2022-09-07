@@ -65,7 +65,7 @@ class adminSetting extends CI_Controller {
 			return $this->load->view('admin/adminSetting', $data);
 		}else{
 			$data = array(
-				'mess' => 'Cập nhật thông tin không thất bại! Vui lòng kiểm tra lại!',
+				'mess' => 'Cập nhật thông tin thất bại! Vui lòng kiểm tra lại!',
 				'profile' => $this->model_setting->getProfileAdmin($taikhoan),
 				'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
 				'tieuDe' => $tieuDe,
