@@ -1377,13 +1377,13 @@ select option
 }
 .deals_item_name
 {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 400;
 	color: #000000;
 }
 .deals_item_price
 {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 500;
 	color: #df3b3b;
 }
@@ -1695,6 +1695,8 @@ select option
 .product_name
 {
 	margin-top: 4px;
+	margin-left:  10px;
+	margin-right:  10px;
 	overflow: hidden;
 }
 .product_name div

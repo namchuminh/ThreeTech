@@ -73,6 +73,7 @@ $route['xu-ly-dang-nhap'] = 'user/userLogin/actionLogin';
 $route['dang-xuat'] = 'user/userLogout/logout';
 $route['dang-ky'] = 'user/userRegister/index';
 $route['xu-ly-dang-ky'] = 'user/userRegister/actionRegister';
-
-
 $route['khach-hang']= 'user/userInfo/index';
+
+
+$route['san-pham/(:any)'] = 'product/product/detail/$1';
