@@ -3,7 +3,7 @@
 <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Laptop</h1>
+        <h1 class="h3 mb-2 text-gray-800">Quản Lý Thông Tin Nhân Viên</h1>
         <p class="mb-4">Chỉ nhân viên có quyền admin mới được phép truy cập trang này và chỉ admin mới được phép thực hiện chấm công, thêm, sửa, xóa thông tin nhân viên!</p>
 
         <!-- DataTales Example -->
@@ -23,7 +23,7 @@
                     	</div>
                     	<div class="col-sm-12 col-md-6">
                     		<div id="dataTable_filter" class="dataTables_filter">
-                        		<a href="<?php echo base_url('san-pham/them/');?>" class="btn btn-primary float-right">Thêm Nhân Viên</a>
+                        		<a href="<?php echo base_url('san-pham/them/');?>" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Thêm Nhân Viên</a>
                     		</div>
                     	</div>
                     </div>
@@ -96,13 +96,13 @@
     </div>
 </div>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Add Modal-->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Đăng Xuất</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm Nhân Viên</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -115,6 +115,26 @@
             </div>
         </div>
     </div>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đăng Xuất</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn rằng mình sẽ đăng xuất?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-primary" href="<?php echo base_url('admin/dang-xuat'); ?>">Đăng Xuất</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="<?php echo base_url('static/');?>vendor/jquery/jquery.min.js"></script>
