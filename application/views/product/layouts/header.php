@@ -16,8 +16,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 <link href="<?php echo base_url('static/'); ?>plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/product_styles.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/product_responsive.css">
 </head>
 
 <body>

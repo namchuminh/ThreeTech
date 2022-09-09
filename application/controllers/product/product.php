@@ -11,8 +11,12 @@ class product extends CI_Controller {
 	{
 		$this->load->model('product/model_product');
 		$chiTietSanPham = $this->model_product->getDetailProduct($duongDan);
+		$chuyenMuc = $this->model_product->getCateByUrl($duongDan);
+		$sanPhamLienQuan = $this->model_product->getProductRelated($duongDan);
 		$data = array(
 			'chiTietSanPham' => $chiTietSanPham,
+			'chuyenMuc' => $chuyenMuc,
+			'sanPhamLienQuan' => $sanPhamLienQuan,
 		);
 		return $this->load->view('product/productDetail', $data);
 	}
