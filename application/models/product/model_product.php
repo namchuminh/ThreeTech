@@ -17,7 +17,7 @@ class model_product extends CI_Model {
 	}
 
 	public function getCateByUrl($duongDan){
-		$sql = 'SELECT chuyenmuc.tenChuyenMuc, chuyenmuc.duongDanChuyenMuc FROM chuyenmuc, sanpham WHERE chuyenmuc.chuyenMucId = sanpham.sanPhamId AND sanpham.duongDan = ?;';
+		$sql = "SELECT chuyenmuc.tenChuyenMuc, chuyenmuc.duongDanChuyenMuc FROM chuyenmuc, sanpham WHERE chuyenmuc.chuyenMucId = sanpham.chuyenMucId AND sanpham.duongDan = ?;";
 		$result = $this->db->query($sql, array($duongDan));
 		return $result->result_array();
 	}
