@@ -50,6 +50,7 @@ class adminPerson extends CI_Controller {
 		$matKhau = $this->model_person->getInfoPersonUsername($taikhoan)[0]['matKhau'];
 		$avatar = $this->model_person->getInfoPersonUsername($taikhoan)[0]['avatar'];
 		$hoTen = $this->input->post('hoTen');
+		$chucVu = $this->input->post('chucVu');
 		$email = $this->input->post('email');
 		$facebook = $this->input->post('facebook');
 		$soDienThoai = $this->input->post('soDienThoai');
@@ -69,7 +70,7 @@ class adminPerson extends CI_Controller {
 			$avatar = base_url('uploads')."/".$avatarUpdate['file_name'];
 		}
 
-		$result = $this->model_person->updateInfoPerson($matKhau, $hoTen, $soDienThoai, $email, $facebook, $avatar, $taikhoan);
+		$result = $this->model_person->updateInfoPerson($matKhau, $hoTen, $chucVu, $soDienThoai, $email, $facebook, $avatar, $taikhoan);
 		if($result == True){
 			$data = array(
 				'mess' => 'Cập nhật thông tin nhân viên thành công!',
@@ -87,6 +88,33 @@ class adminPerson extends CI_Controller {
 			);
 			return $this->load->view('admin/updatePerson', $data);
 		}
+	}
+
+
+	public function actionAddPerson(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/nhan-vien/'));
+		}
+		$tieuDe = "ThreeTech - Thêm Nhân Viên!";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+		$taikhoan = $this->input->post('taiKhoan');
+		$matKhau = $this->input->post('matKhau');
+		$hoTen = $this->input->post('hoTen');
+		$chucVu = $this->input->post('chucVu');
+		$soDienThoai = $this->input->post('soDienThoai');
+		$email = $this->input->post('email');
+		$facebook = $this->input->post('facebook');
+		$avatar = base_url("static/img/avatarPerson.png");
+
+		echo $taikhoan."<br>";
+		echo $matKhau."<br>";
+		echo $hoTen."<br>";
+		echo $chucVu."<br>";
+		echo $soDienThoai."<br>";
+		echo $email."<br>";
+		echo $facebook."<br>";
+		echo $avatar;
 	}
 }
 

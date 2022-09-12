@@ -28,9 +28,9 @@ class model_person extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function updateInfoPerson($matKhau, $hoTen, $soDienThoai, $email, $facebook, $avatar, $taikhoan){
-		$sql = "UPDATE `nhanvien` SET `matKhau`= ?,`hoTen`= ?,`soDienThoai`= ?,`email`= ?,`facebook`= ?,`avatar`= ? WHERE `taiKhoan`= ?";
-		$result = $this->db->query($sql, array($matKhau, $hoTen, $soDienThoai, $email, $facebook,  $avatar, $taikhoan));
+	public function updateInfoPerson($matKhau, $hoTen, $chucVu, $soDienThoai, $email, $facebook, $avatar, $taikhoan){
+		$sql = "UPDATE `nhanvien` SET `matKhau`= ?,`hoTen`= ?, `chucVu`= ?, `soDienThoai`= ?,`email`= ?,`facebook`= ?,`avatar`= ? WHERE `taiKhoan`= ?";
+		$result = $this->db->query($sql, array($matKhau, $hoTen, $chucVu, $soDienThoai, $email, $facebook,  $avatar, $taikhoan));
 		return $result;
 	}
 }

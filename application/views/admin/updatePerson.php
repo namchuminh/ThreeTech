@@ -9,9 +9,27 @@
           <label for="first">Họ Tên</label>
           <input type="text" class="form-control" placeholder="họ tên" id="first" value="<?php echo $person[0]['hoTen'];?>" name="hoTen">
         </div>
-        <div class="form-group">
-          <label for="last">Tài Khoản</label>
-          <input type="text" class="form-control" placeholder="tài khoản" id="last" value="<?php echo $person[0]['taiKhoan'];?>" disabled >
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="last">Tài Khoản</label>
+              <input type="text" class="form-control" placeholder="tài khoản" id="last" value="<?php echo $person[0]['taiKhoan'];?>" disabled >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Chức Vụ</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="chucVu">
+                <?php if ($person[0]['chucVu'] == "admin"){ ?>
+                  <option value="admin" selected="selected">Admin</option>
+                  <option value="nhanvien">Nhân Viên</option>
+                <?php }else{ ?>
+                  <option value="admin" >Admin</option>
+                  <option value="nhanvien" selected="selected">Nhân Viên</option>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
       <!--  col-md-6   -->
