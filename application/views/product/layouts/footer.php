@@ -138,6 +138,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="<?php echo base_url('static/'); ?>plugins/easing/easing.js"></script>
 <script src="<?php echo base_url('static/'); ?>js/custom.js"></script>
 <script src="<?php echo base_url('static/'); ?>js/product_custom.js"></script>
+<script src="<?php echo base_url('static/'); ?>plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="<?php echo base_url('static/'); ?>plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="<?php echo base_url('static/'); ?>plugins/parallax-js-master/parallax.min.js"></script>
+<script src="<?php echo base_url('static/'); ?>js/shop_custom.js"></script>
 </body>
 
 </html>
