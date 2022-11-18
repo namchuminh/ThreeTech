@@ -81,5 +81,5 @@ $route['khach-hang']= 'user/userInfo/index';
 
 
 $route['san-pham/(:any)'] = 'product/product/detail/$1';
-
 $route['chuyen-muc/(:any)'] = 'product/category/index/$1';
+$route['tim-kiem'] = 'product/search/index';
