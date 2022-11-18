@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -71,19 +72,14 @@
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm theo tên sản phẩm...">
-										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">Tất Cả</span>
-												<i class="fas fa-chevron-down"></i>
-												<ul class="custom_list clc">
-													<li><a class="clc" href="#">Laptop</a></li>
-													<li><a class="clc" href="#">Máy Tính</a></li>
-													<li><a class="clc" href="#">Linh Kiện</a></li>
-												</ul>
-											</div>
-										</div>
+									<form action="<?php echo base_url('tim-kiem/'); ?>" class="header_search_form clearfix" method="GET">
+										<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm theo tên sản phẩm..." name="sanpham">
+										<select name="chuyenmuc" class="select_category">
+										  	<option value="Laptop" selected>Laptop</option>
+										  	<option value="Maytinh">Máy Tính</option>
+										 	<option value="Linhkien">Linh Kiện</option>
+
+										</select>
 										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="<?php echo base_url('static/'); ?>images/search.png" alt=""></button>
 									</form>
 								</div>

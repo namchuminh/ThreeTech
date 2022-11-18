@@ -3659,3 +3659,13 @@ select option
 {
 	margin-right: 0px;
 }
+
+.select_category{
+	margin-top: 10px;
+    border-left: 2px solid #e5e5e5;
+    padding-left: 20px;
+    border-bottom: none;
+    color: #a3a3a3;
+    width: 30%;
+    font-size: 18px;
+}
