@@ -1,0 +1,90 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+| -------------------------------------------------------------------------
+| URI ROUTING
+| -------------------------------------------------------------------------
+| This file lets you re-map URI requests to specific controller functions.
+|
+| Typically there is a one-to-one relationship between a URL string
+| and its corresponding controller class/method. The segments in a
+| URL normally follow this pattern:
+|
+|	example.com/class/method/id/
+|
+| In some instances, however, you may want to remap this relationship
+| so that a different class/function is called than the one
+| corresponding to the URL.
+|
+| Please see the user guide for complete details:
+|
+|	https://codeigniter.com/userguide3/general/routing.html
+|
+| -------------------------------------------------------------------------
+| RESERVED ROUTES
+| -------------------------------------------------------------------------
+|
+| There are three reserved routes:
+|
+|	$route['default_controller'] = 'welcome';
+|
+| This route indicates which controller class should be loaded if the
+| URI contains no data. In the above example, the "welcome" class
+| would be loaded.
+|
+|	$route['404_override'] = 'errors/page_missing';
+|
+| This route will tell the Router which controller/method to use if those
+| provided in the URL cannot be matched to a valid route.
+|
+|	$route['translate_uri_dashes'] = FALSE;
+|
+| This is not exactly a route, but allows you to automatically route
+| controller and method names that contain dashes. '-' isn't a valid
+| class or method name character, so it requires translation.
+| When you set this option to TRUE, it will replace ALL dashes in the
+| controller and method URI segments.
+|
+| Examples:	my-controller/index	-> my_controller/index
+|		my-controller/my-method	-> my_controller/my_method
+*/
+$route['default_controller'] = 'index';
+$route['404_override'] = 'errors/page_missing';
+$route['translate_uri_dashes'] = FALSE;
+ 
+$route['admin'] = 'admin/admin/index';
+$route['admin/dang-nhap'] = 'admin/auth';
+$route['admin/dang-xuat'] = 'admin/admin/logout';
+$route['admin/laptop'] = 'admin/adminProduct/laptop';
+$route['admin/may-tinh'] = 'admin/adminProduct/computer';
+$route['admin/linh-kien'] = 'admin/adminProduct/accessory';
+$route['san-pham/them'] = 'admin/adminProduct/addProduct';
+$route['admin/actionAddProduct'] = 'admin/adminProduct/actionAddProduct';
+$route['san-pham/sua/(:any)'] = 'admin/adminProduct/updateProduct/$1';
+$route['admin/actionUpdateProduct'] = 'admin/adminProduct/actionUpdateProduct';
+$route['san-pham/xoa/(:any)/(:any)'] = 'admin/adminProduct/actionDeleteProduct/$1/$2';
+$route['admin/ca-nhan'] = 'admin/adminProfile/index';
+$route['admin/cai-dat-ca-nhan'] = 'admin/adminSetting';
+$route['admin/cap-nhat-ca-nhan'] = 'admin/adminSetting/updateAdminProfile';
+$route['admin/nhan-vien'] = 'admin/adminPerson/index';
+$route['nhan-vien/sua/(:any)'] = 'admin/adminPerson/updatePerson/$1';
+$route['nhan-vien/cap-nhat'] = 'admin/adminPerson/actionUpdatePerson';
+$route['nhan-vien/them'] = 'admin/adminPerson/actionAddPerson';
+
+$route['dang-nhap'] = 'user/userLogin/index';
+$route['xu-ly-dang-nhap'] = 'user/userLogin/actionLogin';
+$route['dang-xuat'] = 'user/userLogout/logout';
+$route['dang-ky'] = 'user/userRegister/index';
+$route['xu-ly-dang-ky'] = 'user/userRegister/actionRegister';
+$route['khach-hang']= 'user/userInfo/index';
+
+
+$route['san-pham/(:any)'] = 'product/product/detail/$1';
+$route['gio-hang'] = 'cart/cart/index';
+$route['them-vao-gio-hang'] = 'cart/cart/addToCart';
+$route['xoa-gio-hang'] = 'cart/cart/deleteCart';
+$route['sua-gio-hang'] = 'cart/cart/updateNumberProduct';
+$route['gio-hang/thanh-toan'] = 'thanhtoan/vnpay/index';
+$route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
+
