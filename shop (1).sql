@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 12, 2022 at 02:24 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 25, 2022 lúc 03:02 AM
+-- Phiên bản máy phục vụ: 10.4.25-MariaDB
+-- Phiên bản PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,38 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shop`
+-- Cơ sở dữ liệu: `shop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chuyenmuc`
+-- Cấu trúc bảng cho bảng `chitiethoadon`
+--
+
+CREATE TABLE `chitiethoadon` (
+  `chitiethoadonID` int(11) NOT NULL,
+  `madonhang` int(11) NOT NULL,
+  `sanPhamId` int(11) NOT NULL,
+  `soLuong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitiethoadon`
+--
+
+INSERT INTO `chitiethoadon` (`chitiethoadonID`, `madonhang`, `sanPhamId`, `soLuong`) VALUES
+(1, 1669292418, 1, 1),
+(2, 1669292418, 19, 1),
+(3, 1669292418, 1, 1),
+(4, 1669292418, 19, 1),
+(5, 1669293665, 1, 3),
+(6, 1669340720, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chuyenmuc`
 --
 
 CREATE TABLE `chuyenmuc` (
@@ -34,7 +59,7 @@ CREATE TABLE `chuyenmuc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `chuyenmuc`
+-- Đang đổ dữ liệu cho bảng `chuyenmuc`
 --
 
 INSERT INTO `chuyenmuc` (`chuyenMucId`, `tenChuyenMuc`, `duongDanChuyenMuc`) VALUES
@@ -45,32 +70,20 @@ INSERT INTO `chuyenmuc` (`chuyenMucId`, `tenChuyenMuc`, `duongDanChuyenMuc`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `giohang`
+-- Cấu trúc bảng cho bảng `giohang`
 --
 
 CREATE TABLE `giohang` (
   `gioHangId` int(11) NOT NULL,
   `sanPhamId` int(11) NOT NULL,
-  `khachHangId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hoadon`
---
-
-CREATE TABLE `hoadon` (
-  `hoaDonId` int(11) NOT NULL,
-  `sanPhamId` int(11) NOT NULL,
   `khachHangId` int(11) NOT NULL,
-  `thoiGian` datetime NOT NULL DEFAULT current_timestamp()
+  `soLuong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khachhang`
+-- Cấu trúc bảng cho bảng `khachhang`
 --
 
 CREATE TABLE `khachhang` (
@@ -83,16 +96,19 @@ CREATE TABLE `khachhang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `khachhang`
+-- Đang đổ dữ liệu cho bảng `khachhang`
 --
 
 INSERT INTO `khachhang` (`khachHangId`, `taiKhoan`, `matKhau`, `hoTen`, `soDienThoai`, `diaChi`) VALUES
-(1, 'nam', '22c78aadb8d25a53ca407fae265a7154', 'Chu Minh Nam', '0379962045', 'Hà Nội');
+(1, 'nam', '22c78aadb8d25a53ca407fae265a7154', 'Chu Minh Nam', '0379962045', 'Hà Nội'),
+(2, 'sonson', '2b5165a145c7ef05581b14d876ceba3b', 'Phùng Thái Sơn', '0383637563', 'Hà Nội'),
+(3, 'sonson1', '2b5165a145c7ef05581b14d876ceba3b', 'Phùng Thái Sơn', '0383637563', 'Ha noi'),
+(4, 'sonson2', '2b5165a145c7ef05581b14d876ceba3b', 'Phùng Thái Sơn', '0383637563', 'hà Nội');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhanvien`
+-- Cấu trúc bảng cho bảng `nhanvien`
 --
 
 CREATE TABLE `nhanvien` (
@@ -108,7 +124,7 @@ CREATE TABLE `nhanvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nhanvien`
+-- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
 INSERT INTO `nhanvien` (`nhanVienId`, `taiKhoan`, `matKhau`, `hoTen`, `chucVu`, `soDienThoai`, `email`, `facebook`, `avatar`) VALUES
@@ -117,7 +133,7 @@ INSERT INTO `nhanvien` (`nhanVienId`, `taiKhoan`, `matKhau`, `hoTen`, `chucVu`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sanpham`
+-- Cấu trúc bảng cho bảng `sanpham`
 --
 
 CREATE TABLE `sanpham` (
@@ -139,14 +155,14 @@ CREATE TABLE `sanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `sanpham`
+-- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
 INSERT INTO `sanpham` (`sanPhamId`, `tenSanPham`, `giaGoc`, `giaBan`, `moTa`, `duongDan`, `trangThai`, `soLuong`, `anhChinh`, `anhPhu1`, `anhPhu2`, `chuyenMucId`, `loaiSanPham`, `nhanVienId`, `ngayDang`) VALUES
-(1, 'Laptop Asus TUF Gaming FX506LHB-HN188W i5 10300H/8GB/512GB/15.6', '19990.000', '16290.000', '15.6 inch, 1920 x 1080 Pixels, IPS, 144 Hz, Anti-glare LED-backlit\r\n\r\nIntel, Core i5, 10300H\r\n\r\n8 GB (1 thanh 8 GB), DDR4, 2933 MHz\r\n\r\nSSD 512 GB\r\n\r\nNVIDIA GeForce GTX 1650 4GB; Intel UHD Graphics', 'asus-tuf-gaming-fx506lhb-hn188w-i5-10300h', 1, 30, 'https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2022/1/26/637788079927538825_asus-tuf-gaming-fx506lh-den-2022-1.jpg', 'https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2022/1/26/637788079927538825_asus-tuf-gaming-fx506lh-den-2022-1.jpg', 'https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2022/1/26/637788079927538825_asus-tuf-gaming-fx506lh-den-2022-2.jpg', 1, 'Uudai', 1, '2022-08-29 19:25:29'),
+(1, 'Laptop Asus TUF Gaming FX506LHB-HN188W i5 10300H/8GB/512GB/15.6', '19990.000', '16290.000', '15.6 inch, 1920 x 1080 Pixels, IPS, 144 Hz, Anti-glare LED-backlit\r\n\r\nIntel, Core i5, 10300H\r\n\r\n8 GB (1 thanh 8 GB), DDR4, 2933 MHz\r\n\r\nSSD 512 GB\r\n\r\nNVIDIA GeForce GTX 1650 4GB; Intel UHD Graphics', 'asus-tuf-gaming-fx506lhb-hn188w-i5-10300h', 1, 25, 'https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2022/1/26/637788079927538825_asus-tuf-gaming-fx506lh-den-2022-1.jpg', 'https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2022/1/26/637788079927538825_asus-tuf-gaming-fx506lh-den-2022-1.jpg', 'https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2022/1/26/637788079927538825_asus-tuf-gaming-fx506lh-den-2022-2.jpg', 1, 'Uudai', 1, '2022-08-29 19:25:29'),
 (2, 'PC GAMING HACOM 034 (I3 10105F/H510/8GB RAM/500GB SSD/GTX 1050TI/450W)', '13999.000', '10199.000', 'CPU: Intel Core i3 10105F\r\nMainboard: H510\r\nRAM: 8GB\r\nSSD: 500GB\r\nVGA: GTX 1050Ti\r\nPSU: 450W', 'pc-gaming-hacom-034', 1, 50, 'https://hanoicomputercdn.com/media/product/64227_pcgm452_18_001.jpg', 'https://hanoicomputercdn.com/media/product/64227_pcgm452_18_001.jpg', 'https://hanoicomputercdn.com/media/product/64227_pcgm452_18_001.jpg', 2, 'Uudai', 1, '2022-08-29 19:25:29'),
 (3, 'Mainboard ASUS ROG MAXIMUS Z690 FORMULA (Intel Z690, Socket 1700, ATX, 4 khe RAM DDR5)', '21199.000', '16999.000', 'Chipset: Intel Z690\r\nSocket: LGA 1700\r\nSố khe RAM: 4 (DDR5)\r\nKích thước: ATX\r\nTích hợp sẵn Wifi & Bluetooth', 'mainboard-asus-rog-maximus', 1, 25, 'https://hanoicomputercdn.com/media/product/61219_mainboard_asus_rog_maximus_z690_formula_intel_z690_socket_1700_atx_4_khe_ram_ddr5_2.jpg', 'https://hanoicomputercdn.com/media/product/61219_mainboard_asus_rog_maximus_z690_formula_intel_z690_socket_1700_atx_4_khe_ram_ddr5_size.jpg', 'https://hanoicomputercdn.com/media/product/61219_mainboard_asus_rog_maximus_z690_formula_intel_z690_socket_1700_atx_4_khe_ram_ddr5_1.jpg', 3, 'Uudai', 1, '2022-08-29 19:25:29'),
-(19, 'Laptop Lenovo IdeaPad Slim 5', '18790.000', '14890.000', '15.6 inch, 1920 x 1080 Pixels, IPS, 60 Hz, 300 nits, IPS LCD LED Backlit, True Tone\r\nIntel, Core i5, 1135G7\r\n8 GB, DDR4, 3200 MHz\r\nSSD 512 GB\r\nIntel Iris Xe Graphics', 'laptop-lenovo-ideapad-slim-5', 1, 33, 'http://localhost/ThreeTech/uploads/lenovo-ideapad-slim-5-15itl05-i5-82fg001pvn-144320-064322-600x600.jpg', 'http://localhost/ThreeTech/uploads/58429_idealpad5__3_.png', 'http://localhost/ThreeTech/uploads/bbfafef4382f9f0910230636f4712988.jpg', 1, 'Uudai', 1, '2022-08-29 22:15:18'),
+(19, 'Laptop Lenovo IdeaPad Slim 5', '18790.000', '14890.000', '15.6 inch, 1920 x 1080 Pixels, IPS, 60 Hz, 300 nits, IPS LCD LED Backlit, True Tone\r\nIntel, Core i5, 1135G7\r\n8 GB, DDR4, 3200 MHz\r\nSSD 512 GB\r\nIntel Iris Xe Graphics', 'laptop-lenovo-ideapad-slim-5', 1, 32, 'http://localhost/ThreeTech/uploads/lenovo-ideapad-slim-5-15itl05-i5-82fg001pvn-144320-064322-600x600.jpg', 'http://localhost/ThreeTech/uploads/58429_idealpad5__3_.png', 'http://localhost/ThreeTech/uploads/bbfafef4382f9f0910230636f4712988.jpg', 1, 'Uudai', 1, '2022-08-29 22:15:18'),
 (20, 'Ram Corsair Dominator Platinum 16GB (2x8GB) RGB 3200', '4000.000', '3000.000', '- Nhà sản xuất: CORSAIR\r\n- Loại RAM: DDR4\r\n- Dung lượng: 16GB \r\n- Số lượng: 2 thanh\r\n- Bus: 3200MHz\r\n- Tản nhiệt: Có\r\n- Màu: Đen\r\n- Bảo Hành: 36 Tháng', 'Ram-Corsair-Dominator-Platinum', 1, 50, 'http://localhost/ThreeTech/uploads/41347_cmt16gx4m2c3200c16w__3_.jpg', 'http://localhost/ThreeTech/uploads/7fbd358456182187c2fbb04861816da27.jpg', 'http://localhost/ThreeTech/uploads/7fbd358456182187c2fbb04861816da28.jpg', 3, 'Khonguudai', 1, '2022-08-29 22:31:04'),
 (21, 'iMac', '34000.000', '31000.000', 'iMac 24 inch 2021 4.5K M1/256GB/8GB/7-core GPU (MGTF3SA/A)', 'iMac', 1, 51, 'http://localhost/ThreeTech/uploads/thumb-apple-imac-24-m1-2021-800x450.jpg', 'http://localhost/ThreeTech/uploads/vi-vn-imac-24-inch-45k-retina-m1-mgtf3saa-1.jpg', 'http://localhost/ThreeTech/uploads/vi-vn-imac-24-inch-45k-retina-m1-mgtf3saa-2.jpg', 2, 'Khonguudai', 1, '2022-08-31 17:13:37'),
 (22, 'Surface Pro 8 Core i5 / 8GB / 128GB', '35990.000', '24990.000', 'Bộ xử lý: Intel® Core™ i5-1135G7 - Gen 11th\r\n- Ram: 8Gb\r\n- Ổ cứng: SSD 128Gb\r\n- Màn hình: 13 inch, Cảm ứng 10 điểm chạm\r\n- Hệ điều hành: Windows 11 Home\r\n- Thiết bị hỗ trợ: Pen Protocol (MPP), Slim Pen 2, Surface Pro Signature Keyboard, Surface Pro X Keyboard\"\r\n- Cổng kết nối: 2 x USB-C (USB 4.0 / Thunderbolt 4)\r\n1x Giắc cắm tai nghe 3,5 mm\r\n1 x Cổng kết nối bề mặt (kết nối phím)', 'surface-pro-8', 1, 50, 'http://localhost/ThreeTech/uploads/46084_surface_pro_8_platinum_ha1.jpg', 'http://localhost/ThreeTech/uploads/46084_surface_pro_8_platinum_ha2.jpg', 'http://localhost/ThreeTech/uploads/46084_surface_pro_8_platinum_ha3.jpg', 1, 'Uudai', 1, '2022-09-01 02:09:11'),
@@ -165,7 +181,7 @@ INSERT INTO `sanpham` (`sanPhamId`, `tenSanPham`, `giaGoc`, `giaBan`, `moTa`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tintuc`
+-- Cấu trúc bảng cho bảng `tintuc`
 --
 
 CREATE TABLE `tintuc` (
@@ -180,100 +196,150 @@ CREATE TABLE `tintuc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tintuc`
+-- Đang đổ dữ liệu cho bảng `tintuc`
 --
 
 INSERT INTO `tintuc` (`tinTucId`, `anhChinh`, `tieuDe`, `trichDan`, `noiDung`, `nhanVienId`, `ngayDang`, `duongDan`) VALUES
 (1, 'http://localhost/ThreeTech/static/images/blog_5.jpg', 'Vivamus sed nunc in arcu cursus mollis quis et orci. Interdum et malesuada', 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.\n', 'Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin. Praesent at tempus lectus, eleifend blandit felis. Fusce augue arcu, consequat a nisl aliquet, consectetur elementum turpis. Donec iaculis lobortis nisl, et viverra risus imperdiet eu. Etiam mollis posuere elit non sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis arcu a magna sodales venenatis. Integer non diam sit amet magna luctus mollis ac eu nisi. In accumsan tellus ut dapibus blandit.\n\nPraesent ac magna sed massa euismod congue vitae vitae risus. Nulla lorem augue, mollis non est et, eleifend elementum ante. Nunc id pharetra magna. Praesent vel orci ornare, blandit mi sed, aliquet nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.', 1, '2022-08-29 19:40:14', 'bai-viet-tin-dau-tien');
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Cấu trúc bảng cho bảng `vnpay`
+--
+
+CREATE TABLE `vnpay` (
+  `khachHangId` int(11) NOT NULL,
+  `madonhang` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sotien` float NOT NULL,
+  `noidung` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nganhang` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `thoigian` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `magiaodich` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `vnpay`
+--
+
+INSERT INTO `vnpay` (`khachHangId`, `madonhang`, `sotien`, `noidung`, `nganhang`, `thoigian`, `magiaodich`) VALUES
+(2, '1669285200', 1629000, 'thanh toan vnpay', 'NCB', '20221124172046', '13886419'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669288928', 1629000, 'thanh toan vnpay', 'NCB', '20221124182241', '13886509'),
+(2, '1669290266', 1629000, 'thanh toan vnpay', 'NCB', '20221124184455', '13886517'),
+(2, '1669290266', 1629000, 'thanh toan vnpay', 'NCB', '20221124184455', '13886517'),
+(2, '1669292418', 3118000, 'thanh toan vnpay', 'NCB', '20221124192052', '13886540'),
+(2, '1669292418', 3118000, 'thanh toan vnpay', 'NCB', '20221124192052', '13886540'),
+(2, '1669292418', 3118000, 'thanh toan vnpay', 'NCB', '20221124192052', '13886540'),
+(2, '1669292418', 3118000, 'thanh toan vnpay', 'NCB', '20221124192052', '13886540'),
+(2, '1669292418', 3118000, 'thanh toan vnpay', 'NCB', '20221124192052', '13886540'),
+(2, '1669292418', 3118000, 'thanh toan vnpay', 'NCB', '20221124192052', '13886540'),
+(2, '1669292418', 3118000, 'thanh toan vnpay', 'NCB', '20221124192052', '13886540'),
+(2, '1669293665', 4887000, 'thanh toan vnpay', 'NCB', '20221124194130', '13886551'),
+(2, '1669293665', 4887000, 'thanh toan vnpay', 'NCB', '20221124194130', '13886551'),
+(2, '1669293665', 4887000, 'thanh toan vnpay', 'NCB', '20221124194130', '13886551'),
+(2, '1669340720', 1629000, 'thanh toan vnpay', 'NCB', '20221125084544', '13886706'),
+(2, '1669340720', 1629000, 'thanh toan vnpay', 'NCB', '20221125084544', '13886706'),
+(2, '1669340720', 1629000, 'thanh toan vnpay', 'NCB', '20221125084544', '13886706'),
+(2, '1669340720', 1629000, 'thanh toan vnpay', 'NCB', '20221125084544', '13886706'),
+(2, '1669340720', 1629000, 'thanh toan vnpay', 'NCB', '20221125084544', '13886706'),
+(2, '1669340720', 1629000, 'thanh toan vnpay', 'NCB', '20221125084544', '13886706'),
+(2, '1669340720', 1629000, 'thanh toan vnpay', 'NCB', '20221125084544', '13886706');
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `chuyenmuc`
+-- Chỉ mục cho bảng `chitiethoadon`
+--
+ALTER TABLE `chitiethoadon`
+  ADD PRIMARY KEY (`chitiethoadonID`);
+
+--
+-- Chỉ mục cho bảng `chuyenmuc`
 --
 ALTER TABLE `chuyenmuc`
   ADD PRIMARY KEY (`chuyenMucId`);
 
 --
--- Indexes for table `giohang`
+-- Chỉ mục cho bảng `giohang`
 --
 ALTER TABLE `giohang`
   ADD PRIMARY KEY (`gioHangId`);
 
 --
--- Indexes for table `hoadon`
---
-ALTER TABLE `hoadon`
-  ADD PRIMARY KEY (`hoaDonId`);
-
---
--- Indexes for table `khachhang`
+-- Chỉ mục cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
   ADD PRIMARY KEY (`khachHangId`);
 
 --
--- Indexes for table `nhanvien`
+-- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`nhanVienId`);
 
 --
--- Indexes for table `sanpham`
+-- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD PRIMARY KEY (`sanPhamId`);
 
 --
--- Indexes for table `tintuc`
+-- Chỉ mục cho bảng `tintuc`
 --
 ALTER TABLE `tintuc`
   ADD PRIMARY KEY (`tinTucId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `chuyenmuc`
+-- AUTO_INCREMENT cho bảng `chitiethoadon`
+--
+ALTER TABLE `chitiethoadon`
+  MODIFY `chitiethoadonID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `chuyenmuc`
 --
 ALTER TABLE `chuyenmuc`
   MODIFY `chuyenMucId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `giohang`
+-- AUTO_INCREMENT cho bảng `giohang`
 --
 ALTER TABLE `giohang`
-  MODIFY `gioHangId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `gioHangId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT for table `hoadon`
---
-ALTER TABLE `hoadon`
-  MODIFY `hoaDonId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `khachhang`
+-- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `khachHangId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `khachHangId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `nhanvien`
+-- AUTO_INCREMENT cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   MODIFY `nhanVienId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `sanpham`
+-- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   MODIFY `sanPhamId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `tintuc`
+-- AUTO_INCREMENT cho bảng `tintuc`
 --
 ALTER TABLE `tintuc`
   MODIFY `tinTucId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
