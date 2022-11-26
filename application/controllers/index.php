@@ -15,10 +15,14 @@ class index extends CI_Controller {
 		$laptop = $this->model_index->getProductLaptop();
 		$maytinh = $this->model_index->getProductMayTinh();
 		$thietbidientu = $this->model_index->getProductThietBiDienTu();
+
+		
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
-			
+			$kh = $this->model_index->getCustomerLogin($khachhang);
+			$khachHangId = $kh[0]['khachHangId'];
+			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
 			$data = array(
 				'khachhang' => $khachhang,
 				'logged_in' => $logged_in,
@@ -27,8 +31,7 @@ class index extends CI_Controller {
 				'laptop' => $laptop,
 				'maytinh' => $maytinh,
 				'thietbidientu' => $thietbidientu,
-
-
+				'soluonsanpham' =>$soLuongSanPham,
 			);
 			return $this->load->view('view_index', $data);
 		}else{

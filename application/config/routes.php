@@ -81,5 +81,10 @@ $route['khach-hang']= 'user/userInfo/index';
 
 
 $route['san-pham/(:any)'] = 'product/product/detail/$1';
-$route['chuyen-muc/(:any)'] = 'product/category/index/$1';
-$route['tim-kiem'] = 'product/search/index';
+$route['gio-hang'] = 'cart/cart/index';
+$route['them-vao-gio-hang'] = 'cart/cart/addToCart';
+$route['xoa-gio-hang'] = 'cart/cart/deleteCart';
+$route['sua-gio-hang'] = 'cart/cart/updateNumberProduct';
+$route['gio-hang/thanh-toan'] = 'thanhtoan/vnpay/index';
+$route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
+

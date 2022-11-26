@@ -42,6 +42,11 @@ class model_index extends CI_Model {
 		$result = $this->db->query($sql, array("3", "Khonguudai"));
 		return $result->result_array();
 	}
+	public function countProduct($khachHangId){
+		$sql = "SELECT COUNT(gioHangId) as 'so luong san pham' FROM giohang WHERE khachHangId=?";
+		$result = $this->db->query($sql,array($khachHangId));
+		return $result->result_array();
+	}
 }
 
 /* End of file model_index.php */

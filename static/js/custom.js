@@ -1028,4 +1028,21 @@ $(document).ready(function()
     		});	
     	}	
     }
+    var showPass = false;
+
+    $("#show-password").click(function(){
+    	showPass=!showPass;
+    	if(showPass==true){
+    		$('#password').get(0).type = 'text';
+    		// $("#show-password").text('abc');
+    		$("i", this).toggleClass("fa-regular fa-eye fa-solid fa-eye-slash");
+    		
+    	}else{
+    		$('#password').get(0).type = 'password';
+    		//$("#show-password").text('def');
+    		$("i", this).toggleClass("fa-regular fa-eye fa-solid fa-eye-slash");
+    	}
+    	
+  	});
+
 });

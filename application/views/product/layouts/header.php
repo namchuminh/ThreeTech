@@ -18,8 +18,6 @@
 <link href="<?php echo base_url('static/'); ?>plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/product_styles.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/product_responsive.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/shop_styles.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/shop_responsive.css">
 </head>
 
 <body>
