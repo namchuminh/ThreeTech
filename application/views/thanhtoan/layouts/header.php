@@ -15,6 +15,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<link href="<?php echo base_url('static/'); ?>plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
 </head>
 
 <body>
@@ -37,7 +40,7 @@
 							<?php if(isset($logged_in) ){ ?>
 								<div class="top_bar_user">
 									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Xin chào, <?php echo $khachhang; ?>!</a></div>
+									<div><a href="#">Xin chào, <?php echo $taikhoan; ?>!</a></div>
 									<div><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></div>
 								</div>
 							<?php } else {?>
@@ -100,11 +103,10 @@
 									<div class="cart_icon">
 										<img src="images/cart.png" alt="">
 										<?php if(isset($logged_in) ){ ?>
-											<div class="cart_count"><span><?php echo($soluonsanpham[0]["so luong san pham"]); ?></span></div>
+											<div class="cart_count"><span>0</span></div>
 										<?php } else {?>
 											<div class="cart_count"><span>0</span></div>
 										<?php } ?>
-										
 									</div>
 									<div class="cart_content">
 										<div class="cart_text"><a href="#">Giỏ Hàng</a></div>

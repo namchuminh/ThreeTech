@@ -18,6 +18,10 @@ class product extends CI_Controller {
 			'chuyenMuc' => $chuyenMuc,
 			'sanPhamLienQuan' => $sanPhamLienQuan,
 		);
+		// echo '<pre>';
+		// 	var_dump($chiTietSanPham);
+		// echo '</pre>';
+
 		return $this->load->view('product/productDetail', $data);
 	}
 

@@ -411,4 +411,8 @@ $(document).ready(function()
 			});
 		});
 	}
+	// add to cart
+	// function addToCart(id){
+ //    		alert(id);
+	// }
 });

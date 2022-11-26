@@ -136,8 +136,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="<?php echo base_url('static/'); ?>plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="<?php echo base_url('static/'); ?>plugins/slick-1.8.0/slick.js"></script>
 <script src="<?php echo base_url('static/'); ?>plugins/easing/easing.js"></script>
-<script src="<?php echo base_url('static/'); ?>js/custom.js"></script>
-<script src="<?php echo base_url('static/'); ?>js/product_custom.js"></script>
-</body>
+<!-- <script src="<?php echo base_url('static/'); ?>js/custom.js"></script>
+ --></body>
 
 </html>

@@ -132,10 +132,10 @@ h6::selection
 {
 	
 }
-.form-control
+/*.form-control
 {
 	color: #db5246;
-}
+}*/
 section
 {
 	display: block;
@@ -716,7 +716,7 @@ section
 {
 	color: #0e8ce4;
 }
-select
+/*select
 {
 	display: inline;
 	border: 0;
@@ -741,7 +741,7 @@ select option
 	padding: 10px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-}
+}*/
 .header_search_button
 {
 	position: absolute;
