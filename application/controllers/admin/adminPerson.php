@@ -24,6 +24,26 @@ class adminPerson extends CI_Controller {
 		return $this->load->view('admin/person', $data);
 	}
 
+	public function actionLoadPerson()
+	{
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/nhan-vien/'));
+		}
+
+		$start = $this->input->post('start');
+		$this->load->model('admin/model_person');
+		$resultCheckCount = $this->model_person->getAllInfoPerson(10000);
+		if ($start <= count($resultCheckCount)){
+			$result = $this->model_person->getAllInfoPerson($start);
+			$data = json_encode($result);
+			echo $data;
+		}else{
+			$data = json_encode($resultCheckCount);
+			echo $data;
+		}
+		
+	}
+
 	public function updatePerson($nhanVienId){
 		$tieuDe = "ThreeTech - Sửa Thông Tin Nhân Viên";
 		$taiKhoan = $this->session->userdata('taikhoan');
@@ -96,10 +116,10 @@ class adminPerson extends CI_Controller {
 			return redirect(base_url('admin/nhan-vien/'));
 		}
 		$tieuDe = "ThreeTech - Thêm Nhân Viên!";
-		$taiKhoan = $this->session->userdata('taikhoan');
-		$this->load->model('admin/model_admin');
-		$taikhoan = $this->input->post('taiKhoan');
-		$matKhau = $this->input->post('matKhau');
+		$this->load->model('admin/model_person');
+
+		$taiKhoan = $this->input->post('taiKhoan');
+		$matKhau = md5($this->input->post('matKhau'));
 		$hoTen = $this->input->post('hoTen');
 		$chucVu = $this->input->post('chucVu');
 		$soDienThoai = $this->input->post('soDienThoai');
@@ -107,15 +127,56 @@ class adminPerson extends CI_Controller {
 		$facebook = $this->input->post('facebook');
 		$avatar = base_url("static/img/avatarPerson.png");
 
-		echo $taikhoan."<br>";
-		echo $matKhau."<br>";
-		echo $hoTen."<br>";
-		echo $chucVu."<br>";
-		echo $soDienThoai."<br>";
-		echo $email."<br>";
-		echo $facebook."<br>";
-		echo $avatar;
+		$result = $this->model_person->getInfoPersonUsername($taiKhoan);
+		if (count($result) >= 1){
+			return redirect(base_url('admin/nhan-vien/'));
+		}else{
+			$this->model_person->insertInfoPerson($taiKhoan, $matKhau, $hoTen, $chucVu, $soDienThoai, $email, $facebook, $avatar);
+			return redirect(base_url('admin/nhan-vien/'));
+		}
 	}
+
+	public function actionDeletePerson(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/nhan-vien/'));
+		}
+
+		$nhanVienId = $this->input->post('nhanVienId');
+		$this->load->model('admin/model_person');
+		$result = $this->model_person->deleteInfoPerson($nhanVienId);
+		echo $result;
+	}
+
+	public function actionSearchPerson(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/nhan-vien/'));
+		} 
+
+		$hoTen = $this->input->post('tenNhanVien');
+		$this->load->model('admin/model_person');
+		$result = $this->model_person->searchInfoPerson($hoTen);
+
+		$data = json_encode($result);
+		echo $data;
+	}
+
+	public function mark(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/nhan-vien/'));
+		}
+
+		$nhanVienId = $this->input->post('nhanVienId');
+		$this->load->model('admin/model_person');
+		$result = $this->model_person->checkMark($nhanVienId);
+		if(count($result) == 0){
+			$this->model_person->mark($nhanVienId);
+			echo "Chấm công thành công!";
+		}else{
+			echo "Bạn đã chấm công cho hôm nay rồi!";
+		}
+	}	
+
+
 }
 
 /* End of file adminPerson.php */

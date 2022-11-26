@@ -10,8 +10,8 @@ class model_person extends CI_Model {
 		
 	}
 
-	public function getAllInfoPerson(){
-		$sql = "SELECT * FROM nhanvien";
+	public function getAllInfoPerson($start = 5){
+		$sql = "SELECT * FROM nhanvien ORDER BY chucVu LIMIT ".$start;
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
@@ -33,6 +33,40 @@ class model_person extends CI_Model {
 		$result = $this->db->query($sql, array($matKhau, $hoTen, $chucVu, $soDienThoai, $email, $facebook,  $avatar, $taikhoan));
 		return $result;
 	}
+
+	public function insertInfoPerson($taiKhoan, $matKhau, $hoTen, $chucVu, $soDienThoai, $email, $facebook, $avatar){
+		$sql = "INSERT INTO `nhanvien`(`taiKhoan`, `matKhau`, `hoTen`, `chucVu`, `soDienThoai`, `email`, `facebook`, `avatar`) VALUES (?,?,?,?,?,?,?,?)";
+		$result = $this->db->query($sql, array($taiKhoan, $matKhau, $hoTen, $chucVu, $soDienThoai, $email, $facebook, $avatar));
+		return $result;
+	}
+
+	public function deleteInfoPerson($nhanVienId){
+		$sql = "DELETE FROM `nhanvien` WHERE nhanVienId = ?";
+		$result = $this->db->query($sql, array($nhanVienId));
+		return $result;
+	}
+
+	public function searchInfoPerson($hoTen){
+		$hoTen = "%".$hoTen."%";
+		$sql = "SELECT * FROM `nhanvien` WHERE hoTen LIKE '".$hoTen."' ORDER BY chucVu LIMIT 5";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+
+	public function mark($nhanVienId){
+		$sql = "INSERT INTO `chamcong`(`nhanVienId`) VALUES (?)";
+		$result = $this->db->query($sql, array($nhanVienId));
+		return $result;
+	}
+
+	public function checkMark($nhanVienId){
+		$sql = "SELECT * FROM `chamcong` WHERE nhanVienId = ? AND thoiGian >= CURDATE() - 1 AND thoiGian <= CURDATE() + 1";
+		$result = $this->db->query($sql, array($nhanVienId));
+		return $result->result_array();
+	} 
+
+
+
 }
 
 /* End of file model_person.php */
