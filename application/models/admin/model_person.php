@@ -65,7 +65,11 @@ class model_person extends CI_Model {
 		return $result->result_array();
 	} 
 
-
+	public function exportExcel(){
+		$sql = "SELECT taiKhoan, matKhau, hoTen, chucVu, soDienThoai, email, facebook FROM nhanvien";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 
 }
 

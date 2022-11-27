@@ -27,8 +27,11 @@ require(__DIR__.'/layouts/header.php');
                     	</div>
                     	<div class="col-sm-12 col-md-6">
                     		<div id="dataTable_filter" class="dataTables_filter">
-                        		<a href="<?php echo base_url('san-pham/them/');?>" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Thêm Nhân Viên</a>
+                        		<a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Thêm Nhân Viên</a>
                     		</div>
+                            <div id="dataTable_filter" class="dataTables_filter" >
+                                <a style="margin-right: 10px" href="<?php echo base_url('nhan-vien/xuat/');?>" class="btn btn-primary float-right">Xuất Excel</a>
+                            </div>
                     	</div>
                     </div>
 
@@ -268,29 +271,8 @@ require(__DIR__.'/layouts/header.php');
             } 
         })
     }
-    $( document ).ready(function() {
-        chamcong()
-        xoanhanvien()
-        $('input').keyup(function(event) {
-            var tenNhanVien = $('.timkiemnhanvien').val()
-            $.post(base_url+"/nhan-vien/tim-kiem",{
-                tenNhanVien: tenNhanVien
-            },
-            function(data){
-                var dataSearch = JSON.parse(data)
-                $('tbody').empty()
-                for(var i = 0; i < dataSearch.length; i++){
-                    if(dataSearch[i].chucVu == "admin"){
-                        $('tbody').append('<tr class="odd"><td class="sorting_1">'+dataSearch[i].nhanVienId+'</td><td>'+dataSearch[i].taiKhoan+'</td><td>'+dataSearch[i].hoTen+'</td><td><span role="button" class="bg-danger text-white rounded p-1">Admin</span></td><td>'+dataSearch[i].soDienThoai+'</td><td>'+dataSearch[i].email+'</td><td>'+dataSearch[i].facebook+'</td><td style="line-height: 50px;"><a href="#" class="btn btn-info chamcong" id="chamcong" value="'+dataSearch[i].nhanVienId+'">Chấm Công</a><a href="http://localhost/ThreeTech/nhan-vien/sua/'+dataSearch[i].nhanVienId+'/" class="btn btn-warning">Sửa</a><a style="margin-left: 5px" class="btn btn-danger deleteProductAction xoanhanvien" value="'+dataSearch[i].nhanVienId+'" href="#" data-toggle="modal" data-target="#deleteModal">Xóa<input type="hidden" class="cate" value="laptop"></a></td></tr>')
-                    }else{
-                        $('tbody').append('<tr class="odd"><td class="sorting_1">'+dataSearch[i].nhanVienId+'</td><td>'+dataSearch[i].taiKhoan+'</td><td>'+dataSearch[i].hoTen+'</td><td><span role="button" class="bg-warning text-white rounded p-1">Nhân Viên</span></td><td>'+dataSearch[i].soDienThoai+'</td><td>'+dataSearch[i].email+'</td><td>'+dataSearch[i].facebook+'</td><td style="line-height: 50px;"><a href="#" class="btn btn-info chamcong" id="chamcong" value="'+dataSearch[i].nhanVienId+'">Chấm Công</a><a href="http://localhost/ThreeTech/nhan-vien/sua/'+dataSearch[i].nhanVienId+'/" class="btn btn-warning">Sửa</a><a style="margin-left: 5px" class="btn btn-danger deleteProductAction xoanhanvien" value="'+dataSearch[i].nhanVienId+'" href="#" data-toggle="modal" data-target="#deleteModal">Xóa<input type="hidden" class="cate" value="laptop"></a></td></tr>')
-                    }
-                }
-                chamcong()
-                xoanhanvien()
-            });
-        })
 
+    function xemthem(){
         $('.xemthem').click(function(event){
             event.preventDefault()
             var start = parseInt($('.start').val()) + 5
@@ -314,6 +296,40 @@ require(__DIR__.'/layouts/header.php');
                 $("html, body").animate({ scrollTop: $(document).height() }, 0);
             });        
         })
+    }
+
+    $( document ).ready(function() {
+        chamcong()
+        xoanhanvien()
+        xemthem()
+        $('input').keyup(function(event) {
+            var tenNhanVien = $('.timkiemnhanvien').val()
+            $('.xemthem').remove()
+
+            if(tenNhanVien == ""){
+                $('.paginate_button').append('<button class="page-link xemthem">Xem Thêm</button>')
+                xemthem()
+            }
+
+            $.post(base_url+"/nhan-vien/tim-kiem",{
+                tenNhanVien: tenNhanVien
+            },
+            function(data){
+                var dataSearch = JSON.parse(data)
+                $('tbody').empty()
+                for(var i = 0; i < dataSearch.length; i++){
+                    if(dataSearch[i].chucVu == "admin"){
+                        $('tbody').append('<tr class="odd"><td class="sorting_1">'+dataSearch[i].nhanVienId+'</td><td>'+dataSearch[i].taiKhoan+'</td><td>'+dataSearch[i].hoTen+'</td><td><span role="button" class="bg-danger text-white rounded p-1">Admin</span></td><td>'+dataSearch[i].soDienThoai+'</td><td>'+dataSearch[i].email+'</td><td>'+dataSearch[i].facebook+'</td><td style="line-height: 50px;"><a href="#" class="btn btn-info chamcong" id="chamcong" value="'+dataSearch[i].nhanVienId+'">Chấm Công</a><a href="http://localhost/ThreeTech/nhan-vien/sua/'+dataSearch[i].nhanVienId+'/" class="btn btn-warning">Sửa</a><a style="margin-left: 5px" class="btn btn-danger deleteProductAction xoanhanvien" value="'+dataSearch[i].nhanVienId+'" href="#" data-toggle="modal" data-target="#deleteModal">Xóa<input type="hidden" class="cate" value="laptop"></a></td></tr>')
+                    }else{
+                        $('tbody').append('<tr class="odd"><td class="sorting_1">'+dataSearch[i].nhanVienId+'</td><td>'+dataSearch[i].taiKhoan+'</td><td>'+dataSearch[i].hoTen+'</td><td><span role="button" class="bg-warning text-white rounded p-1">Nhân Viên</span></td><td>'+dataSearch[i].soDienThoai+'</td><td>'+dataSearch[i].email+'</td><td>'+dataSearch[i].facebook+'</td><td style="line-height: 50px;"><a href="#" class="btn btn-info chamcong" id="chamcong" value="'+dataSearch[i].nhanVienId+'">Chấm Công</a><a href="http://localhost/ThreeTech/nhan-vien/sua/'+dataSearch[i].nhanVienId+'/" class="btn btn-warning">Sửa</a><a style="margin-left: 5px" class="btn btn-danger deleteProductAction xoanhanvien" value="'+dataSearch[i].nhanVienId+'" href="#" data-toggle="modal" data-target="#deleteModal">Xóa<input type="hidden" class="cate" value="laptop"></a></td></tr>')
+                    }
+                }
+                chamcong()
+                xoanhanvien()
+            });
+        })
+
+        
 
     });
 </script>

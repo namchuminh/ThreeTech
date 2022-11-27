@@ -47,6 +47,13 @@ class model_index extends CI_Model {
 		$result = $this->db->query($sql,array($khachHangId));
 		return $result->result_array();
 	}
+
+	public function getProductGiamGiaCuoiTuan(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Giamgiacuoituan"));
+		return $result->result_array();
+	}
+
 }
 
 /* End of file model_index.php */

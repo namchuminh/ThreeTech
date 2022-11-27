@@ -176,7 +176,21 @@ class adminPerson extends CI_Controller {
 		}
 	}	
 
-
+	public function exportExcel(){
+		$this->load->model('admin/model_person');
+		$result = $this->model_person->exportExcel();
+		header("Content-Disposition: attachment; filename=\"nhan_vien.xls\"");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		header('Content-Type: text/html; charset=utf-8');
+		$out = fopen("php://output", 'w');
+		fputs($out, $bom = chr(0xEF) . chr(0xBB) . chr(0xBF) );
+		foreach ($result as $data)
+		{
+		    fputcsv($out,$data,";");
+		}
+		fclose($out);  
+	}
 }
 
 /* End of file adminPerson.php */

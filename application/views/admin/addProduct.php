@@ -60,6 +60,13 @@
         <select class="form-control" id="exampleFormControlSelect1" name="loaiSanPham">
           <option value="Uudai">Ưu đãi</option>
           <option value="Khonguudai">Không Ưu Đãi</option>
+          <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+          <option value="Dacbiet">Đặc Biệt</option>
+          <option value="Totnhat">Tốt Nhất</option>
+          <option value="Noibatmoi">Nổi Bật - Mới</option>
+          <option value="Audiovideo">Audio & Video</option>
+          <option value="Laptopcomputer">Laptop & Computer</option>
+          <option value="Trend">Trend</option>
         </select>
       </div>
       <button class="btn btn-primary">

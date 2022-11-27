@@ -15,7 +15,7 @@ class index extends CI_Controller {
 		$laptop = $this->model_index->getProductLaptop();
 		$maytinh = $this->model_index->getProductMayTinh();
 		$thietbidientu = $this->model_index->getProductThietBiDienTu();
-
+		$giamgiacuoituan = $this->model_index->getProductGiamGiaCuoiTuan();
 		
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
@@ -26,21 +26,14 @@ class index extends CI_Controller {
 			$data = array(
 				'khachhang' => $khachhang,
 				'logged_in' => $logged_in,
-				'uudai' => $uudai,
-				'giamgia' => $giamgia,
-				'laptop' => $laptop,
-				'maytinh' => $maytinh,
 				'thietbidientu' => $thietbidientu,
 				'soluonsanpham' =>$soLuongSanPham,
+				'giamgiacuoituan' => $giamgiacuoituan
 			);
 			return $this->load->view('view_index', $data);
 		}else{
 			$data = array(
-				'uudai' => $uudai,
-				'giamgia' => $giamgia,
-				'laptop' => $laptop,
-				'maytinh' => $maytinh,
-				'thietbidientu' => $thietbidientu,
+				'giamgiacuoituan' => $giamgiacuoituan,
 			);
 			return $this->load->view('view_index', $data);
 		}

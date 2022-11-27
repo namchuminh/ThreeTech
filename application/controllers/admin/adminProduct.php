@@ -89,7 +89,7 @@ class adminProduct extends CI_Controller {
 		$anhPhu2 = "";
 
 		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 		$this->load->library('upload', $config);
 		
@@ -163,7 +163,7 @@ class adminProduct extends CI_Controller {
 		$anhPhu2 = $this->input->post('anhPhu2Goc');
 
 		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 		$this->load->library('upload', $config);
 		

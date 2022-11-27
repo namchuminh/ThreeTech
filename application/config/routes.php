@@ -92,3 +92,4 @@ $route['admin/cham-cong'] = 'admin/adminPerson/mark';
 $route['nhan-vien/xoa'] = 'admin/adminPerson/actionDeletePerson';
 $route['nhan-vien/tim-kiem'] = 'admin/adminPerson/actionSearchPerson';
 $route['nhan-vien/xem-them'] = 'admin/adminPerson/actionLoadPerson';
+$route['nhan-vien/xuat'] = 'admin/adminPerson/exportExcel';
