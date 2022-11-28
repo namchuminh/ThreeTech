@@ -371,7 +371,7 @@
 				<div class="col-lg-3 col-md-6 char_col">
 					
 					<div class="char_item d-flex flex-row align-items-center justify-content-start">
-						<div class="char_icon"><img src="images/char_1.png" alt=""></div>
+						<div class="char_icon"><img src="<?php echo base_url('static/'); ?>images/char_1.png" alt=""></div>
 						<div class="char_content">
 							<div class="char_title">Free Delivery</div>
 							<div class="char_subtitle">from $50</div>
@@ -383,7 +383,7 @@
 				<div class="col-lg-3 col-md-6 char_col">
 					
 					<div class="char_item d-flex flex-row align-items-center justify-content-start">
-						<div class="char_icon"><img src="images/char_2.png" alt=""></div>
+						<div class="char_icon"><img src="<?php echo base_url('static/'); ?>images/char_2.png" alt=""></div>
 						<div class="char_content">
 							<div class="char_title">Free Delivery</div>
 							<div class="char_subtitle">from $50</div>
@@ -395,7 +395,7 @@
 				<div class="col-lg-3 col-md-6 char_col">
 					
 					<div class="char_item d-flex flex-row align-items-center justify-content-start">
-						<div class="char_icon"><img src="images/char_3.png" alt=""></div>
+						<div class="char_icon"><img src="<?php echo base_url('static/'); ?>images/char_3.png" alt=""></div>
 						<div class="char_content">
 							<div class="char_title">Free Delivery</div>
 							<div class="char_subtitle">from $50</div>
@@ -407,7 +407,7 @@
 				<div class="col-lg-3 col-md-6 char_col">
 					
 					<div class="char_item d-flex flex-row align-items-center justify-content-start">
-						<div class="char_icon"><img src="images/char_4.png" alt=""></div>
+						<div class="char_icon"><img src="<?php echo base_url('static/'); ?>images/char_4.png" alt=""></div>
 						<div class="char_content">
 							<div class="char_title">Free Delivery</div>
 							<div class="char_subtitle">from $50</div>
@@ -627,7 +627,6 @@
 							<div class="popular_categories_prev popular_categories_nav"><i class="fas fa-angle-left ml-auto"></i></div>
 							<div class="popular_categories_next popular_categories_nav"><i class="fas fa-angle-right ml-auto"></i></div>
 						</div>
-						<div class="popular_categories_link"><a href="#">full catalog</a></div>
 					</div>
 				</div>
 				
@@ -640,40 +639,24 @@
 							<!-- Popular Categories Item -->
 							<div class="owl-item">
 								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_1.png" alt=""></div>
-									<div class="popular_category_text">Smartphones & Tablets</div>
+									<div class="popular_category_image"><img src="<?php echo base_url('static/'); ?>images/popular_2.png" alt=""></div>
+									<div class="popular_category_text">Máy Tính & Computer</div>
 								</div>
 							</div>
 
 							<!-- Popular Categories Item -->
 							<div class="owl-item">
 								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_2.png" alt=""></div>
-									<div class="popular_category_text">Computers & Laptops</div>
+									<div class="popular_category_image"><img src="<?php echo base_url('static/'); ?>images/popular_1.png" alt=""></div>
+									<div class="popular_category_text">Máy Tính Sách Tay & Laptop</div>
 								</div>
 							</div>
 
 							<!-- Popular Categories Item -->
 							<div class="owl-item">
 								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_3.png" alt=""></div>
-									<div class="popular_category_text">Gadgets</div>
-								</div>
-							</div>
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_4.png" alt=""></div>
-									<div class="popular_category_text">Video Games & Consoles</div>
-								</div>
-							</div>
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_5.png" alt=""></div>
-									<div class="popular_category_text">Accessories</div>
+									<div class="popular_category_image"><img src="<?php echo base_url('static/'); ?>images/popular_3.png" alt=""></div>
+									<div class="popular_category_text">Linh Kiện & Phụ Kiện</div>
 								</div>
 							</div>
 

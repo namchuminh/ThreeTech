@@ -94,10 +94,145 @@
           <?php if($product[0]['loaiSanPham'] == 'Uudai'){ ?>
             <option value="Uudai" selected="selected">Ưu đãi</option>
             <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
           <?php }?>
           <?php if($product[0]['loaiSanPham'] == 'Khonguudai'){ ?>
             <option value="Uudai">Ưu đãi</option>
             <option value="Khonguudai" selected="selected">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Giamgiacuoituan'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan" selected="selected">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Phobien'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien" selected="selected">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Totnhat'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat" selected="selected">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Noibatmoi'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi" selected="selected">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Audiovideo'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan" >Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo" selected="selected">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Laptopcomputer'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer" selected="selected">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Trend'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan" >Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend" selected="selected">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Slide'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan" >Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide" selected="selected">Slide</option>
+            <option value="Top20">Top20</option>
+          <?php }?>
+          <?php if($product[0]['loaiSanPham'] == 'Top20'){ ?>
+            <option value="Uudai">Ưu đãi</option>
+            <option value="Khonguudai">Không Ưu Đãi</option>
+            <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
+            <option value="Phobien">Phổ Biến</option>
+            <option value="Totnhat">Tốt Nhất</option>
+            <option value="Noibatmoi">Nổi Bật - Mới</option>
+            <option value="Audiovideo">Audio & Video</option>
+            <option value="Laptopcomputer">Laptop & Computer</option>
+            <option value="Trend">Trend</option>
+            <option value="Slide">Slide</option>
+            <option value="Top20" selected="selected">Top20</option>
           <?php }?>
         </select>
       </div>
