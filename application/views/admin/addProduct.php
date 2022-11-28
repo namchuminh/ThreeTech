@@ -61,13 +61,15 @@
           <option value="Uudai">Ưu đãi</option>
           <option value="Khonguudai">Không Ưu Đãi</option>
           <option value="Giamgiacuoituan">Giảm Giá Cuối Tuần</option>
-          <option value="Dacbiet">Đặc Biệt</option>
+          <option value="Phobien">Phổ Biến</option>
           <option value="Totnhat">Tốt Nhất</option>
           <option value="Noibatmoi">Nổi Bật - Mới</option>
           <option value="Audiovideo">Audio & Video</option>
           <option value="Laptopcomputer">Laptop & Computer</option>
           <option value="Trend">Trend</option>
-        </select>
+          <option value="Slide">Slide</option>
+          <option value="Top20">Top20</option>
+        </select> 
       </div>
       <button class="btn btn-primary">
           Thêm Sản Phẩm
