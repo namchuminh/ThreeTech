@@ -16,6 +16,12 @@ class index extends CI_Controller {
 		$maytinh = $this->model_index->getProductMayTinh();
 		$thietbidientu = $this->model_index->getProductThietBiDienTu();
 		$giamgiacuoituan = $this->model_index->getProductGiamGiaCuoiTuan();
+		$phobien = $this->model_index->getProductPhoBien();
+		$totnhat = $this->model_index->getProductTotNhat();
+		$slide = $this->model_index->getProductSlide();
+		$noibatmoi = $this->model_index->getProductNoiBatMoi();
+		$audiovideo = $this->model_index->getProductAudioVideo();
+		$laptopcomputer = $this->model_index->getProductLaptopComputer();
 		
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
@@ -28,17 +34,32 @@ class index extends CI_Controller {
 				'logged_in' => $logged_in,
 				'thietbidientu' => $thietbidientu,
 				'soluonsanpham' =>$soLuongSanPham,
-				'giamgiacuoituan' => $giamgiacuoituan
+				'giamgiacuoituan' => $giamgiacuoituan,
+				'phobien' => $phobien,
+				'uudai' => $uudai,
+				'totnhat' => $totnhat,
+				'slide' => $slide,
+				'noibatmoi' => $noibatmoi,
+				'audiovideo' => $audiovideo,
+				'laptopcomputer' => $laptopcomputer,
 			);
 			return $this->load->view('view_index', $data);
 		}else{
 			$data = array(
 				'giamgiacuoituan' => $giamgiacuoituan,
+				'phobien' => $phobien,
+				'uudai' => $uudai,
+				'totnhat' => $totnhat,
+				'slide' => $slide,
+				'noibatmoi' => $noibatmoi,
+				'audiovideo' => $audiovideo,
+				'laptopcomputer' => $laptopcomputer,
 			);
 			return $this->load->view('view_index', $data);
 		}
 		
 	}
+
 	
 }
 

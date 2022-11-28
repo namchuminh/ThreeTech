@@ -53,6 +53,36 @@ class model_index extends CI_Model {
 		$result = $this->db->query($sql, array("Giamgiacuoituan"));
 		return $result->result_array();
 	}
+	public function getProductPhoBien(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Phobien"));
+		return $result->result_array();
+	}
+	public function getProductTotNhat(){
+		$sql = "SELECT * FROM sanpham WHERE loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Totnhat"));
+		return $result->result_array();
+	}
+	public function getProductSlide(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Slide"));
+		return $result->result_array();
+	}
+	public function getProductNoiBatMoi(){
+		$sql = "SELECT * FROM sanpham WHERE loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Noibatmoi"));
+		return $result->result_array();
+	}
+	public function getProductAudioVideo(){
+		$sql = "SELECT * FROM sanpham WHERE loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Audiovideo"));
+		return $result->result_array();
+	}
+	public function getProductLaptopComputer(){
+		$sql = "SELECT * FROM sanpham WHERE loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Laptopcomputer"));
+		return $result->result_array();
+	}
 
 }
 
