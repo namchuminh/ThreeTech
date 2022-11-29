@@ -28,43 +28,45 @@ class cart extends CI_Controller {
 		return $this->load->view('cart/cart', $data);
 	}
 	public function addToCart(){
+		//lay id khach hang
 		$khachhang = $this->session->userdata('khachhang');
 		$this->load->model('model_index');
 		$result = $this->model_index->getCustomerLogin($khachhang);
 		$khachHangId = $result[0]['khachHangId'];
 		echo $khachHangId;
+
+		// lay tt san pham
 		$sanPhamId = $this->input->post('sanPhamId');
 		$tenSanPham = $this->input->post('tenSanPham');
 		$giaBan = $this->input->post('giaBan');
 		$anhChinh = $this->input->post('anhChinh');
+
+		//them vao gio hang
 		$this->load->model('cart/model_addToCart');
 		$cart_product = $this->model_addToCart->Cart($sanPhamId, $khachHangId);
+
+
+		$this->load->model('product/model_product');
+		$product = $this->model_product->getProductByeId($sanPhamId);
+		var_dump($product);
+
+
 		if($cart_product>0){
 			$this->load->model('cart/model_addToCart');
 			$result = $this->model_addToCart->updateCart($sanPhamId, $khachHangId);
 			$cart_product = $this->model_addToCart->Cart($sanPhamId, $khachHangId);
-			var_dump($cart_product);
-			// return $this->load->view('cart/cart', $cart_product);
-			return redirect(base_url('gio-hang/'));
+			$data = array(
+				'mess' => "Thêm thành công!",
+			);
+			return redirect(base_url('san-pham/').$product[0]['duongDan'], $data);
 		}else{
 			$this->load->model('cart/model_addToCart');
 			$add = $this->model_addToCart->addToCart($sanPhamId, $khachHangId);
 			if($result==True){
-				$message = "Thành Công!";
-				echo "<script type='text/javascript'>alert('$message');</script>";
-				$data = array(
-					'id' => $sanPhamId,
-					'tenSanPham' => $tenSanPham,
-					'giaBan' => $giaBan,
-					'anhChinh' => $anhChinh,
-				);
-				var_dump($data);
-				return redirect(base_url('gio-hang/'));
+
+				return redirect(base_url('san-pham/').$product[0]['duongDan']);
 			}else{
-				$data = array(
-					'mess' => "thất bại!",
-				);
-				return redirect(base_url('gio-hang/'));
+				return redirect(base_url('san-pham/').$product[0]['duongDan']);
 			}
 		}
 		

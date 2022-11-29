@@ -78,7 +78,7 @@ $route['dang-xuat'] = 'user/userLogout/logout';
 $route['dang-ky'] = 'user/userRegister/index';
 $route['xu-ly-dang-ky'] = 'user/userRegister/actionRegister';
 $route['khach-hang']= 'user/userInfo/index';
-
+$route['khach-hang/cap-nhat-khach-hang'] = 'user/userInfo/updateProfile';
 
 $route['san-pham/(:any)'] = 'product/product/detail/$1';
 $route['gio-hang'] = 'cart/cart/index';
@@ -86,6 +86,8 @@ $route['them-vao-gio-hang'] = 'cart/cart/addToCart';
 $route['xoa-gio-hang'] = 'cart/cart/deleteCart';
 $route['sua-gio-hang'] = 'cart/cart/updateNumberProduct';
 $route['gio-hang/thanh-toan'] = 'thanhtoan/vnpay/index';
+$route['gio-hang/dat-hang'] = 'thanhtoan/vnpay/dathang';
+
 $route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
 
 $route['admin/cham-cong'] = 'admin/adminPerson/mark';

@@ -43,8 +43,8 @@
 
     $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
 ?>
-<div class="container">
-            <div class="table-responsive" style="text-align: center; margin: 50px;">
+<div class="container" style="width: 50%; margin-top: 100px; margin-bottom: 100px; box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%); padding: 100px 10px;">
+            <div class="table-responsive" style="text-align: center;">
                 <h3>Thông Tin Đơn Hàng</h3>
                 <div class="form-group">
                     <label >Mã đơn hàng:</label>
@@ -77,9 +77,9 @@
                     <label>
                         <?php
                             if ($_GET['vnp_ResponseCode'] == '00') {
-                                    echo "<span style='color:blue'>GD Thanh cong</span>";
+                                    echo "<span style='color:blue'>GD Thành Công</span>";
                             } else {
-                                echo "<span style='color:red'>GD Khong thanh cong</span>";
+                                echo "<span style='color:red'>GD Thất Bại</span>";
                             } 
                         ?>
 
