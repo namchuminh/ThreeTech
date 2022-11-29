@@ -84,6 +84,12 @@ class model_index extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getProductQuanTam(){
+		$sql = "SELECT * FROM sanpham ORDER BY RAND() LIMIT 12";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+
 }
 
 /* End of file model_index.php */

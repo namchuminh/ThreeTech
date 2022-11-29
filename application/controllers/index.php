@@ -22,6 +22,7 @@ class index extends CI_Controller {
 		$noibatmoi = $this->model_index->getProductNoiBatMoi();
 		$audiovideo = $this->model_index->getProductAudioVideo();
 		$laptopcomputer = $this->model_index->getProductLaptopComputer();
+		$cothebanquantam = $this->model_index->getProductQuanTam();
 		
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
@@ -42,6 +43,7 @@ class index extends CI_Controller {
 				'noibatmoi' => $noibatmoi,
 				'audiovideo' => $audiovideo,
 				'laptopcomputer' => $laptopcomputer,
+				'cothebanquantam' => $cothebanquantam,
 			);
 			return $this->load->view('view_index', $data);
 		}else{
@@ -54,6 +56,7 @@ class index extends CI_Controller {
 				'noibatmoi' => $noibatmoi,
 				'audiovideo' => $audiovideo,
 				'laptopcomputer' => $laptopcomputer,
+				'cothebanquantam' => $cothebanquantam,
 			);
 			return $this->load->view('view_index', $data);
 		}
