@@ -74,12 +74,12 @@ class model_index extends CI_Model {
 		return $result->result_array();
 	}
 	public function getProductAudioVideo(){
-		$sql = "SELECT * FROM sanpham WHERE loaiSanPham = ?";
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
 		$result = $this->db->query($sql, array("Audiovideo"));
 		return $result->result_array();
 	}
 	public function getProductLaptopComputer(){
-		$sql = "SELECT * FROM sanpham WHERE loaiSanPham = ?";
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
 		$result = $this->db->query($sql, array("Laptopcomputer"));
 		return $result->result_array();
 	}
@@ -87,6 +87,11 @@ class model_index extends CI_Model {
 	public function getProductQuanTam(){
 		$sql = "SELECT * FROM sanpham ORDER BY RAND() LIMIT 12";
 		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+	public function getProductTop20(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Top20"));
 		return $result->result_array();
 	}
 
