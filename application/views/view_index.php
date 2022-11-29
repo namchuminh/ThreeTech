@@ -876,10 +876,10 @@
 								
 									<div class="bestsellers_item discount">
 										<div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-											<div class="bestsellers_image"><img style="width: 115px; height: 115px;" src="<?php echo $value['anhChinh']; ?>" alt=""></div>
+											<div class="bestsellers_image"><img style="width: 80px; height: 80px;" src="<?php echo $value['anhChinh']; ?>" alt=""></div>
 											<div class="bestsellers_content">
 												<div class="bestsellers_category"><a href="<?php echo base_url('chuyen-muc/').$value['duongDanChuyenMuc']; ?>"><?php echo $value["tenChuyenMuc"]; ?></a></div>
-												<div class="bestsellers_name"><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo $value["tenSanPham"]; ?></a></div>
+												<div class="bestsellers_name" ><a  href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo mb_substr($value["tenSanPham"],0,17); ?>...</a></div>
 												<div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
 												<div class="bestsellers_price discount"><?php echo $value["giaBan"]; ?><span><?php echo $value["giaGoc"]; ?></span></div>
 											</div>
@@ -910,10 +910,10 @@
 								
 									<div class="bestsellers_item discount">
 										<div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-											<div class="bestsellers_image"><img style="width: 115px; height: 115px;" src="<?php echo $value['anhChinh']; ?>" alt=""></div>
+											<div class="bestsellers_image"><img style="width: 80px; height: 80px;" src="<?php echo $value['anhChinh']; ?>" alt=""></div>
 											<div class="bestsellers_content">
 												<div class="bestsellers_category"><a href="<?php echo base_url('chuyen-muc/').$value['duongDanChuyenMuc']; ?>"><?php echo $value["tenChuyenMuc"]; ?></a></div>
-												<div class="bestsellers_name"><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo $value['tenSanPham']; ?></a></div>
+												<div class="bestsellers_name"><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo mb_substr($value["tenSanPham"],0,17); ?>...</a></div>
 												<div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
 												<div class="bestsellers_price discount"><?php echo $value['giaBan']; ?><span><?php echo $value['giaGoc']; ?></span></div>
 											</div>
@@ -944,10 +944,10 @@
 								
 									<div class="bestsellers_item discount">
 										<div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-											<div class="bestsellers_image"><img style="width: 115px; height: 115px;" src="<?php echo $value['anhChinh']; ?>" alt=""></div>
+											<div class="bestsellers_image"><img style="width: 80px; height: 80px;" src="<?php echo $value['anhChinh']; ?>" alt=""></div>
 											<div class="bestsellers_content">
 												<div class="bestsellers_category"><a href="<?php echo base_url('chuyen-muc/').$value['duongDanChuyenMuc']; ?>"><?php echo $value["tenChuyenMuc"]; ?></a></div>
-												<div class="bestsellers_name"><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo $value["tenSanPham"]; ?></a></div>
+												<div class="bestsellers_name"><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo mb_substr($value["tenSanPham"],0,17); ?>...</a></div>
 												<div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
 												<div class="bestsellers_price discount"><?php echo $value["giaBan"]; ?><span><?php echo $value['giaGoc']; ?></span></div>
 											</div>
