@@ -10,9 +10,9 @@ class model_vnpay extends CI_Model {
 		
 	}
 
-	public function add($khachHangId, $madonhang, $sotien, $noidung, $nganhang, $thoigian, $magiaodich){
-		$sql = "INSERT INTO vnpay(khachHangId, madonhang, sotien, noidung, nganhang, thoigian, magiaodich) VALUES (?,?,?,?,?,?,?)";
-		$result = $this->db->query($sql,array($khachHangId, $madonhang, $sotien, $noidung, $nganhang, $thoigian, $magiaodich));
+	public function add($khachHangId, $madonhang, $sotien, $noidung, $nganhang, $magiaodich){
+		$sql = "INSERT INTO vnpay(khachHangId, madonhang, sotien, noidung, nganhang, magiaodich) VALUES (?,?,?,?,?,?)";
+		$result = $this->db->query($sql,array($khachHangId, $madonhang, $sotien, $noidung, $nganhang, $magiaodich));
 		return $result;
 	}
 }

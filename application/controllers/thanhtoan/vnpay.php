@@ -44,13 +44,14 @@ class vnpay extends CI_Controller {
 		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
 
 
+
 		if(empty($hoten)){
 			$data = array(
 				'messht' => "Vui lòng nhập họ và tên!",
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
 			);
-			return $this->load->view('cart/cart', $data);
+			return $this->load->view('thanhtoan/view_dathang', $data);
 		}
 
 		if(empty($vnp_BankCode)){
@@ -59,7 +60,7 @@ class vnpay extends CI_Controller {
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
 			);
-			return $this->load->view('cart/cart', $data);
+			return $this->load->view('thanhtoan/view_dathang', $data);
 		}
 		
 		if(empty($sdt)){
@@ -68,7 +69,7 @@ class vnpay extends CI_Controller {
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
 			);
-			return $this->load->view('cart/cart', $data);
+			return $this->load->view('thanhtoan/view_dathang', $data);
 		}
 		if(empty($diachi)){
 			$data = array(
@@ -76,11 +77,9 @@ class vnpay extends CI_Controller {
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
 			);
-			return $this->load->view('cart/cart', $data);
+			return $this->load->view('thanhtoan/view_dathang', $data);
 		}
 		$vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
-		
-
 
 		$inputData = array(
 		    "vnp_Version" => "2.1.0",
@@ -94,8 +93,12 @@ class vnpay extends CI_Controller {
 		    "vnp_OrderInfo" => $vnp_OrderInfo,
 		    "vnp_OrderType" => $vnp_OrderType,
 		    "vnp_ReturnUrl" => $vnp_Returnurl,
-		    "vnp_TxnRef" => $vnp_TxnRef
+		    "vnp_TxnRef" => $vnp_TxnRef,
+		    "vnp_Bill_FirstName"=>$hoten,
+		    "vnp_Bill_Mobile"=>$sdt,
+		    "vnp_Bill_City"=>$diachi,
 		);
+
 		if (isset($vnp_BankCode) && $vnp_BankCode != "") {
 		    $inputData['vnp_BankCode'] = $vnp_BankCode;
 		}
@@ -123,6 +126,11 @@ class vnpay extends CI_Controller {
 		$returnData = array('code' => '00'
 		    , 'message' => 'success'
 		    , 'data' => $vnp_Url);
+
+
+		$this->load->model('thanhtoan/model_dathang');
+		$rs = $this->model_dathang->dathang($vnp_TxnRef, $hoten, $sdt, $diachi);
+
 	    if (isset($_POST['redirect'])) {
 	        header('Location: ' . $vnp_Url);
 	        die();
@@ -140,15 +148,29 @@ class vnpay extends CI_Controller {
 		$_GET['vnp_TransactionNo'];// Mã GD Tại VNPAY
 		$_GET['vnp_PayDate'];// ngay tao
 		$_GET['vnp_ResponseCode'];// ket qua
-		// $newformat = date('Y-m-d',$_GET['vnp_PayDate']);
-		// echo $newformat;
+
+		$date = $_GET['vnp_PayDate'];
+
+		$year = $date[0].''.$date[1].''.$date[2].''.$date[3];
+		$mounht = $date[4].''.$date[5];
+
+		$days = $date[6].''.$date[7];
+		$hours = $date[8].''.$date[9];
+		$minute = $date[10].''.$date[11];
+		$second = $date[12].''.$date[13];
+		// echo $date;
+		// echo "<br>";
+		// echo $year.$mounht.$days.$hours.$minute.$second;
+		$time = $year."-".$mounht."-".$days."-".$hours."-".$minute."-".$second;
+
+
 		if($_GET['vnp_ResponseCode'] == '00'){
 			$khachhang = $this->session->userdata('khachhang');
 			$this->load->model('model_index');
 			$result = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $result[0]['khachHangId'];
 			$this->load->model('thanhtoan/model_vnpay');
-			$result = $this->model_vnpay->add($khachHangId,$_GET['vnp_TxnRef'],$_GET['vnp_Amount'], $_GET['vnp_OrderInfo'],$_GET['vnp_BankCode'], $_GET['vnp_PayDate'], $_GET['vnp_TransactionNo']);
+			$result = $this->model_vnpay->add($khachHangId,$_GET['vnp_TxnRef'],$_GET['vnp_Amount'], $_GET['vnp_OrderInfo'],$_GET['vnp_BankCode'], $_GET['vnp_TransactionNo']);
 			if($result>0){
 				$this->load->model('cart/model_addToCart');
 				$cart_product = $this->model_addToCart->CartKH($khachHangId);
@@ -163,6 +185,25 @@ class vnpay extends CI_Controller {
 				
 				return $this->load->view('thanhtoan/view_thanhtoan');
 			}
+		}else{
+
+			return $this->load->view('thanhtoan/view_thanhtoan');
 		}
 	}
+
+	public function dathang(){
+		$sum = $this->input->post('tongtien');
+		// $hoten = $this->input->post('txt_ship_fullname');
+		// $sdt = $this->input->post('txt_ship_mobile');
+		// $diachi = $this->input->post('txt_ship_city');
+
+
+		$this->load->model('thanhtoan/model_dathang');
+
+		$data = array(	
+			'tongtien'=>$sum,
+		);
+		$this->load->view('thanhtoan/view_dathang', $data);
+	}
 }
+

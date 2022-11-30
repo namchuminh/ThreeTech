@@ -46,7 +46,7 @@
 
 								<div class="product_price"><?php echo $chiTietSanPham[0]["giaBan"]; ?></div>
 								<div class="button_container">
-									<button type="submit" class="button cart_button">
+									<button type="submit" class="button cart_button" onclick="dathang()">
 										Thêm vào giỏ hàng
 									</button>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -107,4 +107,11 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+  function dathang() {
+      alert("Thêm thành công");
+    }
+
+</script>
 <?php require(__DIR__.'/layouts/footer.php'); ?>

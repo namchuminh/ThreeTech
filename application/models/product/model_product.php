@@ -27,6 +27,11 @@ class model_product extends CI_Model {
 		$result = $this->db->query($sql, array($duongDan));
 		return $result->result_array();
 	}
+	public function getProductByeId($sanPhamId){
+		$sql = "SELECT * FROM sanpham WHERE sanPhamId = ?;";
+		$result = $this->db->query($sql, array($sanPhamId));
+		return $result->result_array();
+	}
 }
 
 /* End of file model_product.php */

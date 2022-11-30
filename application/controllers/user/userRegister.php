@@ -36,12 +36,21 @@ class userRegister extends CI_Controller {
 							$this->load->model('user/model_addUser');
 							$result = $this->model_addUser->insertUser($taikhoan, $matkhau, $hoten, $sodienthoai, $diachi);
 							if($result==True){
-								$message = "Đăng Ký Thành Công!";
-								echo "<script type='text/javascript'>alert('$message');</script>";
-								return redirect(base_url('dang-nhap/'));
+								// $data = array(
+								// 	'messthanhcong' => "Đăng ký Thành Công Hãy Đăng Nhập Lại!",
+								// );
+								// $this->load->view('user/userRegister', $data);
+
+								echo "<script type='text/javascript'>alert('Đang ký thành công hãy đăng nhập lại');</script>";
+								//
+
+
+								$this->load->view('user/userLogin');
+								//redirect(base_url('/dang-nhap'));
+
 							}else{
 								$data = array(
-									'mess' => "Đăng ký thất bại!",
+									'messtb' => "Đăng ký thất bại!",
 								);
 								return $this->load->view('user/userRegister', $data);
 							}
@@ -49,13 +58,13 @@ class userRegister extends CI_Controller {
 						}else{
 
 							$data = array(
-								'mess' => "Vui lòng nhập lại số điện thoại!",
+								'messsdt' => "Vui lòng nhập lại số điện thoại!",
 							);
 							return $this->load->view('user/userRegister', $data);
 						}
 					}else{
 						$data = array(
-							'mess' => "Tài khoản đã tồn tại! hãy thử ".$taikhoan."123",
+							'messtt' => "Tài khoản đã tồn tại! hãy thử ".$taikhoan."123",
 						);
 						return $this->load->view('user/userRegister', $data);
 					}
@@ -63,14 +72,14 @@ class userRegister extends CI_Controller {
 				}else{
 
 					$data = array(
-						'mess' => "Mật khẩu và mật khẩu xác nhận không khớp!",
+						'messmk' => "Mật khẩu và mật khẩu xác nhận không khớp!",
 					);
 					return $this->load->view('user/userRegister', $data);
 				}
 			}else{
 
 				$data = array(
-					'mess' => "Vui lòng nhập lại tài khoản mật khẩu!",
+					'messtk' => "Vui lòng nhập lại tài khoản mật khẩu!",
 				);
 				return $this->load->view('user/userRegister', $data);
 			}
@@ -78,7 +87,7 @@ class userRegister extends CI_Controller {
 		else{
 
 			$data = array(
-				'mess' => "Vui lòng nhập lại họ và tên!",
+				'messht' => "Vui lòng nhập lại họ và tên!",
 			);
 			return $this->load->view('user/userRegister', $data);
 		}
