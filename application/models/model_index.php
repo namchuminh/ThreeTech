@@ -94,6 +94,11 @@ class model_index extends CI_Model {
 		$result = $this->db->query($sql, array("Top20"));
 		return $result->result_array();
 	}
+	public function getProductTrend(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Trend"));
+		return $result->result_array();
+	}
 
 }
 
