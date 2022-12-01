@@ -29,11 +29,11 @@
                 <!-- STAT -->
                 <div class="row list-separated profile-stat">
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="uppercase profile-stat-title"> <?php echo count($myProduct); ?> </div>
+                        <div class="uppercase profile-stat-title"> <?php echo count($checkNumberProduct); ?> </div>
                         <div class="uppercase profile-stat-text"> Sản Phẩm Đã Đăng </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="uppercase profile-stat-title"> <?php echo count($myNews); ?> </div>
+                        <div class="uppercase profile-stat-title"> <?php echo count($checkNumberNews); ?> </div>
                         <div class="uppercase profile-stat-text"> Tin Tức Đã Đăng </div>
                     </div>
                 </div>
@@ -58,45 +58,123 @@
 		</div>
 	</div>
 	<div class="col-md-9">
-		<div class="row">
-			<div class="col-md-6">
+		
 				<div class="profile-content">
-				<h5 style="color: #355ccc; margin-bottom: 20px;"><i class="fa-solid fa-chalkboard"></i> Sản Phẩm</h5>
-				<?php foreach ($myProduct as $key => $value): ?>
-					   <div class="card" style="margin-bottom: 30px;box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%);">
-				        <div class="card-body">
-				          	<a href="<?php echo base_url('san-pham/').$value['duongDan'].'/'; ?>"><h4 class="card-title" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #36b9cc;font-size: 17px; width: 100%; color: black; font-weight: bold;"><?php echo $value['tenSanPham']; ?></h4></a>
-				          <small class="text-muted cat">
-				            <i class="fa-solid fa-signs-post"></i> Mã Sản Phẩm: <?php echo $value['sanPhamId']; ?>
-				           	 - 
-				            <i class="far fa-clock text-info"></i> <?php echo $value['ngayDang']; ?>
-				          </small>
-				          <p class="card-text" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; color: black;"><?php echo $value['moTa']; ?></p>
-				        </div>
-				      </div>
-				<?php endforeach ?>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="profile-content">
-				<h5 style="color: #355ccc; margin-bottom: 20px;"><i class="fa-solid fa-pen-to-square"></i> Tin Tức</h5>
-				<?php foreach ($myNews as $key => $value): ?>
-					   <div class="card" style="margin-bottom: 10px; box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%);">
-				        <div class="card-body">
-				          	<a href="<?php echo base_url('tin-tuc/').$value['duongDan'].'/'; ?>"><h4 class="card-title" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #36b9cc; font-size: 17px; width: 100%; color: black; font-weight: bold;"><?php echo $value['tieuDe']; ?></h4></a>
-				          <small class="text-muted cat">
-				            <i class="fa-solid fa-signs-post"></i> Mã Tin Tức: <?php echo $value['tinTucId']; ?>
-				           	 - 
-				            <i class="far fa-clock text-info"></i> <?php echo $value['ngayDang']; ?>
-				          </small>
-				          <p class="card-text" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; color: black;"><?php echo $value['trichDan']; ?></p>
-				        </div>
-				      </div>
-				<?php endforeach ?>
-				</div>
-			</div>
+				<h5 style="color: #355ccc; margin-bottom: 20px;"><i class="fa-solid fa-chalkboard"></i> Sản Phẩm Đã Đăng</h5>
+				<input type="text" class="form-control timkiemsanpham" placeholder="Nhập tên sản phẩm cần tìm..." style="margin-bottom: 10px;">
+					<table class="table table-bordered tableProductOrNews" style="background-color: white;">
+					    <thead>
+					      <tr>
+					        <th>Tên Sản Phẩm</th>
+					        <th>Mô Tả</th>
+					        <th>Giá Gốc</th>
+					        <th>Giá Bán</th>
+					        <th>Trạng Thái</th>
+					        <th>Số Lượng</th>
+					       	<th>Hành Động</th>
+					      </tr>
+					    </thead>
+					    <tbody class="tbodyProduct">
+					    	<?php foreach ($myProduct as $key => $value): ?>
+							    <tr>
+							    	<td><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo mb_substr($value['tenSanPham'],0,20); ?>...</a></td>
+							        <td><?php echo mb_substr($value['moTa'],0,20); ?>...</td>
+							        <td><?php echo $value['giaGoc']; ?></td>
+							        <td><?php echo $value['giaBan']; ?></td>
+							        <td><?php echo $trangThai = $value['trangThai'] == 1 ? "Còn Hàng" : "Hết Hàng"; ?></td>
+							        <td><?php echo $value['soLuong']; ?></td>
+							        <td>
+							        	<a href="<?php echo base_url('san-pham/sua/') . $value['sanPhamId']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+							        	<a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+							        </td>
+							    </tr>
+					      	<?php endforeach ?>
+					    </tbody>
+				  	</table>
+				  	<div style="margin-bottom: 10px;" class="text-center paginate_button">
+				  		<input type="hidden" value="5" class="numberProduct">
+				  		<button class="btn btn-primary moreProduct">Xem Thêm</button>
+				  	</div>
+
+				  	<h5 style="color: #355ccc; margin-bottom: 20px;"><i class="fa-solid fa-chalkboard"></i> Tin Tức Đã Đăng</h5>
+					<table class="table table-bordered tableProductOrNews" style="background-color: white;">
+					    <thead>
+					      <tr>
+					        <th>Tiêu Đề</th>
+					        <th>Trích Dẫn</th>
+					        <th>Nội Dung</th>
+					        <th>Ngày Đăng</th>
+					       	<th>Hành Động</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	<?php foreach ($myNews as $key => $value): ?>
+							    <tr>
+							    	<td><a href="<?php echo base_url('tin-tuc/').$value['duongDan']; ?>"><?php echo mb_substr($value['tieuDe'],0,20); ?>...</a></td>
+							        <td><?php echo mb_substr($value['trichDan'],0,20); ?>...</td>
+							        <td><?php echo mb_substr($value['noiDung'],0,20); ?>...</td>
+							        <td><?php echo $value['ngayDang']; ?>...</td>
+							        <td>
+							        	<a href="#" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+							        	<a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+							        </td>
+							    </tr>
+					      	<?php endforeach ?>
+					    </tbody>
+				  	</table>
+				  	<div style="margin-bottom: 10px;" class="text-center">
+				  		<button class="btn btn-primary moreNews">Xem Thêm</button>
+				  	</div>
 		</div>
 	</div>
 	</div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var base_url =  window.location.origin = "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
+	function moreProduct(){
+		$('.moreProduct').click(function(event) {
+			event.preventDefault()
+			var numberProduct = parseInt($('.numberProduct').val()) + 5
+            $('.numberProduct').val(numberProduct)
+            $('.tbodyProduct').empty()
+			$.post(base_url + "/ca-nhan/chon-hien-thi/", {numberProduct: numberProduct}, function(result){
+		    	var dataSearch = JSON.parse(result)
+                $('.tbodyProduct').empty()
+                for(var i = 0; i < dataSearch.length; i++){
+                	var trangThai = dataSearch[i].trangThai == 1 ? "Còn Hàng" : "Hết Hàng"
+                	$('.tbodyProduct').append('<tr> <td><a href="'+base_url+'/san-pham/'+dataSearch[i].duongDan+'">'+dataSearch[i].tenSanPham.substr(0,20)+'...</a></td> <td>'+dataSearch[i].moTa.substr(0,20)+'...</td><td>'+dataSearch[i].giaGoc+'</td> <td>'+dataSearch[i].giaBan+'</td> <td>'+trangThai+'</td> <td>'+dataSearch[i].soLuong+'</td> <td> <a href="'+base_url+'/san-pham/sua/'+dataSearch[i].sanPhamId+'" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> </td> </tr>')
+                }
+                $("html, body").animate({ scrollTop: $(document).height() }, 0);
+		    });
+		});
+	}
+
+	$(document).ready(function() {
+		moreProduct()
+
+		$('.timkiemsanpham').keyup(function(event) {
+            var tenSanPham = $('.timkiemsanpham').val()
+            $('.moreProduct').remove()
+
+            if(tenSanPham == ""){
+            	$('.paginate_button').append('<button class="btn btn-primary moreProduct">Xem Thêm</button>')
+            	moreProduct()
+            }
+
+            $.post(base_url+"/ca-nhan/chon-hien-thi/",{
+                tenSanPham: tenSanPham
+            },
+            function(data){
+                var dataSearch = JSON.parse(data)
+                $('.tbodyProduct').empty()
+                for(var i = 0; i < dataSearch.length; i++){
+                	var trangThai = dataSearch[i].trangThai == 1 ? "Còn Hàng" : "Hết Hàng"
+                	$('.tbodyProduct').append('<tr> <td><a href="'+base_url+'/san-pham/'+dataSearch[i].duongDan+'">'+dataSearch[i].tenSanPham.substr(0,20)+'...</a></td> <td>'+dataSearch[i].moTa.substr(0,20)+'...</td><td>'+dataSearch[i].giaGoc+'</td> <td>'+dataSearch[i].giaBan+'</td> <td>'+trangThai+'</td> <td>'+dataSearch[i].soLuong+'</td> <td> <a href="'+base_url+'/san-pham/sua/'+dataSearch[i].sanPhamId+'" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> </td> </tr>')
+                }
+            });
+        })
+	});
+</script>
 <?php require(__DIR__.'/layouts/footer.php'); ?>

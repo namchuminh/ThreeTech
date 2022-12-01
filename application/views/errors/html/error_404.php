@@ -1,64 +1,69 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>404 Page Not Found</title>
-<style type="text/css">
+<?php require(__DIR__.'/layouts/header.php'); ?>		
 
-::selection { background-color: #E13300; color: white; }
-::-moz-selection { background-color: #E13300; color: white; }
+<link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<?php echo base_url('static/css/'); ?>error404.css">
+        <!-- Error Page -->
+            <div class="error" style="margin-top: -120px;margin-bottom: 120px;">
+                <div class="container-floud">
+                    <div class="col-xs-12 ground-color text-center">
+                        <div class="container-error-404">
+                            <div class="clip"><div class="shadow"><span class="digit thirdDigit"></span></div></div>
+                            <div class="clip"><div class="shadow"><span class="digit secondDigit"></span></div></div>
+                            <div class="clip"><div class="shadow"><span class="digit firstDigit"></span></div></div>
+                            <div class="msg">OH!<span class="triangle"></span></div>
+                        </div>
+                        <h2 class="h1">Trang Bạn Đang Truy Cập Không Tồn Tại!</h2>
+                    </div>
+                </div>
+            </div>
+        <!-- Error Page -->
 
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
-}
+<script type="text/javascript">
+	function randomNum(){
+        "use strict";
+        return Math.floor(Math.random() * 9)+1;
+    }
+    var loop1,loop2,loop3,time=30, i=0, number, selector3 = document.querySelector('.thirdDigit'), selector2 = document.querySelector('.secondDigit'),
+        selector1 = document.querySelector('.firstDigit');
+    loop3 = setInterval(function()
+    {
+      "use strict";
+        if(i > 40)
+        {
+            clearInterval(loop3);
+            selector3.textContent = 4;
+        }else
+        {
+            selector3.textContent = randomNum();
+            i++;
+        }
+    }, time);
+    loop2 = setInterval(function()
+    {
+      "use strict";
+        if(i > 80)
+        {
+            clearInterval(loop2);
+            selector2.textContent = 0;
+        }else
+        {
+            selector2.textContent = randomNum();
+            i++;
+        }
+    }, time);
+    loop1 = setInterval(function()
+    {
+      "use strict";
+        if(i > 100)
+        {
+            clearInterval(loop1);
+            selector1.textContent = 4;
+        }else
+        {
+            selector1.textContent = randomNum();
+            i++;
+        }
+    }, time);
+</script>
 
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
-}
-
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
-}
-
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
-}
-
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-}
-
-p {
-	margin: 12px 15px 12px 15px;
-}
-</style>
-</head>
-<body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-	</div>
-</body>
-</html>
+<?php require(__DIR__.'/layouts/footer.php'); ?>

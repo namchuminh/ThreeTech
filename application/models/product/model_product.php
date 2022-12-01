@@ -32,6 +32,12 @@ class model_product extends CI_Model {
 		$result = $this->db->query($sql, array($sanPhamId));
 		return $result->result_array();
 	}
+
+	public function search($tenSanPham){
+		$sql = "SELECT * FROM sanpham WHERE tenSanPham LIKE '%".$tenSanPham."%'";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 }
 
 /* End of file model_product.php */

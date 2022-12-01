@@ -21,10 +21,45 @@ class adminProfile extends CI_Controller {
 			'profile' => $this->model_profile->getMyProfile($taikhoan),
 			'myProduct' => $this->model_profile->getMyProduct($taikhoan),
 			'myNews' => $this->model_profile->getMyNews($taikhoan),
+			'checkNumberProduct' => $this->model_profile->checkNumberProduct($taikhoan),
+			'checkNumberNews' => $this->model_profile->checkNumberNews($taikhoan),
 			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
 			'tieuDe' => $tieuDe,
 		);
 		return $this->load->view('admin/profile', $data);
+	}
+
+	public function actionLoadProductOrNews()
+	{
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/ca-nhan/'));
+		}
+
+		$taikhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_profile');
+		if(isset($_POST['numberProduct']) && !empty($_POST['numberProduct'])){
+			$numberProduct = $this->input->post('numberProduct');
+			$result = $this->model_profile->getMyProduct($taikhoan, $numberProduct);
+			$data = json_encode($result);
+			echo $data;
+		}
+		
+		if(isset($_POST['tenSanPham'])){
+			$tenSanPham = $this->input->post('tenSanPham');
+			$result = $this->model_profile->searchMyProduct($taikhoan, $tenSanPham);
+			$data = json_encode($result);
+			echo $data;
+		}
+		
+		// if ($selection == "product"){
+			
+		// }else if($selection == "news"){
+		// 	$result = $this->model_profile->getMyNews($taikhoan);
+		// 	$data = json_encode($result);
+		// 	echo $data;
+		// }
+
+		
 	}
 
 }

@@ -16,17 +16,36 @@ class model_profile extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function getMyProduct($taikhoan){
-		$sql = "SELECT sanPhamId, tenSanPham, ngayDang, moTa, duongDan FROM sanpham, nhanvien WHERE sanpham.nhanVienId = nhanvien.nhanVienId AND nhanvien.taiKhoan = ? ORDER BY sanPhamId DESC";
+	public function getMyProduct($taikhoan, $number = 5){
+		$sql = "SELECT * FROM sanpham, nhanvien WHERE sanpham.nhanVienId = nhanvien.nhanVienId AND nhanvien.taiKhoan = ? ORDER BY sanPhamId DESC LIMIT " . $number;
 		$result = $this->db->query($sql, array($taikhoan));
 		return $result->result_array();
 	}
 
-	public function getMyNews($taikhoan){
-		$sql = "SELECT tinTucId, tieuDe, trichDan, noiDung, ngayDang, duongDan FROM tintuc, nhanvien WHERE tintuc.nhanVienId = nhanvien.nhanVienId AND nhanvien.taiKhoan = ? ORDER BY tinTucId DESC";
+	public function getMyNews($taikhoan, $number = 5){
+		$sql = "SELECT * FROM tintuc, nhanvien WHERE tintuc.nhanVienId = nhanvien.nhanVienId AND nhanvien.taiKhoan = ? ORDER BY tinTucId DESC LIMIT " . $number;
 		$result = $this->db->query($sql, array($taikhoan));
 		return $result->result_array();
 	}
+
+	public function checkNumberProduct($taikhoan){
+		$sql = "SELECT * FROM sanpham, nhanvien WHERE sanpham.nhanVienId = nhanvien.nhanVienId AND nhanvien.taiKhoan = ?";
+		$result = $this->db->query($sql, array($taikhoan));
+		return $result->result_array();
+	}
+
+	public function checkNumberNews($taikhoan){
+		$sql = "SELECT * FROM tintuc, nhanvien WHERE tintuc.nhanVienId = nhanvien.nhanVienId AND nhanvien.taiKhoan = ?";
+		$result = $this->db->query($sql, array($taikhoan));
+		return $result->result_array();
+	}
+
+	public function searchMyProduct($taikhoan, $tenSanPham){
+		$sql = "SELECT * FROM sanpham, nhanvien WHERE sanpham.nhanVienId = nhanvien.nhanVienId AND nhanvien.taiKhoan = ? AND sanpham.tenSanPham LIKE '%".$tenSanPham."%' ORDER BY sanPhamId DESC LIMIT 5";
+		$result = $this->db->query($sql, array($taikhoan));
+		return $result->result_array();
+	}
+
 
 }
 

@@ -66,25 +66,23 @@
 						</div>
 					</div>
 
-					<!-- Search -->
 					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm theo tên sản phẩm...">
-										<div class="custom_dropdown">
+									<form action="<?php echo base_url('/tim-kiem/') ?>" class="header_search_form clearfix">
+										<input type="search" required="required" class="header_search_input" placeholder="Nhập tên sản phẩm cần tìm..." name="product">
+										<div class="custom_dropdown" style="display: none; width: 10px;">
 											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">Tất Cả</span>
-												<i class="fas fa-chevron-down"></i>
+												<span class="custom_dropdown_placeholder clc"></span>
 												<ul class="custom_list clc">
-													<li><a class="clc" href="#">Laptop</a></li>
-													<li><a class="clc" href="#">Máy Tính</a></li>
-													<li><a class="clc" href="#">Linh Kiện</a></li>
+													<li><a class="clc" href="#"></a></li>
+													<li><a class="clc" href="#"></a></li>
+													<li><a class="clc" href="#"></a></li>
 												</ul>
 											</div>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="<?php echo base_url('static/'); ?>images/search.png" alt=""></button>
+										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="<?php echo base_url('/static/images/search.png'); ?>" alt=""></button>
 									</form>
 								</div>
 							</div>

@@ -71,6 +71,11 @@ $route['admin/nhan-vien'] = 'admin/adminPerson/index';
 $route['nhan-vien/sua/(:any)'] = 'admin/adminPerson/updatePerson/$1';
 $route['nhan-vien/cap-nhat'] = 'admin/adminPerson/actionUpdatePerson';
 $route['nhan-vien/them'] = 'admin/adminPerson/actionAddPerson';
+$route['ca-nhan/chon-hien-thi'] = 'admin/adminProfile/actionLoadProductOrNews';
+$route['admin/tin-tuc'] = 'admin/adminNews/index';
+$route['admin/tin-tuc/tao-bai-viet'] = 'admin/adminNews/addNews';
+$route['admin/tin-tuc/xu-ly-tao-bai-viet'] = 'admin/adminNews/actionAddNews';
+
 
 $route['dang-nhap'] = 'user/userLogin/index';
 $route['xu-ly-dang-nhap'] = 'user/userLogin/actionLogin';
@@ -80,6 +85,7 @@ $route['xu-ly-dang-ky'] = 'user/userRegister/actionRegister';
 $route['khach-hang']= 'user/userInfo/index';
 $route['khach-hang/cap-nhat-khach-hang'] = 'user/userInfo/updateProfile';
 
+
 $route['san-pham/(:any)'] = 'product/product/detail/$1';
 $route['gio-hang'] = 'cart/cart/index';
 $route['them-vao-gio-hang'] = 'cart/cart/addToCart';
@@ -87,6 +93,8 @@ $route['xoa-gio-hang'] = 'cart/cart/deleteCart';
 $route['sua-gio-hang'] = 'cart/cart/updateNumberProduct';
 $route['gio-hang/thanh-toan'] = 'thanhtoan/vnpay/index';
 $route['gio-hang/dat-hang'] = 'thanhtoan/vnpay/dathang';
+$route['tim-kiem'] = 'product/product/search';
+
 
 $route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
 

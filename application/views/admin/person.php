@@ -239,7 +239,7 @@ require(__DIR__.'/layouts/header.php');
 <script src="<?php echo base_url('static/');?>js/sb-admin-2.min.js"></script>
 
 <script type="text/javascript">
-    var base_url = window.location.origin + "/ThreeTech"
+    var base_url =  window.location.origin = "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
     function chamcong(){
         $('.chamcong').click(function(event){
             event.preventDefault()

@@ -25,6 +25,26 @@ class product extends CI_Controller {
 		return $this->load->view('product/productDetail', $data);
 	}
 
+	public function search(){
+		$tenSanPhamCanTim = $this->input->get('product');
+
+		$this->load->model('product/model_product');
+
+		$product = $this->model_product->search($tenSanPhamCanTim);
+
+		$this->load->model('model_index');
+		$cothebanquantam = $this->model_index->getProductQuanTam();
+
+
+		$data = array(
+			'product' => $product,
+			'cothebanquantam' => $cothebanquantam,
+			'tenSanPhamCanTim' => $tenSanPhamCanTim,
+		);
+
+		return $this->load->view('product/search', $data, FALSE);
+	}
+
 }
 
 /* End of file product.php */

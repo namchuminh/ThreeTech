@@ -52,7 +52,6 @@ class model_product extends CI_Model {
 		return $result;
 	}
 
-
 }
 
 /* End of file model_product.php */

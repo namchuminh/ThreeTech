@@ -1,0 +1,78 @@
+<?php require(__DIR__.'/layouts/header.php'); ?>
+<div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Tin Tức</h1>
+        <p class="mb-4">Dữ liệu được lấy trong bảng tin tức, bao gồm các thông tin liên quan đến Tin Tức.</p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tất cả: Tin Tức</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row">
+                    	<div class="col-sm-12 col-md-6">
+                    		<div id="dataTable_filter" class="dataTables_filter">
+                        		<label>Search:
+                        			<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                        		</label>
+                    		</div>
+                    	</div>
+                    	<div class="col-sm-12 col-md-6">
+                    		<div id="dataTable_filter" class="dataTables_filter">
+                        		<a href="<?php echo base_url('admin/tin-tuc/tao-bai-viet/'); ?>" class="btn btn-primary float-right">Tạo Bài Viết</a>
+                    		</div>
+                    	</div>
+                    </div>
+
+                    <div class="row"><div class="col-sm-12">
+                    	<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 88px;">Tiêu Đề</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 100px;">Nội Dung</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 44px;">Ngày Đăng</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 51px;">Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($news as $key => $value): ?>
+                               	<tr class="odd">
+                                    <td><?php echo mb_substr($value['tieuDe'],0,20); ?>...</td>
+                                    <td><?php echo mb_substr(strip_tags($value['noiDung']),0,100); ?>...</td>
+                                    <td><?php echo $value['ngayDang']; ?></td>
+                                    <td style="line-height: 50px;">
+                                        <a href="" class="btn btn-warning" >Sửa</a>
+                                        <a class="btn btn-danger deleteProductAction" value="" href="#" data-toggle="modal" data-target="#deleteModal">Xóa<input type="hidden" class="cate" value=""></a>
+                                    </td>
+                            	</tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa Sản Phẩm</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Bạn có chắc chắn xóa sản phẩm này?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-primary" href="<?php echo base_url('admin/dang-xuat'); ?>" id="deleteProduct">Xóa</a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php require(__DIR__.'/layouts/footer.php'); ?>
