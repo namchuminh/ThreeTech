@@ -13,10 +13,12 @@ class product extends CI_Controller {
 		$chiTietSanPham = $this->model_product->getDetailProduct($duongDan);
 		$chuyenMuc = $this->model_product->getCateByUrl($duongDan);
 		$sanPhamLienQuan = $this->model_product->getProductRelated($duongDan);
+		$sanphamtuongtu = $this->model_product->getProductTuongTu($duongDan);
 		$data = array(
 			'chiTietSanPham' => $chiTietSanPham,
 			'chuyenMuc' => $chuyenMuc,
 			'sanPhamLienQuan' => $sanPhamLienQuan,
+			'sanphamtuongtu' => $sanphamtuongtu,
 		);
 		// echo '<pre>';
 		// 	var_dump($chiTietSanPham);

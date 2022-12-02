@@ -38,6 +38,11 @@ class model_product extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
+	public function getProductTuongTu(){
+		$sql = "SELECT * FROM sanpham ORDER BY RAND() LIMIT 12";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 }
 
 /* End of file model_product.php */

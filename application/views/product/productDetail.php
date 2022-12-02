@@ -72,29 +72,28 @@
 					</div>
 				</div>
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="row">
-                        	<?php for($i = 0; $i <= 3; $i++) { ?>
-	                            <div class="col-xs-6 col-sm-3">
-	                                <div class="tcb-product-item">
-	                                    <div class="tcb-product-photo">
-	                                        <a href="#"><img src="<?php echo $sanPhamLienQuan[$i]["anhChinh"]; ?>" class="img-responsive" alt="a" /></a>
-	                                    </div>
-	                                    <div class="tcb-product-info">
-	                                        <div class="tcb-product-title">
-	                                            <h4><a href="<?php echo base_url('san-pham/').$sanPhamLienQuan[$i]["duongDan"]; ?>"> <?php echo $sanPhamLienQuan[$i]["tenSanPham"]; ?> </a></h4></div>
-	                                        <div class="tcb-hline"></div>
-	                                        <div class="tcb-product-price">
-	                                            <?php echo $sanPhamLienQuan[$i]["giaBan"]; ?>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                            </div>
-                            <?php }?>
-                        </div>
-                    </div>
-                </div>
+                <div class="viewed_slider_container">
+						
+						<!-- Recently Viewed Slider -->
+
+						<div class="owl-carousel owl-theme viewed_slider">
+							
+							<?php foreach ($sanphamtuongtu as $key => $value): ?>
+								<!-- Recently Viewed Item -->
+								<div class="owl-item">
+									<div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+										<div class="viewed_image"><img src="<?php echo $value['anhChinh']; ?>" alt=""></div>
+										<div class="viewed_content text-center">
+											<div class="viewed_price"><?php echo $value["giaBan"]; ?><span><?php echo $value["giaGoc"]; ?></span></div>
+											<div class="viewed_name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;"><a style="display: unset;" href="<?php echo base_url('san-pham/').$value["duongDan"]; ?>"><?php echo $value["tenSanPham"]; ?></a></div>
+										</div>
+									</div>
+								</div>
+							<?php endforeach ?>
+							
+							
+						</div>
+					</div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

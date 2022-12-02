@@ -382,7 +382,7 @@
 										<div class="deals_image"><img src="<?php echo $value['anhChinh']; ?>" alt=""></div>
 										<div class="deals_content">
 											<div class="deals_info_line d-flex flex-row justify-content-start">
-												<div class="deals_item_category"><a href="#"><?php echo $value['tenChuyenMuc']; ?></a></div>
+												<div class="deals_item_category"><a href="<?php echo base_url('chuyen-muc/').$value['duongDanChuyenMuc']; ?>"><?php echo $value['tenChuyenMuc']; ?></a></div>
 												<div class="deals_item_price_a ml-auto"><?php echo $value['giaGoc']; ?></div>
 											</div>
 											<div class="deals_info_line d-flex flex-row justify-content-start">
