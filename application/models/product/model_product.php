@@ -43,6 +43,24 @@ class model_product extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
+
+	public function addToCart($sanPhamId, $khachHangId, $soLuong = 1){
+		$sql = "INSERT INTO giohang (sanPhamId, khachHangId, soLuong) VALUES (?, ?, ?)";
+		$result = $this->db->query($sql, array($sanPhamId, $khachHangId, $soLuong));
+		return $result;
+	}
+
+	public function checkProductInCart($sanPhamId, $khachHangId){
+		$sql = "SELECT * FROM giohang WHERE sanPhamId = ? AND khachHangId = ?";
+		$result = $this->db->query($sql, array($sanPhamId, $khachHangId));
+		return $result->result_array();
+	} 
+
+	public function updateProductInCart($sanPhamId, $khachHangId, $soLuong){
+		$sql = "UPDATE giohang SET soLuong = ? WHERE sanPhamId = ? AND khachHangId = ?  ";
+		$result = $this->db->query($sql, array($soLuong, $sanPhamId, $khachHangId));
+		return $result;
+	}
 }
 
 /* End of file model_product.php */

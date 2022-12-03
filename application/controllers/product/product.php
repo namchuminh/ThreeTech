@@ -47,6 +47,46 @@ class product extends CI_Controller {
 		return $this->load->view('product/search', $data, FALSE);
 	}
 
+	public function addToCart(){
+		$sanPhamId = $this->input->post('sanPhamId');
+		if(isset($_POST) && !empty($sanPhamId)){
+			if($this->session->has_userdata('khachhang')){
+
+				$this->load->model('product/model_product');
+				$this->load->model('model_index');
+
+				$khachhang = $this->session->userdata('khachhang');
+				$kh = $this->model_index->getCustomerLogin($khachhang);
+				$khachHangId = $kh[0]['khachHangId'];
+
+				$checkProductInCart = $this->model_product->checkProductInCart($sanPhamId, $khachHangId);
+
+				if(count($checkProductInCart) >= 1){
+					$soLuong = $checkProductInCart[0]['soLuong'] + 1;
+					$result = $this->model_product->updateProductInCart($sanPhamId, $khachHangId, $soLuong);
+					if($result == True){
+						echo "Đã cập nhật sản phẩm vào giỏ hàng!";
+					}else{
+						echo "Cập nhật sản phẩm vào giỏ hàng không thành công!";
+					}
+				}else{
+					$result = $this->model_product->addToCart($sanPhamId, $khachHangId);
+					if($result == True){
+						echo "Đã thêm sản phẩm vào giỏ hàng!";
+					}else{
+						echo "Thêm sản phẩm không thành công!";
+					}
+				}
+			}else{
+				echo "chuaDangNhap";
+			}
+		}else{
+			return redirect(base_url());
+		}
+		
+
+	}
+
 }
 
 /* End of file product.php */

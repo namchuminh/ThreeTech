@@ -31,33 +31,26 @@
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>(+84)888.888.888</div>
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:lienhe@threetech.online">lienhe@threetech.online</a></div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('/static/'); ?>images/phone.png" alt=""></div>(+84)888.888.888</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('/static/'); ?>images/mail.png" alt=""></div><a href="mailto:lienhe@threetech.online">lienhe@threetech.online</a></div>
 						<div class="top_bar_content ml-auto">
-							<div class="top_bar_menu">
-								<ul class="standard_dropdown top_bar_dropdown">
-									<li>
-										<a href="#">English<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">Italian</a></li>
-											<li><a href="#">Spanish</a></li>
-											<li><a href="#">Japanese</a></li>
-										</ul>
-									</li>
-									<li>
-										<a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">EUR Euro</a></li>
-											<li><a href="#">GBP British Pound</a></li>
-											<li><a href="#">JPY Japanese Yen</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
+							
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="#">Đăng Nhập</a></div>
-								<div><a href="#">Đăng Ký</a></div>
+								<div class="user_icon"><img src="<?php echo base_url('/static/'); ?>images/user.svg" alt=""></div>
+								<div>
+									<?php if (isset($logged_in) && !empty($logged_in)){ ?>
+										<a href="#"><?php echo "Chào, ". $khachhang; ?></a>
+									<?php }else{ ?>
+										<a href="<?php echo base_url('/dang-nhap/'); ?>">Đăng Nhập</a>
+									<?php } ?>
+								</div>
+								<div>
+									<?php if (isset($logged_in) && !empty($logged_in)){ ?>
+										<a href="<?php echo base_url('/dang-xuat/'); ?>">Đăng Xuất</a>
+									<?php }else{ ?>
+										<a href="<?php echo base_url('/dang-ky/') ?>">Đăng Ký</a>
+									<?php } ?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -105,27 +98,22 @@
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
-								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
-								</div>
-							</div>
-
 							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="images/cart.png" alt="">
-										<div class="cart_count"><span>10</span></div>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="#">Cart</a></div>
-										<div class="cart_price">$85</div>
+							<?php if (isset($logged_in) && !empty($logged_in)): ?>
+								<div class="cart">
+									<div class="cart_container d-flex flex-row align-items-center justify-content-end">
+										<div class="cart_icon">
+											<img src="<?php echo base_url('/static/'); ?>images/cart.png" alt="">
+											<div class="cart_count"><span>10</span></div>
+										</div>
+										<div class="cart_content">
+											<div class="cart_text"><a href="#">Cart</a></div>
+											<div class="cart_price">$85</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							<?php endif ?>
+							
 						</div>
 					</div>
 				</div>
@@ -273,8 +261,8 @@
 							</ul>
 							
 							<div class="menu_contact">
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="<?php echo base_url('/static/'); ?>images/phone_white.png" alt=""></div>+38 068 005 3570</div>
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="<?php echo base_url('/static/'); ?>images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
 							</div>
 						</div>
 					</div>
@@ -467,7 +455,7 @@
 															<input type="radio" name="product_color" style="background:#000000">
 															<input type="radio" name="product_color" style="background:#999999">
 														</div>
-														<button class="product_cart_button">Add to Cart</button>
+														<button class="product_cart_button themPhoBien" id="themGioHang" value="<?php echo $value["sanPhamId"]; ?>">Thêm Giỏ Hàng</button>
 													</div>
 												</div>
 												<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -494,14 +482,15 @@
 													<div class="product_image d-flex flex-column align-items-center justify-content-center"><img style="width: 115px; height: 115px;" src="<?php echo $value['anhChinh'] ?>" alt=""></div>
 													<div class="product_content">
 														<div class="product_price discount"><?php echo $value["giaBan"]; ?><span><?php echo $value["giaGoc"]; ?></span></div>
-														<div class="product_name"><div><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo $value["tenSanPham"]; ?></a></div></div>
+														<div class="product_name"><div><a href="<?php echo base_url('san-pham/').$value['duongDan']; ?>"><?php echo $value["tenSanPham"]; ?></a>
+														</div>
+													</div>
 														<div class="product_extras">
 															<div class="product_color">
 																<input type="radio" checked name="product_color" style="background:#b19c83">
 																<input type="radio" name="product_color" style="background:#000000">
 																<input type="radio" name="product_color" style="background:#999999">
 															</div>
-															<button class="product_cart_button">Add to Cart</button>
 														</div>
 													</div>
 													<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -537,7 +526,6 @@
 																<input type="radio" name="product_color" style="background:#000000">
 																<input type="radio" name="product_color" style="background:#999999">
 															</div>
-															<button class="product_cart_button">Add to Cart</button>
 														</div>
 													</div>
 													<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -693,7 +681,6 @@
 																<input type="radio" name="product_color" style="background:#000000">
 																<input type="radio" name="product_color" style="background:#999999">
 															</div>
-															<button class="product_cart_button">Add to Cart</button>
 														</div>
 													</div>
 													<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -731,7 +718,6 @@
 																<input type="radio" name="product_color" style="background:#000000">
 																<input type="radio" name="product_color" style="background:#999999">
 															</div>
-															<button class="product_cart_button">Add to Cart</button>
 														</div>
 													</div>
 													<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -770,7 +756,6 @@
 																<input type="radio" name="product_color" style="background:#000000">
 																<input type="radio" name="product_color" style="background:#999999">
 															</div>
-															<button class="product_cart_button">Add to Cart</button>
 														</div>
 													</div>
 													<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -801,7 +786,6 @@
 												<div class="arrivals_single_price text-right"><?php echo $phobien[$index]["giaBan"]; ?></div>
 											</div>
 											<div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div>
-											<form action="#"><button class="arrivals_single_button">Add to Cart</button></form>
 										</div>
 										<div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
 										<ul class="arrivals_single_marks product_marks">
@@ -810,9 +794,6 @@
 									</div>
 								</div>
 							</div>
-
-
-
 
 
 						</div>
@@ -950,7 +931,7 @@
 	<!-- Trends -->
 
 	<div class="trends">
-		<div class="trends_background" style="background-image:url(images/trends_background.jpg)"></div>
+		<div class="trends_background" style="background-image:url(<?php echo base_url('/static/'); ?>images/trends_background.jpg)"></div>
 		<div class="trends_overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -1027,7 +1008,7 @@
 							<!-- Reviews Slider Item -->
 							<div class="owl-item">
 								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="images/review_1.jpg" alt=""></div></div>
+									<div><div class="review_image"><img src="" alt=""></div></div>
 									<div class="review_content">
 										<div class="review_name">Roberto Sanchez</div>
 										<div class="review_rating_container">
@@ -1042,7 +1023,7 @@
 							<!-- Reviews Slider Item -->
 							<div class="owl-item">
 								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="images/review_2.jpg" alt=""></div></div>
+									<div><div class="review_image"><img src="" alt=""></div></div>
 									<div class="review_content">
 										<div class="review_name">Brandon Flowers</div>
 										<div class="review_rating_container">
@@ -1057,7 +1038,7 @@
 							<!-- Reviews Slider Item -->
 							<div class="owl-item">
 								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="images/review_3.jpg" alt=""></div></div>
+									<div><div class="review_image"><img src="" alt=""></div></div>
 									<div class="review_content">
 										<div class="review_name">Emilia Clarke</div>
 										<div class="review_rating_container">
@@ -1072,7 +1053,7 @@
 							<!-- Reviews Slider Item -->
 							<div class="owl-item">
 								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="images/review_1.jpg" alt=""></div></div>
+									<div><div class="review_image"><img src="" alt=""></div></div>
 									<div class="review_content">
 										<div class="review_name">Roberto Sanchez</div>
 										<div class="review_rating_container">
@@ -1087,7 +1068,7 @@
 							<!-- Reviews Slider Item -->
 							<div class="owl-item">
 								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="images/review_2.jpg" alt=""></div></div>
+									<div><div class="review_image"><img src="" alt=""></div></div>
 									<div class="review_content">
 										<div class="review_name">Brandon Flowers</div>
 										<div class="review_rating_container">
@@ -1102,7 +1083,7 @@
 							<!-- Reviews Slider Item -->
 							<div class="owl-item">
 								<div class="review d-flex flex-row align-items-start justify-content-start">
-									<div><div class="review_image"><img src="images/review_3.jpg" alt=""></div></div>
+									<div><div class="review_image"><img src="" alt=""></div></div>
 									<div class="review_content">
 										<div class="review_name">Emilia Clarke</div>
 										<div class="review_rating_container">
@@ -1204,7 +1185,7 @@
 				<div class="col">
 					<div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
 						<div class="newsletter_title_container">
-							<div class="newsletter_icon"><img src="images/send.png" alt=""></div>
+							<div class="newsletter_icon"><img src="<?php echo base_url('/static/'); ?>images/send.png" alt=""></div>
 							<div class="newsletter_title">Sign up for Newsletter</div>
 							<div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
 						</div>
@@ -1312,10 +1293,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
 						<div class="logos ml-sm-auto">
 							<ul class="logos_list">
-								<li><a href="#"><img src="images/logos_1.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_2.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_3.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_4.png" alt=""></a></li>
+								<li><a href="#"><img src="<?php echo base_url('/static/'); ?>images/logos_1.png" alt=""></a></li>
+								<li><a href="#"><img src="<?php echo base_url('/static/'); ?>images/logos_2.png" alt=""></a></li>
+								<li><a href="#"><img src="<?php echo base_url('/static/'); ?>images/logos_3.png" alt=""></a></li>
+								<li><a href="#"><img src="<?php echo base_url('/static/'); ?>images/logos_4.png" alt=""></a></li>
 							</ul>
 						</div>
 					</div>
@@ -1337,6 +1318,24 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="<?php echo base_url('static/'); ?>plugins/slick-1.8.0/slick.js"></script>
 <script src="<?php echo base_url('static/'); ?>plugins/easing/easing.js"></script>
 <script src="<?php echo base_url('static/'); ?>js/custom.js"></script>
+
+<script>
+	var base_url =  window.location.origin = "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
+	
+	$(document).ready(function() {
+		$(".product_cart_button").click(function(){
+			var sanPhamId = $(this).val()
+			$.post(base_url + '/them-gio-hang/',{sanPhamId: sanPhamId}, function(result){
+				if(result == "chuaDangNhap"){
+					window.location = base_url + '/dang-nhap/'
+				}else{
+					alert(result)
+				}
+			})
+		})
+	});
+</script>
+
 </body>
 
 </html>

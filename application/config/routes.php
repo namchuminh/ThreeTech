@@ -94,7 +94,7 @@ $route['sua-gio-hang'] = 'cart/cart/updateNumberProduct';
 $route['gio-hang/thanh-toan'] = 'thanhtoan/vnpay/index';
 $route['gio-hang/dat-hang'] = 'thanhtoan/vnpay/dathang';
 $route['tim-kiem'] = 'product/product/search';
-
+$route['them-gio-hang'] = 'product/product/addToCart';
 
 $route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
 
