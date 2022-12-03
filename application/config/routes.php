@@ -75,6 +75,8 @@ $route['ca-nhan/chon-hien-thi'] = 'admin/adminProfile/actionLoadProductOrNews';
 $route['admin/tin-tuc'] = 'admin/adminNews/index';
 $route['admin/tin-tuc/tao-bai-viet'] = 'admin/adminNews/addNews';
 $route['admin/tin-tuc/xu-ly-tao-bai-viet'] = 'admin/adminNews/actionAddNews';
+$route['admin/tin-tuc/xoa/(:any)'] = 'admin/adminNews/actionDeleteNews/$1';
+$route['admin/ca-nhan/xoa-san-pham/(:any)'] = 'admin/adminProfile/actionDeleteMyProduct/$1';
 
 
 $route['dang-nhap'] = 'user/userLogin/index';

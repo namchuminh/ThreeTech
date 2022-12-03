@@ -70,6 +70,7 @@
 					        <th>Giá Gốc</th>
 					        <th>Giá Bán</th>
 					        <th>Trạng Thái</th>
+					        <th>Loại Sản Phẩm</th>
 					        <th>Số Lượng</th>
 					       	<th>Hành Động</th>
 					      </tr>
@@ -82,10 +83,11 @@
 							        <td><?php echo $value['giaGoc']; ?></td>
 							        <td><?php echo $value['giaBan']; ?></td>
 							        <td><?php echo $trangThai = $value['trangThai'] == 1 ? "Còn Hàng" : "Hết Hàng"; ?></td>
+							        <td><?php echo $value['loaiSanPham']; ?></td>
 							        <td><?php echo $value['soLuong']; ?></td>
 							        <td>
 							        	<a href="<?php echo base_url('san-pham/sua/') . $value['sanPhamId']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-							        	<a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+							        	<a href="<?php echo base_url('admin/ca-nhan/xoa-san-pham/'). $value['sanPhamId'];  ?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
 							        </td>
 							    </tr>
 					      	<?php endforeach ?>
@@ -101,7 +103,6 @@
 					    <thead>
 					      <tr>
 					        <th>Tiêu Đề</th>
-					        <th>Trích Dẫn</th>
 					        <th>Nội Dung</th>
 					        <th>Ngày Đăng</th>
 					       	<th>Hành Động</th>
@@ -111,7 +112,6 @@
 					    	<?php foreach ($myNews as $key => $value): ?>
 							    <tr>
 							    	<td><a href="<?php echo base_url('tin-tuc/').$value['duongDan']; ?>"><?php echo mb_substr($value['tieuDe'],0,20); ?>...</a></td>
-							        <td><?php echo mb_substr($value['trichDan'],0,20); ?>...</td>
 							        <td><?php echo mb_substr($value['noiDung'],0,20); ?>...</td>
 							        <td><?php echo $value['ngayDang']; ?>...</td>
 							        <td>
@@ -132,7 +132,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
-	var base_url =  window.location.origin = "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
+	var base_url =  window.location.origin == "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
 	function moreProduct(){
 		$('.moreProduct').click(function(event) {
 			event.preventDefault()
@@ -144,7 +144,7 @@
                 $('.tbodyProduct').empty()
                 for(var i = 0; i < dataSearch.length; i++){
                 	var trangThai = dataSearch[i].trangThai == 1 ? "Còn Hàng" : "Hết Hàng"
-                	$('.tbodyProduct').append('<tr> <td><a href="'+base_url+'/san-pham/'+dataSearch[i].duongDan+'">'+dataSearch[i].tenSanPham.substr(0,20)+'...</a></td> <td>'+dataSearch[i].moTa.substr(0,20)+'...</td><td>'+dataSearch[i].giaGoc+'</td> <td>'+dataSearch[i].giaBan+'</td> <td>'+trangThai+'</td> <td>'+dataSearch[i].soLuong+'</td> <td> <a href="'+base_url+'/san-pham/sua/'+dataSearch[i].sanPhamId+'" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> </td> </tr>')
+                	$('.tbodyProduct').append('<tr> <td><a href="'+base_url+'/san-pham/'+dataSearch[i].duongDan+'">'+dataSearch[i].tenSanPham.substr(0,20)+'...</a></td> <td>'+dataSearch[i].moTa.substr(0,20)+'...</td><td>'+dataSearch[i].giaGoc+'</td> <td>'+dataSearch[i].giaBan+'</td> <td>'+trangThai+'</td> <td>'+dataSearch[i].loaiSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td> <a href="'+base_url+'/san-pham/sua/'+dataSearch[i].sanPhamId+'" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> </td> </tr>')
                 }
                 $("html, body").animate({ scrollTop: $(document).height() }, 0);
 		    });
@@ -171,7 +171,7 @@
                 $('.tbodyProduct').empty()
                 for(var i = 0; i < dataSearch.length; i++){
                 	var trangThai = dataSearch[i].trangThai == 1 ? "Còn Hàng" : "Hết Hàng"
-                	$('.tbodyProduct').append('<tr> <td><a href="'+base_url+'/san-pham/'+dataSearch[i].duongDan+'">'+dataSearch[i].tenSanPham.substr(0,20)+'...</a></td> <td>'+dataSearch[i].moTa.substr(0,20)+'...</td><td>'+dataSearch[i].giaGoc+'</td> <td>'+dataSearch[i].giaBan+'</td> <td>'+trangThai+'</td> <td>'+dataSearch[i].soLuong+'</td> <td> <a href="'+base_url+'/san-pham/sua/'+dataSearch[i].sanPhamId+'" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> </td> </tr>')
+                	$('.tbodyProduct').append('<tr> <td><a href="'+base_url+'/san-pham/'+dataSearch[i].duongDan+'">'+dataSearch[i].tenSanPham.substr(0,20)+'...</a></td> <td>'+dataSearch[i].moTa.substr(0,20)+'...</td><td>'+dataSearch[i].giaGoc+'</td> <td>'+dataSearch[i].giaBan+'</td> <td>'+trangThai+'</td> <td>'+dataSearch[i].loaiSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td> <a href="'+base_url+'/san-pham/sua/'+dataSearch[i].sanPhamId+'" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> </td> </tr>')
                 }
             });
         })

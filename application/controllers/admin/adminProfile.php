@@ -62,6 +62,12 @@ class adminProfile extends CI_Controller {
 		
 	}
 
+	public function actionDeleteMyProduct($sanPhamId){
+		$this->load->model('admin/model_product');
+		$this->model_product->deleteProduct($sanPhamId);
+		return redirect(base_url('admin/ca-nhan/'));
+	}
+
 }
 
 /* End of file adminProfile.php */

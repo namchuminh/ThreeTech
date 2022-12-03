@@ -10,9 +10,9 @@ class model_news extends CI_Model {
 		
 	}
 
-	public function addNews($tieuDe, $duongDan, $noiDung, $anhChinh){
-		$sql = "INSERT INTO tintuc (tieuDe, duongDan, noiDung, anhChinh) VALUES(?, ?, ?, ?)";
-		$result = $this->db->query($sql, array($tieuDe, $duongDan, $noiDung, $anhChinh));
+	public function addNews($tieuDe, $duongDan, $noiDung, $nhanVienId, $anhChinh){
+		$sql = "INSERT INTO tintuc (tieuDe, duongDan, noiDung, nhanVienId, anhChinh) VALUES(?, ?, ?, ?, ?)";
+		$result = $this->db->query($sql, array($tieuDe, $duongDan, $noiDung, $nhanVienId, $anhChinh));
 		return $result;
 	}
 
@@ -21,6 +21,13 @@ class model_news extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
+
+	public function deleteNews($tinTucId){
+		$sql = "DELETE FROM tintuc WHERE tinTucId = ?";
+		$result = $this->db->query($sql, array($tinTucId));
+		return $result;
+	}
+
 
 }
 

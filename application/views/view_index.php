@@ -1320,7 +1320,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="<?php echo base_url('static/'); ?>js/custom.js"></script>
 
 <script>
-	var base_url =  window.location.origin = "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
+	var base_url =  window.location.origin == "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
 	
 	$(document).ready(function() {
 		$(".product_cart_button").click(function(){

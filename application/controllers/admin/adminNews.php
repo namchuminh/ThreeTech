@@ -45,6 +45,11 @@ class adminNews extends CI_Controller {
 			return redirect(base_url('admin/tin-tuc/'));
 		}
 
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+		$nhanVien = $this->model_admin->getUserLogin($taiKhoan);
+		$nhanVienId = $nhanVien[0]['nhanVienId'];
+
 		$tieuDe = $this->input->post('tieuDe');
 		$duongDan = $this->input->post('duongDan');
 		$noiDung = $this->input->post('noiDung');
@@ -61,7 +66,7 @@ class adminNews extends CI_Controller {
 		}
 
 		$this->load->model('admin/model_news');
-		$result = $this->model_news->addNews($tieuDe, $duongDan, $noiDung, $anhChinh);
+		$result = $this->model_news->addNews($tieuDe, $duongDan, $noiDung, $nhanVienId, $anhChinh);
 
 		$tieuDe = "ThreeTech - Quản Lý Tin Tức";
 		$taiKhoan = $this->session->userdata('taikhoan');
@@ -72,6 +77,12 @@ class adminNews extends CI_Controller {
 			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
 			'tieuDe' => $tieuDe,
 		);
+		return redirect(base_url('admin/tin-tuc/'));
+	}
+
+	public function actionDeleteNews($tinTucId){
+		$this->load->model('admin/model_news');
+		$result = $this->model_news->deleteNews($tinTucId);
 		return redirect(base_url('admin/tin-tuc/'));
 	}
 }

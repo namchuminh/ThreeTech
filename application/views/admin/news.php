@@ -45,7 +45,7 @@
                                     <td><?php echo $value['ngayDang']; ?></td>
                                     <td style="line-height: 50px;">
                                         <a href="" class="btn btn-warning" >Sửa</a>
-                                        <a class="btn btn-danger deleteProductAction" value="" href="#" data-toggle="modal" data-target="#deleteModal">Xóa<input type="hidden" class="cate" value=""></a>
+                                        <a class="btn btn-danger deleteProductAction" value="<?php echo base_url('admin/tin-tuc/xoa/').$value['tinTucId'] . '/'; ?>" href="#" data-toggle="modal" data-target="#deleteNewsModal">Xóa<input type="hidden" class="cate" value=""></a>
                                     </td>
                             	</tr>
                             <?php endforeach ?>
@@ -57,22 +57,31 @@
         </div>
 
     </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="deleteNewsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Xóa Sản Phẩm</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Bạn có chắc chắn xóa sản phẩm này?</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                <a class="btn btn-primary" href="<?php echo base_url('admin/dang-xuat'); ?>" id="deleteProduct">Xóa</a>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa Bài Viết</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Bạn có chắc chắn xóa bài viết này?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary deleteNews" href="" id="deleteNewsModal">Xóa</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 <?php require(__DIR__.'/layouts/footer.php'); ?>
+<script>
+    $(document).ready(function() {
+        $('.deleteProductAction').click(function (){
+            var url_delete = $(this).attr('value')
+            $(".deleteNews").attr("href", url_delete)
+        })
+    });
+</script>
