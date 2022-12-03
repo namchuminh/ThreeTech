@@ -1246,8 +1246,9 @@ select option
 {
 	font-size: 18px;
 	font-weight: 300;
-	color: rgba(0,0,0,0.7);
+	color: black;
 	line-height: 2;
+	font-family: 'Poppins', sans-serif;
 }
 .single_post_text p:not(:first-of-type)
 {

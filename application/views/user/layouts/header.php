@@ -99,7 +99,7 @@
 							<div class="cart">
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
-										<img src="images/cart.png" alt="">
+										<img src="<?php echo base_url('/static/'); ?>images/cart.png" alt="">
 										<div class="cart_count"><span>0</span></div>
 									</div>
 									<div class="cart_content">

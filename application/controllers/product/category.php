@@ -19,6 +19,7 @@ class category extends CI_Controller {
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+			
 			if(count($checkNumberCategory) >= 1){
 				$product = $this->model_category->getProductByCateUrl($duongDanChuyenMuc);
 				$this->load->model('model_index');
@@ -31,7 +32,12 @@ class category extends CI_Controller {
 				);
 				return $this->load->view('product/productCategory', $data, FALSE);
 			}else{
-				return $this->load->view('view_404');
+				$data = array(
+					'khachhang' => $khachhang,
+					'logged_in' => $logged_in,
+					'soLuongSanPham' => $soLuongSanPham,
+				);
+				return $this->load->view('view_404', $data);
 			}
 		}else{
 			if(count($checkNumberCategory) >= 1){

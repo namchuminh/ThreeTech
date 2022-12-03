@@ -25,7 +25,7 @@ class index extends CI_Controller {
 		$cothebanquantam = $this->model_index->getProductQuanTam();
 		$top20 = $this->model_index->getProductTop20();
 		$trend = $this->model_index->getProductTrend();
-		
+		$tintuc = $this->model_index->getTinTuc();
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
@@ -48,6 +48,7 @@ class index extends CI_Controller {
 				'cothebanquantam' => $cothebanquantam,
 				'top20' => $top20,
 				'trend' => $trend,
+				'tintuc' => $tintuc,
 			);
 			return $this->load->view('view_index', $data);
 		}else{
@@ -63,6 +64,7 @@ class index extends CI_Controller {
 				'cothebanquantam' => $cothebanquantam,
 				'top20' => $top20,
 				'trend' => $trend,
+				'tintuc' => $tintuc,
 			);
 			return $this->load->view('view_index', $data);
 		}
