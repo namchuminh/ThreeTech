@@ -61,6 +61,31 @@ class model_product extends CI_Model {
 		$result = $this->db->query($sql, array($soLuong, $sanPhamId, $khachHangId));
 		return $result;
 	}
+	public function getProductNoiBatMoi(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("noibatmoi"));
+		return $result->result_array();
+	}
+	public function getProductAudioVideo(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("audiovideo"));
+		return $result->result_array();
+	}
+	public function getProductMayTinhLaptop(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Laptopcomputer"));
+		return $result->result_array();
+	}
+	public function getProductTop20(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Top20"));
+		return $result->result_array();
+	}
+	public function getProductTrend(){
+		$sql = "SELECT * FROM sanpham, chuyenmuc WHERE sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND loaiSanPham = ?";
+		$result = $this->db->query($sql, array("Trend"));
+		return $result->result_array();
+	}
 }
 
 /* End of file model_product.php */

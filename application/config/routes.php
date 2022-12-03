@@ -97,6 +97,11 @@ $route['gio-hang/thanh-toan'] = 'thanhtoan/vnpay/index';
 $route['gio-hang/dat-hang'] = 'thanhtoan/vnpay/dathang';
 $route['tim-kiem'] = 'product/product/search';
 $route['them-gio-hang'] = 'product/product/addToCart';
+$route['noi-bat-moi'] = 'product/product/noibatmoi';
+$route['audio-video'] = 'product/product/audiovideo';
+$route['may-tinh-laptop'] = 'product/product/maytinhlaptop';
+$route['top-20'] = 'product/product/top20';
+$route['trend'] = 'product/product/trend';
 
 $route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
 

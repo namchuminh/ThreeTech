@@ -27,6 +27,66 @@ class product extends CI_Controller {
 		return $this->load->view('product/productDetail', $data);
 	}
 
+	public function noiBatMoi(){
+		$this->load->model('product/model_product');
+		$noibatmoi = $this->model_product->getProductNoiBatMoi();
+		$sanphamtuongtu = $this->model_product->getProductTuongTu();
+		$data = array(
+			'noibatmoi' => $noibatmoi,
+			'sanphamtuongtu' => $sanphamtuongtu,
+			
+		);
+		return $this->load->view('product/noibatmoi', $data);
+	}
+
+	public function audioVideo(){
+		$this->load->model('product/model_product');
+		$audiovideo = $this->model_product->getProductAudioVideo();
+		$sanphamtuongtu = $this->model_product->getProductTuongTu();
+		$data = array(
+			'audiovideo' => $audiovideo,
+			'sanphamtuongtu' => $sanphamtuongtu,
+			
+		);
+		return $this->load->view('product/audiovideo', $data);
+	}
+
+	public function mayTinhLaptop(){
+		$this->load->model('product/model_product');
+		$maytinhlaptop = $this->model_product->getProductMayTinhLaptop();
+		$sanphamtuongtu = $this->model_product->getProductTuongTu();
+		$data = array(
+			'maytinhlaptop' => $maytinhlaptop,
+			'sanphamtuongtu' => $sanphamtuongtu,
+			
+		);
+		return $this->load->view('product/maytinhlaptop', $data);
+	}
+
+	public function top20(){
+		$this->load->model('product/model_product');
+		$top20 = $this->model_product->getProductTop20();
+		$sanphamtuongtu = $this->model_product->getProductTuongTu();
+		$data = array(
+			'top20' => $top20,
+			'sanphamtuongtu' => $sanphamtuongtu,
+			
+		);
+		return $this->load->view('product/top20', $data);
+	}
+
+	public function trend(){
+		$this->load->model('product/model_product');
+		$trend = $this->model_product->getProductTrend();
+		$sanphamtuongtu = $this->model_product->getProductTuongTu();
+		$data = array(
+			'trend' => $trend,
+			'sanphamtuongtu' => $sanphamtuongtu,
+			
+		);
+		return $this->load->view('product/trend', $data);
+	}
+
 	public function search(){
 		$tenSanPhamCanTim = $this->input->get('product');
 
