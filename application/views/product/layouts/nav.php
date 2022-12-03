@@ -14,11 +14,11 @@
 								</div>
 
 								<ul class="cat_menu">
-									<li><a href="#">Sản Phẩm Nổi Bật - Mới<i class="fas fa-chevron-right ml-auto"></i></a></li>
-									<li><a href="#">Audio Video<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Máy Tính & Laptop<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Top 20<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Trend 2022<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="<?php echo base_url('/noi-bat-moi/'); ?>">Sản Phẩm Nổi Bật - Mới<i class="fas fa-chevron-right ml-auto"></i></a></li>
+									<li><a href="<?php echo base_url('/audio-video/'); ?>">Audio Video<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="<?php echo base_url('/may-tinh-laptop/'); ?>">Máy Tính & Laptop<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="<?php echo base_url('/top-20/'); ?>">Top 20<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="<?php echo base_url('/trend/'); ?>">Trend 2022<i class="fas fa-chevron-right"></i></a></li>
 								</ul>
 							</div>
 
