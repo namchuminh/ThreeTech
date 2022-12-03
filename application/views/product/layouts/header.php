@@ -36,22 +36,27 @@
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+84 037 996 045</div>
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:laptrinhtudau@gmail.com">laptrinhtudau@gmail.com</a></div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('/static/'); ?>images/phone.png" alt=""></div>(+84)888.888.888</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('/static/'); ?>images/mail.png" alt=""></div><a href="mailto:lienhe@threetech.online">lienhe@threetech.online</a></div>
 						<div class="top_bar_content ml-auto">
-							<?php if(isset($logged_in) ){ ?>
-								<div class="top_bar_user">
-									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Xin chào, <?php echo $taikhoan; ?>!</a></div>
-									<div><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></div>
+							
+							<div class="top_bar_user">
+								<div class="user_icon"><img src="<?php echo base_url('/static/'); ?>images/user.svg" alt=""></div>
+								<div>
+									<?php if (isset($logged_in) && !empty($logged_in)){ ?>
+										<a href="#"><?php echo "Chào, ". $khachhang; ?></a>
+									<?php }else{ ?>
+										<a href="<?php echo base_url('/dang-nhap/'); ?>">Đăng Nhập</a>
+									<?php } ?>
 								</div>
-							<?php } else {?>
-								<div class="top_bar_user">
-									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Đăng Nhập</a></div>
-									<div><a href="#">Đăng Ký</a></div>
+								<div>
+									<?php if (isset($logged_in) && !empty($logged_in)){ ?>
+										<a href="<?php echo base_url('/dang-xuat/'); ?>">Đăng Xuất</a>
+									<?php }else{ ?>
+										<a href="<?php echo base_url('/dang-ky/') ?>">Đăng Ký</a>
+									<?php } ?>
 								</div>
-							<?php } ?>
+							</div>
 						</div>
 					</div>
 				</div>

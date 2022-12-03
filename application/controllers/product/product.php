@@ -10,33 +10,73 @@ class product extends CI_Controller {
 	public function detail($duongDan)
 	{
 		$this->load->model('product/model_product');
-		$chiTietSanPham = $this->model_product->getDetailProduct($duongDan);
-		$chuyenMuc = $this->model_product->getCateByUrl($duongDan);
-		$sanPhamLienQuan = $this->model_product->getProductRelated($duongDan);
-		$sanphamtuongtu = $this->model_product->getProductTuongTu($duongDan);
-		$data = array(
-			'chiTietSanPham' => $chiTietSanPham,
-			'chuyenMuc' => $chuyenMuc,
-			'sanPhamLienQuan' => $sanPhamLienQuan,
-			'sanphamtuongtu' => $sanphamtuongtu,
-		);
-		// echo '<pre>';
-		// 	var_dump($chiTietSanPham);
-		// echo '</pre>';
+		$this->load->model('model_index');
+		if($this->session->has_userdata('khachhang')){
+			$khachhang = $this->session->userdata('khachhang');
+			$logged_in = $this->session->userdata('logged_in');
+			$kh = $this->model_index->getCustomerLogin($khachhang);
+			$khachHangId = $kh[0]['khachHangId'];
+			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
 
-		return $this->load->view('product/productDetail', $data);
+			$chiTietSanPham = $this->model_product->getDetailProduct($duongDan);
+			$chuyenMuc = $this->model_product->getCateByUrl($duongDan);
+			$sanPhamLienQuan = $this->model_product->getProductRelated($duongDan);
+			$sanphamtuongtu = $this->model_product->getProductTuongTu($duongDan);
+			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
+				'chiTietSanPham' => $chiTietSanPham,
+				'chuyenMuc' => $chuyenMuc,
+				'sanPhamLienQuan' => $sanPhamLienQuan,
+				'sanphamtuongtu' => $sanphamtuongtu,
+			);
+			return $this->load->view('product/productDetail', $data);
+		}else{
+			$chiTietSanPham = $this->model_product->getDetailProduct($duongDan);
+			$chuyenMuc = $this->model_product->getCateByUrl($duongDan);
+			$sanPhamLienQuan = $this->model_product->getProductRelated($duongDan);
+			$sanphamtuongtu = $this->model_product->getProductTuongTu($duongDan);
+			$data = array(
+				'chiTietSanPham' => $chiTietSanPham,
+				'chuyenMuc' => $chuyenMuc,
+				'sanPhamLienQuan' => $sanPhamLienQuan,
+				'sanphamtuongtu' => $sanphamtuongtu,
+			);
+			return $this->load->view('product/productDetail', $data);
+		}
 	}
 
 	public function noiBatMoi(){
-		$this->load->model('product/model_product');
-		$noibatmoi = $this->model_product->getProductNoiBatMoi();
-		$sanphamtuongtu = $this->model_product->getProductTuongTu();
-		$data = array(
-			'noibatmoi' => $noibatmoi,
-			'sanphamtuongtu' => $sanphamtuongtu,
-			
-		);
-		return $this->load->view('product/noibatmoi', $data);
+		$this->load->model('model_index');
+		if($this->session->has_userdata('khachhang')){
+			$khachhang = $this->session->userdata('khachhang');
+			$logged_in = $this->session->userdata('logged_in');
+			$kh = $this->model_index->getCustomerLogin($khachhang);
+			$khachHangId = $kh[0]['khachHangId'];
+			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+
+			$this->load->model('product/model_product');
+			$noibatmoi = $this->model_product->getProductNoiBatMoi();
+			$sanphamtuongtu = $this->model_product->getProductTuongTu();
+			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
+				'noibatmoi' => $noibatmoi,
+				'sanphamtuongtu' => $sanphamtuongtu,
+			);
+			return $this->load->view('product/noibatmoi', $data);
+		}else{
+			$this->load->model('product/model_product');
+			$noibatmoi = $this->model_product->getProductNoiBatMoi();
+			$sanphamtuongtu = $this->model_product->getProductTuongTu();
+			$data = array(
+				'noibatmoi' => $noibatmoi,
+				'sanphamtuongtu' => $sanphamtuongtu,
+				
+			);
+			return $this->load->view('product/noibatmoi', $data);
+		}
+		
 	}
 
 	public function audioVideo(){

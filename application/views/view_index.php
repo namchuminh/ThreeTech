@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>OneTech</title>
+<title>ThreeTech - Mua Laptop, Máy Tính, Thiết Bị Điện Tử Uy Tin - Giá Rẻ</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
@@ -996,8 +996,8 @@
 				<div class="col">
 					
 					<div class="reviews_title_container">
-						<h3 class="reviews_title">Latest Reviews</h3>
-						<div class="reviews_all ml-auto"><a href="#">view all <span>reviews</span></a></div>
+						<h3 class="reviews_title">Tin Tức - Công Nghệ</h3>
+						<div class="reviews_all ml-auto"><a href="#">Xem tất<span> cả</span></a></div>
 					</div>
 
 					<div class="reviews_slider_container">
