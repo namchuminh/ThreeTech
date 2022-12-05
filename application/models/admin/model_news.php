@@ -22,9 +22,21 @@ class model_news extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getNewsById($tinTucId){
+		$sql = "SELECT * FROM tintuc WHERE tinTucId = ?";
+		$result = $this->db->query($sql, array($tinTucId));
+		return $result->result_array();
+	}
+
 	public function deleteNews($tinTucId){
 		$sql = "DELETE FROM tintuc WHERE tinTucId = ?";
 		$result = $this->db->query($sql, array($tinTucId));
+		return $result;
+	}
+
+	public function updateNews($anhChinh, $tieuDe, $noiDung, $nhanVienId, $duongDan, $tinTucId){
+		$sql = "UPDATE `tintuc` SET `anhChinh`=?,`tieuDe`=?,`noiDung`=?,`nhanVienId`=?,`duongDan`=? WHERE `tinTucId` = ?";
+		$result = $this->db->query($sql, array($anhChinh, $tieuDe, $noiDung, $nhanVienId, $duongDan, $tinTucId));
 		return $result;
 	}
 

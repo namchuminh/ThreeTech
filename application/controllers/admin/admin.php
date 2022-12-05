@@ -39,6 +39,15 @@ class admin extends CI_Controller {
 		echo $result;
 	}
 
+	public function getSoLuongBanByChuyenMuc(){
+		$this->load->model('admin/model_admin');
+		$getSoLuongBanByChuyenMuc = $this->model_admin->getSoLuongBanByChuyenMuc();
+
+		$result = json_encode($getSoLuongBanByChuyenMuc);
+
+		echo $result;
+	}
+
 	public function logout(){
 		$this->session->sess_destroy();
 		return redirect(base_url('admin/dang-nhap/'));

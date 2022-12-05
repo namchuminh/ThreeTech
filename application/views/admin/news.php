@@ -44,7 +44,8 @@
                                     <td><?php echo mb_substr(strip_tags($value['noiDung']),0,100); ?>...</td>
                                     <td><?php echo $value['ngayDang']; ?></td>
                                     <td style="line-height: 50px;">
-                                        <a href="" class="btn btn-warning" >Sửa</a>
+                                        <a href="<?php echo base_url('tin-tuc/').$value['duongDan'] . '/'; ?>" class="btn btn-warning" >Xem</a>
+                                        <a href="<?php echo base_url('admin/tin-tuc/sua/').$value['tinTucId'] . '/'; ?>" class="btn btn-warning" >Sửa</a>
                                         <a class="btn btn-danger deleteProductAction" value="<?php echo base_url('admin/tin-tuc/xoa/').$value['tinTucId'] . '/'; ?>" href="#" data-toggle="modal" data-target="#deleteNewsModal">Xóa<input type="hidden" class="cate" value=""></a>
                                     </td>
                             	</tr>

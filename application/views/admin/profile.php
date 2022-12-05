@@ -115,7 +115,7 @@
 							        <td><?php echo mb_substr($value['noiDung'],0,20); ?>...</td>
 							        <td><?php echo $value['ngayDang']; ?>...</td>
 							        <td>
-							        	<a href="#" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+							        	<a href="<?php echo base_url('admin/tin-tuc/sua/').$value['tinTucId']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
 							        	<a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
 							        </td>
 							    </tr>

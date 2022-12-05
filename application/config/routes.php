@@ -78,6 +78,8 @@ $route['admin/tin-tuc/xu-ly-tao-bai-viet'] = 'admin/adminNews/actionAddNews';
 $route['admin/tin-tuc/xoa/(:any)'] = 'admin/adminNews/actionDeleteNews/$1';
 $route['admin/ca-nhan/xoa-san-pham/(:any)'] = 'admin/adminProfile/actionDeleteMyProduct/$1';
 $route['admin/bieu-do-doanh-thu'] = 'admin/admin/getBieuDoDoanhThu';
+$route['admin/so-luong-ban-theo-chuyen-muc'] = 'admin/admin/getSoLuongBanByChuyenMuc';
+$route['admin/tin-tuc/sua/(:any)'] = 'admin/adminNews/actionUpdateNews/$1';
 
 
 $route['dang-nhap'] = 'user/userLogin/index';

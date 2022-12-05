@@ -58,6 +58,20 @@ class model_admin extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getSoLuongBanByChuyenMuc()
+	{
+		$arrTenChuyenMuc = array("LinhKien", "MayTinh","Laptop");
+		$soLuong = array();
+		for ($i = 0; $i < count($arrTenChuyenMuc); $i++) { 
+			$sql = "SELECT SUM(chitiethoadon.soLuong) AS soluong FROM chuyenmuc, sanpham, chitiethoadon WHERE chitiethoadon.sanPhamId = sanpham.sanPhamId AND sanpham.chuyenMucId = chuyenmuc.chuyenMucId AND chuyenmuc.tenChuyenMuc = ?";
+			$result = $this->db->query($sql, array($arrTenChuyenMuc[$i]))->result_array();
+
+			array_push($soLuong, (int)$result[0]["soluong"]);
+		}
+
+		return $soLuong;
+	}
+
 }
 
 /* End of file model_admin.php */
