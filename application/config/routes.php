@@ -80,6 +80,11 @@ $route['admin/ca-nhan/xoa-san-pham/(:any)'] = 'admin/adminProfile/actionDeleteMy
 $route['admin/bieu-do-doanh-thu'] = 'admin/admin/getBieuDoDoanhThu';
 $route['admin/so-luong-ban-theo-chuyen-muc'] = 'admin/admin/getSoLuongBanByChuyenMuc';
 $route['admin/tin-tuc/sua/(:any)'] = 'admin/adminNews/actionUpdateNews/$1';
+$route['admin/khach-hang'] = 'admin/adminCustomer/index';
+$route['khach-hang/xuat'] = 'admin/adminCustomer/exportExcel';
+$route['khach-hang/tim-kiem'] = 'admin/adminCustomer/searchCustomer';
+$route['khach-hang/xem-them'] = 'admin/adminCustomer/loadCustomer';
+$route['khach-hang/xoa'] = 'admin/adminCustomer/deleteCustomer';
 
 
 $route['dang-nhap'] = 'user/userLogin/index';

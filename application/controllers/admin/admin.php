@@ -20,6 +20,9 @@ class admin extends CI_Controller {
 		$dauNgayToiGio = $this->model_admin->getDauNgayToiGio();
 		$soLuongKhachHang = $this->model_admin->soLuongKhachHang();
 		$getKhachHangMoi = $this->model_admin->getKhachHangMoi();
+		$phanTramSanPhamBanChay = $this->model_admin->getPhanTramSanPhamBanChay();
+
+
 
 		$data = array(
 			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
@@ -28,6 +31,7 @@ class admin extends CI_Controller {
 			'dauNgayToiGio' => $dauNgayToiGio,
 			'soLuongKhachHang' => $soLuongKhachHang,
 			'getKhachHangMoi' => $getKhachHangMoi,
+			'phanTramSanPhamBanChay' => $phanTramSanPhamBanChay,
 		);
 		return $this->load->view('admin/index', $data);
 	}
@@ -47,6 +51,7 @@ class admin extends CI_Controller {
 
 		echo $result;
 	}
+
 
 	public function logout(){
 		$this->session->sess_destroy();

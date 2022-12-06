@@ -17,13 +17,13 @@ class model_admin extends CI_Model {
 	}
 
 	public function getDoanhThuThangNay(){
-		$sql = "SELECT SUM(sotien) AS doanhThuThang FROM `vnpay` WHERE MONTH(thoigian) = MONTH(CURDATE())";
+		$sql = "SELECT SUM(sotien) AS doanhThuThang FROM `vnpay` WHERE MONTH(thoigian) = MONTH(CURDATE()) AND YEAR(thoigian) = YEAR(CURRENT_DATE())";
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
 
 	public function getDauNgayToiGio(){
-		$sql = "SELECT SUM(sotien) AS dauNgayToiGio FROM `vnpay` WHERE thoigian < CURDATE() + 1 AND thoigian > CURDATE() - 1";
+		$sql = "SELECT SUM(sotien) AS dauNgayToiGio FROM `vnpay` WHERE DATE(`thoigian`) = CURDATE()";
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
@@ -72,6 +72,28 @@ class model_admin extends CI_Model {
 		return $soLuong;
 	}
 
+	public function getPhanTramSanPhamBanChay(){
+		$sql = "SELECT sanpham.tenSanPham, sanpham.sanPhamId, sanpham.duongDan, sanpham.soLuong, SUM(chitiethoadon.soLuong) AS soLuongBan FROM sanpham, chitiethoadon WHERE sanPham.sanPhamId = chitiethoadon.sanPhamId GROUP BY sanpham.tenSanPham ORDER BY soLuongBan DESC LIMIT 5";
+		$result = $this->db->query($sql)->result_array();
+
+		$arrPercent = array();
+
+		for($i = 0; $i < count($result); $i++){
+			$onePercent = 100 / (int)$result[$i]["soLuong"];
+			$percent = (int)$result[$i]["soLuongBan"] * $onePercent;
+
+			$arrPercent[$i] = array(
+				'tenSanPham' => $result[$i]["tenSanPham"],
+				'duongDan' => $result[$i]["duongDan"],
+				'soLuong' => $result[$i]["soLuong"],
+				'soLuongBan' => $result[$i]["soLuongBan"],
+				'phanTram' => $percent,
+
+			);
+		}
+		
+		return $arrPercent;
+	}
 }
 
 /* End of file model_admin.php */
