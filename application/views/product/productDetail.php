@@ -46,9 +46,17 @@
 
 								<div class="product_price"><?php echo $chiTietSanPham[0]["giaBan"]; ?></div>
 								<div class="button_container">
-									<button type="submit" class="button cart_button" onclick="dathang()">
-										Thêm vào giỏ hàng
+									<?php
+										if (isset($logged_in)) {?>
+											<button type="submit" class="button cart_button" onclick="dathang()">
+												Thêm vào giỏ hàng
+											</button>
+									<?php }else{ ?>
+										<button type="submit" class="button cart_button">
+										Bạn Chưa Đăng Nhập, Đăng Nhập Ngay
 									</button>
+									<?php } ?>
+									
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
 								</div>
 							</form>
@@ -108,8 +116,8 @@
     </div>
 
 <script type="text/javascript">
-  function dathang() {
-      alert("Thêm thành công");
+  	function dathang() {
+  		alert("Thêm thành công");
     }
 
 </script>

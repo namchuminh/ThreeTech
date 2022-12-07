@@ -26,17 +26,21 @@ class index extends CI_Controller {
 		$top20 = $this->model_index->getProductTop20();
 		$trend = $this->model_index->getProductTrend();
 		$tintuc = $this->model_index->getTinTuc();
+		$this->load->model('cart/model_addToCart');
+
+
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$data = array(
 				'khachhang' => $khachhang,
 				'logged_in' => $logged_in,
 				'thietbidientu' => $thietbidientu,
-				'soluonsanpham' =>$soLuongSanPham,
+				'soluongsanpham' =>$soLuongSanPham,
 				'giamgiacuoituan' => $giamgiacuoituan,
 				'phobien' => $phobien,
 				'uudai' => $uudai,
@@ -49,6 +53,7 @@ class index extends CI_Controller {
 				'top20' => $top20,
 				'trend' => $trend,
 				'tintuc' => $tintuc,
+				'cart_price'=>$cart_price,
 			);
 			return $this->load->view('view_index', $data);
 		}else{

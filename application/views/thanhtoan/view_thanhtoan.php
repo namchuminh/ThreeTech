@@ -70,7 +70,25 @@
                 </div> 
                 <div class="form-group">
                     <label >Thời gian thanh toán:</label>
-                    <label><?php echo $_GET['vnp_PayDate'] ?></label>
+                    <label>
+                    <?php 
+                        $date = $_GET['vnp_PayDate'];
+
+                        $year = $date[0].''.$date[1].''.$date[2].''.$date[3];
+                        $mounht = $date[4].''.$date[5];
+
+                        $days = $date[6].''.$date[7];
+                        $hours = $date[8].''.$date[9];
+                        $minute = $date[10].''.$date[11];
+                        $second = $date[12].''.$date[13];
+                        // echo $date;
+                        // echo "<br>";
+                        // echo $year.$mounht.$days.$hours.$minute.$second;
+                        $time = $year."-".$mounht."-".$days."-".$hours."-".$minute."-".$second;
+
+
+                    echo $hours.":".$minute.":".$second." Ngày:".$days."/".$mounht."/".$year;
+                ?></label>
                 </div> 
                 <div class="form-group">
                     <label >Kết quả:</label>

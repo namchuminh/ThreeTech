@@ -45,6 +45,11 @@ class model_addToCart extends CI_Model {
 		$result = $this->db->query($sql,array($soLuong, $sanPhamId, $khachHangId));
 		return $result;
 	}
+	public function cart_price($khachHangId){
+		$sql = "SELECT SUM(giaBan * giohang.soLuong) as 'tongtien' from sanpham, giohang WHERE sanpham.sanPhamId = giohang.sanPhamId AND giohang.khachHangId=?";
+		$result = $this->db->query($sql,array($khachHangId));
+		return $result->result_array();
+	}
 	
 }
 

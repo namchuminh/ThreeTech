@@ -6,12 +6,13 @@ class cart extends CI_Controller {
 	{
 		parent::__construct();
 		if($this->session->has_userdata('logged_in')==False){
-			return redirect(base_url());
+			return redirect(base_url('/dang-nhap'));
 		}
 	}
 
 	public function index()
 	{
+		$logged_in = $this->session->userdata('logged_in');
 		$khachhang = $this->session->userdata('khachhang');
 		$this->load->model('model_index');
 		$result = $this->model_index->getCustomerLogin($khachhang);
@@ -24,6 +25,8 @@ class cart extends CI_Controller {
 		$data = array(
 			'product' => $cart_product,
 			'soLuongSanPham' =>$soLuongSanPham,
+			'logged_in' => $logged_in,
+			'khachhang' => $khachhang,
 		);
 		return $this->load->view('cart/cart', $data);
 	}

@@ -39,7 +39,7 @@
 								<div class="user_icon"><img src="<?php echo base_url('/static/'); ?>images/user.svg" alt=""></div>
 								<div>
 									<?php if (isset($logged_in) && !empty($logged_in)){ ?>
-										<a href="#"><?php echo "Chào, ". $khachhang; ?></a>
+										<a href="<?php echo base_url('/khach-hang/'); ?>"><?php echo "Chào, ". $khachhang; ?></a>
 									<?php }else{ ?>
 										<a href="<?php echo base_url('/dang-nhap/'); ?>">Đăng Nhập</a>
 									<?php } ?>
@@ -104,11 +104,28 @@
 									<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 										<div class="cart_icon">
 											<img src="<?php echo base_url('/static/'); ?>images/cart.png" alt="">
-											<div class="cart_count"><span>10</span></div>
+											<div class="cart_count"><span>
+												<?php
+													if(isset($soluongsanpham)){
+														echo $soluongsanpham[0]["so luong san pham"];
+													}else{
+														echo 0;
+													}
+												?>
+											</span></div>
 										</div>
 										<div class="cart_content">
-											<div class="cart_text"><a href="#">Cart</a></div>
-											<div class="cart_price">$85</div>
+											<div class="cart_text"><a href="<?php echo base_url('/gio-hang/'); ?>">Cart</a></div>
+											<div class="cart_price">
+
+												<?php
+													if(isset($cart_price)){
+														echo $cart_price[0]["tongtien"]." VNĐ";
+													}else{
+														echo 0;
+													}
+												?>
+											</div>
 										</div>
 									</div>
 								</div>

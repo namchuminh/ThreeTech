@@ -2,8 +2,7 @@
 <?php require(__DIR__.'/layouts/header.php'); ?>		
 <?php require(__DIR__.'/layouts/nav.php'); ?>	
 
-<?php 
-
+<?php
 	if(isset($messthanhcong)){
 
 		echo "<script type='text/javascript'>alert('$messthanhcong');</script>";
@@ -58,9 +57,9 @@
 							<div class="contact_form_button">
 								<button type="submit" class="button contact_submit_button">Đăng Ký</button>
 							</div>
-							<?php if(isset($messtt)) {?>
+							<!-- <?php if(isset($messtt)) {?>
 									<p style="color: #D8000C;"><i class="fa-solid fa-triangle-exclamation"></i> <?php echo $messtt;?></p>
-								<?php } ?>
+								<?php } ?> -->
 							
 						</form>
 

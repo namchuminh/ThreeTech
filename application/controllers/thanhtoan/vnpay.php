@@ -149,19 +149,19 @@ class vnpay extends CI_Controller {
 		$_GET['vnp_PayDate'];// ngay tao
 		$_GET['vnp_ResponseCode'];// ket qua
 
-		$date = $_GET['vnp_PayDate'];
+		// $date = $_GET['vnp_PayDate'];
 
-		$year = $date[0].''.$date[1].''.$date[2].''.$date[3];
-		$mounht = $date[4].''.$date[5];
+		// $year = $date[0].''.$date[1].''.$date[2].''.$date[3];
+		// $mounht = $date[4].''.$date[5];
 
-		$days = $date[6].''.$date[7];
-		$hours = $date[8].''.$date[9];
-		$minute = $date[10].''.$date[11];
-		$second = $date[12].''.$date[13];
-		// echo $date;
-		// echo "<br>";
-		// echo $year.$mounht.$days.$hours.$minute.$second;
-		$time = $year."-".$mounht."-".$days."-".$hours."-".$minute."-".$second;
+		// $days = $date[6].''.$date[7];
+		// $hours = $date[8].''.$date[9];
+		// $minute = $date[10].''.$date[11];
+		// $second = $date[12].''.$date[13];
+		// // echo $date;
+		// // echo "<br>";
+		// // echo $year.$mounht.$days.$hours.$minute.$second;
+		// $time = $year."-".$mounht."-".$days."-".$hours."-".$minute."-".$second;
 
 
 		if($_GET['vnp_ResponseCode'] == '00'){
