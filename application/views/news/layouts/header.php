@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/shop_responsive.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/blog_single_styles.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/blog_single_responsive.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/main_styles.css">
 </head>
 
 <body>
@@ -46,7 +47,7 @@
 								<div class="user_icon"><img src="<?php echo base_url('/static/'); ?>images/user.svg" alt=""></div>
 								<div>
 									<?php if (isset($logged_in) && !empty($logged_in)){ ?>
-										<a href="#"><?php echo "Chào, ". $khachhang; ?></a>
+										<a href="<?php echo base_url('/khach-hang/'); ?>"><?php echo "Chào, ". $khachhang; ?></a>
 									<?php }else{ ?>
 										<a href="<?php echo base_url('/dang-nhap/'); ?>">Đăng Nhập</a>
 									<?php } ?>

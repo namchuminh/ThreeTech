@@ -110,6 +110,8 @@ $route['audio-video'] = 'product/product/audiovideo';
 $route['may-tinh-laptop'] = 'product/product/maytinhlaptop';
 $route['top-20'] = 'product/product/top20';
 $route['trend'] = 'product/product/trend';
+$route['chuyen-muc/loc'] = 'product/category/filterProduct';
+
 
 $route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
 

@@ -11,6 +11,27 @@ class product extends CI_Controller {
 	{
 		$this->load->model('product/model_product');
 		$this->load->model('model_index');
+
+		if(count($this->model_product->getDetailProduct($duongDan)) <= 0 && $this->session->has_userdata('khachhang')){
+			$khachhang = $this->session->userdata('khachhang');
+			$logged_in = $this->session->userdata('logged_in');
+			$kh = $this->model_index->getCustomerLogin($khachhang);
+			$khachHangId = $kh[0]['khachHangId'];
+			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
+				'soLuongSanPham' => $soLuongSanPham,
+			);
+			return $this->load->view('view_404', $data);
+		}
+
+		if(count($this->model_product->getDetailProduct($duongDan)) <= 0 && !$this->session->has_userdata('khachhang')){
+			return $this->load->view('view_404');
+		}
+
+
+		
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
@@ -129,7 +150,7 @@ class product extends CI_Controller {
 
 	public function search(){
 		$tenSanPhamCanTim = $this->input->get('product');
-
+		$this->load->model('model_index');
 		$this->load->model('product/model_product');
 
 		$product = $this->model_product->search($tenSanPhamCanTim);
@@ -137,14 +158,33 @@ class product extends CI_Controller {
 		$this->load->model('model_index');
 		$cothebanquantam = $this->model_index->getProductQuanTam();
 
+		if($this->session->has_userdata('khachhang')){
+			$khachhang = $this->session->userdata('khachhang');
+			$logged_in = $this->session->userdata('logged_in');
+			$kh = $this->model_index->getCustomerLogin($khachhang);
+			$khachHangId = $kh[0]['khachHangId'];
+			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
+				'soluonsanpham' => $soLuongSanPham,
+				'product' => $product,
+				'cothebanquantam' => $cothebanquantam,
+				'tenSanPhamCanTim' => $tenSanPhamCanTim,
+			);
 
-		$data = array(
-			'product' => $product,
-			'cothebanquantam' => $cothebanquantam,
-			'tenSanPhamCanTim' => $tenSanPhamCanTim,
-		);
+			return $this->load->view('product/search', $data, FALSE);
+		}else{
+			$data = array(
+				'product' => $product,
+				'cothebanquantam' => $cothebanquantam,
+				'tenSanPhamCanTim' => $tenSanPhamCanTim,
+			);
 
-		return $this->load->view('product/search', $data, FALSE);
+			return $this->load->view('product/search', $data, FALSE);
+		}
+
+		
 	}
 
 	public function addToCart(){

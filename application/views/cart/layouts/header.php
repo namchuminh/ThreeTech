@@ -18,6 +18,7 @@
 <link href="<?php echo base_url('static/'); ?>plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/main_styles.css">
 </head>
 
 <body>
@@ -34,20 +35,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+84 037 996 045</div>
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:laptrinhtudau@gmail.com">laptrinhtudau@gmail.com</a></div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('static/'); ?>images/phone.png" alt=""></div>(+84)888.888.888</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('static/'); ?>images/mail.png" alt=""></div><a href="mailto:lienhe@threetech.online">lienhe@threetech.online</a></div>
 						<div class="top_bar_content ml-auto">
-							<?php if(isset($logged_in) ){ ?>
+							<?php if(isset($logged_in)){ ?>
 								<div class="top_bar_user">
-									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Xin chào, <?php echo $taikhoan; ?>!</a></div>
+									<div class="user_icon"><img src="<?php echo base_url('static/'); ?>images/user.svg" alt=""></div>
+									<div><a href="<?php echo base_url('khach-hang'); ?>">Xin chào, <?php echo $khachhang; ?>!</a></div>
 									<div><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></div>
 								</div>
 							<?php } else {?>
 								<div class="top_bar_user">
-									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Đăng Nhập</a></div>
-									<div><a href="#">Đăng Ký</a></div>
+									<div class="user_icon"><img src="<?php echo base_url('static/'); ?>images/user.svg" alt=""></div>
+									<div><a href="<?php echo base_url('dang-nhap'); ?>">Đăng Nhập</a></div>
+									<div><a href="<?php echo base_url('dang-ky'); ?>">Đăng Ký</a></div>
 								</div>
 							<?php } ?>
 						</div>
@@ -65,29 +66,27 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="#">ThreeTech</a></div>
+							<div class="logo"><a href="<?php echo base_url(); ?>">ThreeTech</a></div>
 						</div>
 					</div>
 
-					<!-- Search -->
 					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm theo tên sản phẩm...">
-										<div class="custom_dropdown">
+									<form action="<?php echo base_url('/tim-kiem/') ?>" class="header_search_form clearfix">
+										<input type="search" required="required" class="header_search_input" placeholder="Nhập tên sản phẩm cần tìm..." name="product">
+										<div class="custom_dropdown" style="display: none; width: 10px;">
 											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">Tất Cả</span>
-												<i class="fas fa-chevron-down"></i>
+												<span class="custom_dropdown_placeholder clc"></span>
 												<ul class="custom_list clc">
-													<li><a class="clc" href="#">Laptop</a></li>
-													<li><a class="clc" href="#">Máy Tính</a></li>
-													<li><a class="clc" href="#">Linh Kiện</a></li>
+													<li><a class="clc" href="#"></a></li>
+													<li><a class="clc" href="#"></a></li>
+													<li><a class="clc" href="#"></a></li>
 												</ul>
 											</div>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="<?php echo base_url('static/'); ?>images/search.png" alt=""></button>
+										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="<?php echo base_url('/static/images/search.png'); ?>" alt=""></button>
 									</form>
 								</div>
 							</div>
@@ -98,24 +97,25 @@
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="images/cart.png" alt="">
-										<?php if(isset($logged_in) ){ ?>
-											<div class="cart_count"><span>0</span></div>
-										<?php } else {?>
-											<div class="cart_count"><span>0</span></div>
-										<?php } ?>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="#">Giỏ Hàng</a></div>
-										<div class="cart_price">0<sup>đ</sup></div>
+							<?php if (isset($logged_in) && !empty($logged_in)): ?>
+								<div class="cart">
+									<div class="cart_container d-flex flex-row align-items-center justify-content-end">
+										<div class="cart_icon">
+											<img src="<?php echo base_url('/static/'); ?>images/cart.png" alt="">
+											<div class="cart_count"><span>10</span></div>
+										</div>
+										<div class="cart_content">
+											<div class="cart_text"><a href="#">Cart</a></div>
+											<div class="cart_price">$85</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							<?php endif ?>
+							
 						</div>
 					</div>
+
+					
 				</div>
 			</div>
 		</div>

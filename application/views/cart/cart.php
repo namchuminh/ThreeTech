@@ -3,9 +3,9 @@
 
 <div class="container">
   <?php
-     if($soLuongSanPham[0]["so luong san pham"] ==0){?>
-      <div style="width: 100%; height: 500px; text-align:center ;line-height: 500px;">
-         <h3 style="line-height: 500px; color: gray;"><a href="<?php echo base_url(); ?>" class="btn btn-warning"><i class="fa fa-angle-left"></i>Mua Hàng Ngay</a> Chưa có sản phẩm nào trong giỏ hàng</h3>
+     if($soLuongSanPham[0]["so luong san pham"] == 0){?>
+      <div style="width: 100%; height: 200px; text-align:center ;line-height: 500px;">
+         <h3 style="margin-top: 100px; color: gray;"><a href="<?php echo base_url(); ?>" class="btn btn-warning"><i class="fa fa-angle-left"></i> Mua Hàng Ngay</a> Chưa có sản phẩm nào trong giỏ hàng</h3>
 
       </div>
   <?php  

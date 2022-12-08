@@ -37,14 +37,14 @@
 							<?php if(isset($logged_in)){ ?>
 								<div class="top_bar_user">
 									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Xin chào, <?php echo $khachhang; ?>!</a></div>
+									<div><a href="<?php echo base_url('khach-hang'); ?>">Xin chào, <?php echo $khachhang; ?>!</a></div>
 									<div><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></div>
 								</div>
 							<?php } else {?>
 								<div class="top_bar_user">
 									<div class="user_icon"><img src="images/user.svg" alt=""></div>
-									<div><a href="#">Đăng Nhập</a></div>
-									<div><a href="#">Đăng Ký</a></div>
+									<div><a href="<?php echo base_url('dang-nhap'); ?>">Đăng Nhập</a></div>
+									<div><a href="<?php echo base_url('dang-ky'); ?>">Đăng Ký</a></div>
 								</div>
 							<?php } ?>
 						</div>
@@ -110,6 +110,7 @@
 							
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>

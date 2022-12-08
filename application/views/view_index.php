@@ -39,7 +39,7 @@
 								<div class="user_icon"><img src="<?php echo base_url('/static/'); ?>images/user.svg" alt=""></div>
 								<div>
 									<?php if (isset($logged_in) && !empty($logged_in)){ ?>
-										<a href="#"><?php echo "Chào, ". $khachhang; ?></a>
+										<a href="<?php echo base_url('/khach-hang/'); ?>"><?php echo "Chào, ". $khachhang; ?></a>
 									<?php }else{ ?>
 										<a href="<?php echo base_url('/dang-nhap/'); ?>">Đăng Nhập</a>
 									<?php } ?>

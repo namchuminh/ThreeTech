@@ -21,11 +21,27 @@ class cart extends CI_Controller {
 		$cart_product = $this->model_addToCart->CartKH($khachHangId);
 		// var_dump($cart_product);
 		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-		$data = array(
-			'product' => $cart_product,
-			'soLuongSanPham' =>$soLuongSanPham,
-		);
-		return $this->load->view('cart/cart', $data);
+
+		if($this->session->userdata('khachhang')){
+			$khachhang = $this->session->userdata('khachhang');
+			$logged_in = $this->session->userdata('logged_in');
+			$kh = $this->model_index->getCustomerLogin($khachhang);
+			$khachHangId = $kh[0]['khachHangId'];
+			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
+				'product' => $cart_product,
+				'soLuongSanPham' =>$soLuongSanPham,
+			);
+			return $this->load->view('cart/cart', $data);
+		}else{
+			$data = array(
+				'product' => $cart_product,
+				'soLuongSanPham' =>$soLuongSanPham,
+			);
+			return $this->load->view('cart/cart', $data);
+		}
 	}
 	public function addToCart(){
 		//lay id khach hang
