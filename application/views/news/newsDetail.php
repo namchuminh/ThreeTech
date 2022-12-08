@@ -2,7 +2,7 @@
 <?php require(__DIR__.'/layouts/nav.php'); ?>
 <style>
 	img {
-		max-width: 80%;
+		max-width: 100%;
 		image-rendering: -webkit-optimize-contrast;
 	}
 </style>
