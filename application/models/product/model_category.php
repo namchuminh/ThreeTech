@@ -24,6 +24,12 @@ class model_category extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function filterProduct($chuyenMucId, $giaBatDau, $giaKetThuc){
+		$sql = "SELECT * FROM sanpham WHERE chuyenMucId = ? AND giaBan BETWEEN ? AND ?";
+		$result = $this->db->query($sql, array($chuyenMucId, $giaBatDau, $giaKetThuc));
+		return $result->result_array();
+	}
+
 }
 
 /* End of file model_category.php */

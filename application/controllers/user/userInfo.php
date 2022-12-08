@@ -12,12 +12,18 @@ class userInfo extends CI_Controller {
 
 	public function index()
 	{
-		$khachhang = $this->session->userdata('khachhang');
 		$this->load->model('model_index');
-
+		$khachhang = $this->session->userdata('khachhang');
+		$logged_in = $this->session->userdata('logged_in');
+		$kh = $this->model_index->getCustomerLogin($khachhang);
+		$khachHangId = $kh[0]['khachHangId'];
+		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
 		$result = $this->model_index->getCustomerLogin($khachhang);
 		$data = array(
 			'customer' => $result,
+			'khachhang' => $khachhang,
+			'logged_in' => $logged_in,
+			'soluonsanpham' => $soLuongSanPham,
 		);
 		return $this->load->view('user/userInfo',$data);
 	}

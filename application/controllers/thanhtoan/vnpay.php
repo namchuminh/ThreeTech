@@ -7,6 +7,9 @@ class vnpay extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->has_userdata('logged_in')==False){
+			return redirect(base_url('dang-nhap/'));
+		}
 	}
 
 	public function index()
@@ -42,11 +45,14 @@ class vnpay extends CI_Controller {
 		$this->load->model('cart/model_addToCart');
 		$cart_product = $this->model_addToCart->CartKH($khachHangId);
 		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+		$khachhang = $this->session->userdata('khachhang');
+		$logged_in = $this->session->userdata('logged_in');
 
 
 		if(empty($hoten)){
 			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
 				'messht' => "Vui lòng nhập họ và tên!",
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
@@ -56,6 +62,8 @@ class vnpay extends CI_Controller {
 
 		if(empty($vnp_BankCode)){
 			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
 				'messgh' => "Vui lòng chọn ngân hàng!",
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
@@ -65,6 +73,8 @@ class vnpay extends CI_Controller {
 		
 		if(empty($sdt)){
 			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
 				'messsdt' => "Vui lòng nhập số điện thoại!",
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
@@ -73,6 +83,8 @@ class vnpay extends CI_Controller {
 		}
 		if(empty($diachi)){
 			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
 				'messdc' => "Vui lòng nhập địa chỉ!",
 				'soLuongSanPham' =>$soLuongSanPham,
 				'product' => $cart_product,
@@ -199,9 +211,21 @@ class vnpay extends CI_Controller {
 
 
 		$this->load->model('thanhtoan/model_dathang');
-
+		$this->load->model('model_index');
+		$khachhang = $this->session->userdata('khachhang');
+		$result = $this->model_index->getCustomerLogin($khachhang);
+		$khachHangId = $result[0]['khachHangId'];
+		// echo $khachHangId;
+		$this->load->model('cart/model_addToCart');
+		$cart_product = $this->model_addToCart->CartKH($khachHangId);
+		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+		$khachhang = $this->session->userdata('khachhang');
+		$logged_in = $this->session->userdata('logged_in');
 		$data = array(	
 			'tongtien'=>$sum,
+			'khachhang' => $khachhang,
+			'logged_in' => $logged_in,
+			'soLuongSanPham' => $soLuongSanPham,
 		);
 		$this->load->view('thanhtoan/view_dathang', $data);
 	}

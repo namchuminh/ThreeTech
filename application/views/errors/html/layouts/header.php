@@ -15,10 +15,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-<link href="<?php echo base_url('static/'); ?>plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/contact_styles.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/'); ?>styles/main_styles.css">
 </head>
 
 <body>
@@ -35,20 +31,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>(+84)888.888.888</div>
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:lienhe@threetech.online">lienhe@threetech.online</a></div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('static/'); ?>images/phone.png" alt=""></div>(+84)888.888.888</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?php echo base_url('static/'); ?>images/mail.png" alt=""></div><a href="mailto:lienhe@threetech.online">lienhe@threetech.online</a></div>
 						<div class="top_bar_content ml-auto">
-							<?php if(isset($logged_in) ){ ?>
+							<?php if(isset($logged_in)){ ?>
 								<div class="top_bar_user">
-									<div class="user_icon"><img src="<?php echo base_url('static/') ?>images/user.svg" alt=""></div>
-									<div><a href="<?php echo base_url('khach-hang/') ?>">Xin chào, <?php echo $khachhang; ?>!</a></div>
+									<div class="user_icon"><img src="images/user.svg" alt=""></div>
+									<div><a href="#">Xin chào, <?php echo $khachhang; ?>!</a></div>
 									<div><a href="<?php echo base_url('dang-xuat/'); ?>">Đăng Xuất</a></div>
 								</div>
 							<?php } else {?>
 								<div class="top_bar_user">
-									<div class="user_icon"><img src="<?php echo base_url('static/') ?>images/user.svg" alt=""></div>
-									<div><a href="<?php echo base_url('dang-nhap/') ?>">Đăng Nhập</a></div>
-									<div><a href="<?php echo base_url('dang-ky/') ?>">Đăng Ký</a></div>
+									<div class="user_icon"><img src="images/user.svg" alt=""></div>
+									<div><a href="#">Đăng Nhập</a></div>
+									<div><a href="#">Đăng Ký</a></div>
 								</div>
 							<?php } ?>
 						</div>
@@ -97,18 +93,21 @@
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="<?php echo base_url('/static/'); ?>images/cart.png" alt="">
-										<div class="cart_count"><span>0</span></div>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="#">Giỏ Hàng</a></div>
-										<div class="cart_price">0<sup>đ</sup></div>
+							<?php if (isset($logged_in) && !empty($logged_in)): ?>
+								<div class="cart">
+									<div class="cart_container d-flex flex-row align-items-center justify-content-end">
+										<div class="cart_icon">
+											<img src="<?php echo base_url('/static/'); ?>images/cart.png" alt="">
+											<div class="cart_count"><span>10</span></div>
+										</div>
+										<div class="cart_content">
+											<div class="cart_text"><a href="#">Cart</a></div>
+											<div class="cart_price">$85</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							<?php endif ?>
+							
 						</div>
 					</div>
 				</div>

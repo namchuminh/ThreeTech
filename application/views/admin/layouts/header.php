@@ -108,7 +108,25 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('admin/tin-tuc/'); ?>">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tin Tức - Blog</span></a>
+                    <span>Tin Tức</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/khach-hang/'); ?>">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Khách Hàng</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/don-hang/'); ?>">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Đơn Hàng</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/tra-luong/'); ?>">
+                    <i class="fa-sharp fa-solid fa-money-bill"></i>
+                    <span>Trả Lương</span></a>
             </li>
 
             <!-- Divider -->
@@ -137,18 +155,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                   
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -244,7 +251,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="<?php echo base_url('static/') ?>img/undraw_profile_1.svg"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -256,7 +263,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="<?php echo base_url('static/') ?>img/undraw_profile_2.svg"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -268,7 +275,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="<?php echo base_url('static/') ?>img/undraw_profile_3.svg"
                                             alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>

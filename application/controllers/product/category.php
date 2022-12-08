@@ -55,6 +55,24 @@ class category extends CI_Controller {
 		}
 	}
 
+	public function filterProduct(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url());
+		} 
+
+		$this->load->model('product/model_category');
+
+		$chuyenMucId = $this->input->post('chuyenMucId');
+		$giaBatDau = $this->input->post('giaBatDau');
+		$giaKetThuc = $this->input->post('giaKetThuc');
+
+		$product = $this->model_category->filterProduct($chuyenMucId, $giaBatDau, $giaKetThuc);
+
+		$result = json_encode($product);
+
+		echo $result;
+	}
+
 }
 
 /* End of file category.php */

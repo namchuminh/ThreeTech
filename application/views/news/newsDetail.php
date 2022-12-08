@@ -1,6 +1,11 @@
 <?php require(__DIR__.'/layouts/header.php'); ?>		
 <?php require(__DIR__.'/layouts/nav.php'); ?>
-
+<style>
+	img {
+		max-width: 80%;
+		image-rendering: -webkit-optimize-contrast;
+	}
+</style>
 <div class="single_post">
 		<div class="container">
 			<div class="row">

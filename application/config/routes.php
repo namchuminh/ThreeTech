@@ -77,6 +77,14 @@ $route['admin/tin-tuc/tao-bai-viet'] = 'admin/adminNews/addNews';
 $route['admin/tin-tuc/xu-ly-tao-bai-viet'] = 'admin/adminNews/actionAddNews';
 $route['admin/tin-tuc/xoa/(:any)'] = 'admin/adminNews/actionDeleteNews/$1';
 $route['admin/ca-nhan/xoa-san-pham/(:any)'] = 'admin/adminProfile/actionDeleteMyProduct/$1';
+$route['admin/bieu-do-doanh-thu'] = 'admin/admin/getBieuDoDoanhThu';
+$route['admin/so-luong-ban-theo-chuyen-muc'] = 'admin/admin/getSoLuongBanByChuyenMuc';
+$route['admin/tin-tuc/sua/(:any)'] = 'admin/adminNews/actionUpdateNews/$1';
+$route['admin/khach-hang'] = 'admin/adminCustomer/index';
+$route['khach-hang/xuat'] = 'admin/adminCustomer/exportExcel';
+$route['khach-hang/tim-kiem'] = 'admin/adminCustomer/searchCustomer';
+$route['khach-hang/xem-them'] = 'admin/adminCustomer/loadCustomer';
+$route['khach-hang/xoa'] = 'admin/adminCustomer/deleteCustomer';
 
 
 $route['dang-nhap'] = 'user/userLogin/index';
@@ -102,6 +110,8 @@ $route['audio-video'] = 'product/product/audiovideo';
 $route['may-tinh-laptop'] = 'product/product/maytinhlaptop';
 $route['top-20'] = 'product/product/top20';
 $route['trend'] = 'product/product/trend';
+$route['chuyen-muc/loc'] = 'product/category/filterProduct';
+
 
 $route['xu-ly-thanh-toan'] = 'thanhtoan/vnpay/thanhtoan';
 

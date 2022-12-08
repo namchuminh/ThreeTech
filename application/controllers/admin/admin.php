@@ -12,16 +12,46 @@ class admin extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('admin/model_admin');
 		$tieuDe = "ThreeTech - Trang quản trị Admin!";
 		$taiKhoan = $this->session->userdata('taikhoan');
-		$this->load->model('admin/model_admin');
+
+		$doanhThuThangNay = $this->model_admin->getDoanhThuThangNay();
+		$dauNgayToiGio = $this->model_admin->getDauNgayToiGio();
+		$soLuongKhachHang = $this->model_admin->soLuongKhachHang();
+		$getKhachHangMoi = $this->model_admin->getKhachHangMoi();
+		$phanTramSanPhamBanChay = $this->model_admin->getPhanTramSanPhamBanChay();
+
+
 
 		$data = array(
 			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
 			'tieuDe' => $tieuDe,
+			'doanhThuThangNay' => $doanhThuThangNay,
+			'dauNgayToiGio' => $dauNgayToiGio,
+			'soLuongKhachHang' => $soLuongKhachHang,
+			'getKhachHangMoi' => $getKhachHangMoi,
+			'phanTramSanPhamBanChay' => $phanTramSanPhamBanChay,
 		);
 		return $this->load->view('admin/index', $data);
 	}
+
+	public function getBieuDoDoanhThu(){
+		$this->load->model('admin/model_admin');
+		$bieuDoDoanhThu = $this->model_admin->getBieuDoDoanhThu();
+		$result = json_encode($bieuDoDoanhThu);
+		echo $result;
+	}
+
+	public function getSoLuongBanByChuyenMuc(){
+		$this->load->model('admin/model_admin');
+		$getSoLuongBanByChuyenMuc = $this->model_admin->getSoLuongBanByChuyenMuc();
+
+		$result = json_encode($getSoLuongBanByChuyenMuc);
+
+		echo $result;
+	}
+
 
 	public function logout(){
 		$this->session->sess_destroy();

@@ -85,6 +85,58 @@ class adminNews extends CI_Controller {
 		$result = $this->model_news->deleteNews($tinTucId);
 		return redirect(base_url('admin/tin-tuc/'));
 	}
+
+	public function actionUpdateNews($tinTucId){
+
+		if(!empty($_POST) && isset($_POST)){
+			$taiKhoan = $this->session->userdata('taikhoan');
+			$this->load->model('admin/model_admin');
+			$nhanVien = $this->model_admin->getUserLogin($taiKhoan);
+			$nhanVienId = $nhanVien[0]['nhanVienId'];
+			$this->load->model('admin/model_news');
+			$news = $this->model_news->getNewsById($tinTucId);
+
+			$tieuDe = $this->input->post('tieuDe');
+			$duongDan = $this->input->post('duongDan');
+			$noiDung = $this->input->post('noiDung');
+			$anhChinh = $news[0]["anhChinh"];
+
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+			$this->load->library('upload', $config);
+			
+			if ($this->upload->do_upload('anhChinh')){
+				$imageChinh = $this->upload->data();
+				$anhChinh = base_url('uploads').'/'.$imageChinh['file_name'];
+			}
+
+			$result = $this->model_news->updateNews($anhChinh, $tieuDe, $noiDung, $nhanVienId, $duongDan, $tinTucId);
+			
+			$tieuDe = "ThreeTech - Sửa Tin Tức Mới";
+			$news = $this->model_news->getNewsById($tinTucId);
+			$data = array(
+				'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+				'tieuDe' => $tieuDe,
+				'news' => $news,
+			);
+			return $this->load->view('admin/updateNews', $data);
+		}
+
+
+		$tieuDe = "ThreeTech - Sửa Tin Tức Mới";
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$this->load->model('admin/model_admin');
+		$this->session->set_userdata('referred_from', current_url());
+		$this->load->model('admin/model_news');
+		$news = $this->model_news->getNewsById($tinTucId);
+		$data = array(
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
+			'news' => $news,
+		);
+		return $this->load->view('admin/updateNews', $data);
+	}
 }
 
 /* End of file adminNews.php */
