@@ -105,6 +105,12 @@ class model_index extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
+
+	public function getAllTinTuc(){
+		$sql = "SELECT * FROM tintuc";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 }
 
 /* End of file model_index.php */

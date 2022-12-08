@@ -179,7 +179,7 @@
 									<li class="hassubs">
 										<a href="<?php echo base_url('/chuyen-muc/linh-kien/'); ?>">Linh Kiện</i></a>
 									</li>
-									<li><a href="blog.html">Tin Tức</a></li>
+									<li><a href="<?php echo base_url('/tin-tuc/'); ?>">Tin Tức</a></li>
 									<li><a href="contact.html">Liên Hệ</a></li>
 								</ul>
 							</div>
@@ -1040,7 +1040,7 @@
 								</div>
 							<?php endforeach ?>
 						</div>
-						<div class="reviews_dots"></div>
+						
 					</div>
 				</div>
 			</div>

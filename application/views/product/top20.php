@@ -19,17 +19,11 @@
 					<!-- Shop Sidebar -->
 					<div class="shop_sidebar">
 						<div class="sidebar_section">
-							<div class="sidebar_title">Categories</div>
+							<div class="sidebar_title">Chuyên mục</div>
 							<ul class="sidebar_categories">
-								<li><a href="#">Computers & Laptops</a></li>
-								<li><a href="#">Cameras & Photos</a></li>
-								<li><a href="#">Hardware</a></li>
-								<li><a href="#">Smartphones & Tablets</a></li>
-								<li><a href="#">TV & Audio</a></li>
-								<li><a href="#">Gadgets</a></li>
-								<li><a href="#">Car Electronics</a></li>
-								<li><a href="#">Video Games & Consoles</a></li>
-								<li><a href="#">Accessories</a></li>
+								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-laptop/'); ?>">Laptop</a></li>
+								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-pc/'); ?>">Máy tính</a></li>
+								<li><a href="<?php echo base_url('/chuyen-muc/linh-kien/'); ?>">Linh kiện</a></li>
 							</ul>
 						</div>
 					</div>

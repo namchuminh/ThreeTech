@@ -124,3 +124,4 @@ $route['nhan-vien/xuat'] = 'admin/adminPerson/exportExcel';
 $route['chuyen-muc/(:any)'] = 'product/category/index/$1';
 
 $route['tin-tuc/(:any)'] = 'news/newsDetail/index/$1';
+$route['tin-tuc'] = 'news/allnews/index';
