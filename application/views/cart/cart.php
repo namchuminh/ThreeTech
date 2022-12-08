@@ -15,7 +15,7 @@
   <table id="cart" class="table table-hover table-condensed">
     <thead>
       <tr>
-        <th style="width:50%">Tên sản phẩm</th>
+        <th style="width:50%">Sản phẩm</th>
         <th style="width:10%">Giá</th>
         <th style="width:8%">Số lượng</th>
         <th style="width:22%" class="text-center">Thành tiền</th>
@@ -35,11 +35,11 @@
           <tr>
             <td data-th="Product">
               <div class="row">
-                <div class="col-sm-2 hidden-xs"><img src="<?php echo $value['anhChinh']; ?>" alt="Sản phẩm 1" class="img-responsive" width="100">
+                <div class="col-sm-2 hidden-xs"><img src="<?php echo $value['anhChinh']; ?>" alt="Sản phẩm 1" class="img-responsive" width="80">
                 </div>
                 <div class="col-sm-10">
                   <h4 class="nomargin"><?php echo $value['tenSanPham']; ?></h4>
-                  <p><?php echo $value['moTa']; ?></p>
+                  <div style="width: 100%;height: 20px; overflow: hidden;"><?php echo $value['moTa']; ?></div>
                 </div>
               </div>
             </td>
@@ -47,7 +47,7 @@
             <td data-th="Quantity"><input class="form-control text-center" name="soLuong" min="1" value="<?php echo $value['so luong ban']; ?>" type="number">
             </td>
             
-            <td data-th="Subtotal" class="text-center"><?php echo $sum; ?></td>
+            <td data-th="Subtotal" class="text-center"><?php echo $sum.".000"; ?></td>
             <td class="actions" data-th="">
 
 
@@ -78,8 +78,8 @@
       <td><a href="<?php echo base_url('gio-hang'); ?>" class="btn btn-warning"><i class="fa fa-angle-left"></i>Trở lại giỏ hàng</a>
       </td>
       <td colspan="2" class="hidden-xs"> </td>
-      <td class="hidden-xs text-center"><strong>Tổng tiền: <?php echo $sum_cart; ?> VNĐ</strong>
-        <input type="hidden" name="tongtien" value="<?php echo $sum_cart; ?>">
+      <td class="hidden-xs text-center"><strong>Tổng tiền: <?php echo $sum_cart.".000"; ?> VNĐ</strong>
+        <input type="hidden" name="tongtien" value="<?php echo $sum_cart*1000; ?>">
       </td>                 
         <td><button type="submit" class="btn btn-success btn-block" name="redirect">Đặt hàng</button></td>
       </form>
