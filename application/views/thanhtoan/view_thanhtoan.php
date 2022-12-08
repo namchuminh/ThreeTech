@@ -54,7 +54,25 @@
                 <div class="form-group">
 
                     <label >Số tiền:</label>
-                    <label><?php echo $_GET['vnp_Amount'] ?></label>
+                    <label><?php 
+
+                    $sotien = $_GET['vnp_Amount']/100 ;
+                    if(strlen($sotien)<=6){
+                        echo ($sotien/1000).".000 VNĐ"; 
+                    }
+                    if(strlen($sotien)>=7){
+                        echo (floor($sotien/1000000)).'.'.($sotien%1000000/1000).".000 VNĐ"; 
+                    }
+                    //echo $sotien%1000000/1000;
+                    // if(strlen($sotien) <= 6){
+                    //     echo ($sotien/1000).".000 VNĐ";
+                    // }if(strlen($sotien) >= 7){
+                    //     echo ($sotien/1000000).".000.000 VNĐ";
+                    // }
+                    ?>
+                    
+
+                    </label>
                 </div>  
                 <div class="form-group">
                     <label >Nội dung thanh toán:</label>

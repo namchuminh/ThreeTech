@@ -43,11 +43,49 @@
                 </div>
               </div>
             </td>
-            <td data-th="Price"><?php echo $value['giaBan']; ?></td>
+            <td data-th="Price"><?php 
+              $giaban = (string)$value['giaBan'];
+              //echo strlen($giaban);
+              //$giaban = (string)123456789;
+              $tienban="";
+
+              for($i=0; $i<strlen($giaban);$i++){
+                  if(strlen($giaban)==9){
+                    $tienban .= $giaban[$i];
+                    if($i==1){
+                      $tienban .=".";
+                    }
+                  }else if(strlen($giaban)==7){
+                    $tienban .= $giaban[$i];
+                  }
+                  else if(strlen($giaban)==8){
+                    $tienban .= $giaban[$i];
+                    if($i==0){
+                      $tienban .=".";
+                    }
+                  }
+
+                  
+              }
+              echo $tienban;
+            ?></td>
             <td data-th="Quantity"><input class="form-control text-center" name="soLuong" min="1" value="<?php echo $value['so luong ban']; ?>" type="number">
             </td>
             
-            <td data-th="Subtotal" class="text-center"><?php echo $sum.".000"; ?></td>
+            <td data-th="Subtotal" class="text-center"><?php
+
+              
+              //echo $sum*1000;//floor($sum*1000/1000000).
+              //echo floor($sum/1000);
+              if(strlen($sum*1000)<=6){
+                echo ($sum%1000).".000"; 
+              }
+              if(strlen($sum*1000)>=7){
+                echo (floor($sum/1000)).'.'.($sum%1000).".000"; 
+              }
+              
+
+           ?></td>
             <td class="actions" data-th="">
 
 
@@ -78,7 +116,12 @@
       <td><a href="<?php echo base_url('gio-hang'); ?>" class="btn btn-warning"><i class="fa fa-angle-left"></i>Trở lại giỏ hàng</a>
       </td>
       <td colspan="2" class="hidden-xs"> </td>
-      <td class="hidden-xs text-center"><strong>Tổng tiền: <?php echo $sum_cart.".000"; ?> VNĐ</strong>
+      <td class="hidden-xs text-center"><strong>Tổng tiền: <?php if(strlen($sum_cart*1000)<=6){
+                echo ($sum_cart%1000).".000"; 
+              }
+              if(strlen($sum_cart*1000)>=7){
+                echo (floor($sum_cart/1000)).'.'.($sum_cart%1000).".000"; 
+              } ?> VNĐ</strong>
         <input type="hidden" name="tongtien" value="<?php echo $sum_cart*1000; ?>">
       </td>                 
         <td><button type="submit" class="btn btn-success btn-block" name="redirect">Đặt hàng</button></td>

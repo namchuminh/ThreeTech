@@ -182,7 +182,7 @@ class vnpay extends CI_Controller {
 			$result = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $result[0]['khachHangId'];
 			$this->load->model('thanhtoan/model_vnpay');
-			$result = $this->model_vnpay->add($khachHangId,$_GET['vnp_TxnRef'],$_GET['vnp_Amount'], $_GET['vnp_OrderInfo'],$_GET['vnp_BankCode'], $_GET['vnp_TransactionNo']);
+			$result = $this->model_vnpay->add($khachHangId,$_GET['vnp_TxnRef'],$_GET['vnp_Amount']/100, $_GET['vnp_OrderInfo'],$_GET['vnp_BankCode'], $_GET['vnp_TransactionNo']);
 			if($result>0){
 				$this->load->model('cart/model_addToCart');
 				$cart_product = $this->model_addToCart->CartKH($khachHangId);
