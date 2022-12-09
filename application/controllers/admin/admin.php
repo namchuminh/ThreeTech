@@ -16,18 +16,17 @@ class admin extends CI_Controller {
 		$tieuDe = "ThreeTech - Trang quản trị Admin!";
 		$taiKhoan = $this->session->userdata('taikhoan');
 
-		$doanhThuThangNay = $this->model_admin->getDoanhThuThangNay();
+		$getDoanhThuHomQua = $this->model_admin->getDoanhThuHomQua();
 		$dauNgayToiGio = $this->model_admin->getDauNgayToiGio();
 		$soLuongKhachHang = $this->model_admin->soLuongKhachHang();
 		$getKhachHangMoi = $this->model_admin->getKhachHangMoi();
 		$phanTramSanPhamBanChay = $this->model_admin->getPhanTramSanPhamBanChay();
 
 
-
 		$data = array(
 			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
 			'tieuDe' => $tieuDe,
-			'doanhThuThangNay' => $doanhThuThangNay,
+			'getDoanhThuHomQua' => $getDoanhThuHomQua,
 			'dauNgayToiGio' => $dauNgayToiGio,
 			'soLuongKhachHang' => $soLuongKhachHang,
 			'getKhachHangMoi' => $getKhachHangMoi,

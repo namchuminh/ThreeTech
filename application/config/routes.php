@@ -85,6 +85,8 @@ $route['khach-hang/xuat'] = 'admin/adminCustomer/exportExcel';
 $route['khach-hang/tim-kiem'] = 'admin/adminCustomer/searchCustomer';
 $route['khach-hang/xem-them'] = 'admin/adminCustomer/loadCustomer';
 $route['khach-hang/xoa'] = 'admin/adminCustomer/deleteCustomer';
+$route['admin/don-hang'] = 'admin/adminOrder/index';
+$route['don-hang/xuat'] = 'admin/adminOrder/exportExcel';
 
 
 $route['dang-nhap'] = 'user/userLogin/index';

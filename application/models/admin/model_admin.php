@@ -16,8 +16,8 @@ class model_admin extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function getDoanhThuThangNay(){
-		$sql = "SELECT SUM(sotien) AS doanhThuThang FROM `vnpay` WHERE MONTH(thoigian) = MONTH(CURDATE()) AND YEAR(thoigian) = YEAR(CURRENT_DATE())";
+	public function getDoanhThuHomQua(){
+		$sql = "SELECT SUM(sotien) AS doanhThuHomQua FROM `vnpay` WHERE MONTH(thoigian) = MONTH(CURDATE()) AND YEAR(thoigian) = YEAR(CURRENT_DATE()) AND DAY(thoigian) = DAY(CURRENT_DATE() - 1)";
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}

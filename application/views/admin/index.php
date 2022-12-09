@@ -13,8 +13,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Doanh Thu (Tháng này)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo number_format($doanhThuThangNay[0]["doanhThuThang"], 0, '', ','); ?> đ</div>
+                                                Doanh Thu Hôm Qua</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo number_format($getDoanhThuHomQua[0]["doanhThuHomQua"], 0, '', ','); ?> đ</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -93,7 +93,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Biều Đồ Doanh Thu</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Biều Đồ Doanh Thu Tháng</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
