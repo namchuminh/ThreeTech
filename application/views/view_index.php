@@ -1014,7 +1014,7 @@
 					
 					<div class="reviews_title_container">
 						<h3 class="reviews_title">Tin Tức - Công Nghệ</h3>
-						<div class="reviews_all ml-auto"><a href="#">Xem tất<span> cả</span></a></div>
+						<div class="reviews_all ml-auto"><a href="<?php echo base_url('/tin-tuc/'); ?>">Xem tất<span> cả</span></a></div>
 					</div>
 
 					<div class="reviews_slider_container">
