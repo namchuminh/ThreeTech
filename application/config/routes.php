@@ -87,7 +87,10 @@ $route['khach-hang/xem-them'] = 'admin/adminCustomer/loadCustomer';
 $route['khach-hang/xoa'] = 'admin/adminCustomer/deleteCustomer';
 $route['admin/don-hang'] = 'admin/adminOrder/index';
 $route['don-hang/xuat'] = 'admin/adminOrder/exportExcel';
-
+$route['don-hang/xem-them'] = 'admin/adminOrder/loadMore';
+$route['don-hang/giao-hang'] = 'admin/adminOrder/giaoHang';
+$route['don-hang/hoan-tien'] = 'admin/adminOrder/hoanTien';
+$route['don-hang/tim-kiem'] = 'admin/adminOrder/searchDonHang';
 
 $route['dang-nhap'] = 'user/userLogin/index';
 $route['xu-ly-dang-nhap'] = 'user/userLogin/actionLogin';

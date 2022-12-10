@@ -48,26 +48,26 @@
                         </thead>
                         <tbody>
                             
-                        <?php foreach ($order as $key => $value): ?>
+                        <?php for ($i = 0; $i < count($order); $i++){ ?>
                            	<tr class="odd">
-                                <td class="sorting_1"><?php echo $value['madonhang'] ?></td>
-                                <td><?php echo $value['tenSanPham']; ?></td>
-                                <td><?php echo $value['soLuong']; ?></td>
-                                <td><?php echo $value['sotien'] ?></td>
-                                <td><?php echo $value['thoigian']; ?></td>
-                                <td><?php echo $value['hoTen']; ?></td>
-                                <td><?php echo $value['soDienThoai'] ?></td>
-                                <td><?php echo $value['diaChi']; ?></td>
+                                <td class="sorting_1"><?php echo $order[$i]['madonhang'] ?></td>
+                                <td><?php echo $order[$i]['tenSanPham']; ?></td>
+                                <td><?php echo $order[$i]['soLuong']; ?></td>
+                                <td><?php echo $order[$i]['giaBan'] * $order[$i]['soLuong'] * 1000; ?></td>
+                                <td><?php echo $order[$i]['thoigian']; ?></td>
+                                <td><?php echo $order[$i]['hoTen']; ?></td>
+                                <td><?php echo $order[$i]['soDienThoai'] ?></td>
+                                <td><?php echo $order[$i]['diaChi']; ?></td>
                                 <td>
-                                	<?php if($value['dagiaohang'] == 0){
+                                	<?php if($order[$i]['dagiaohang'] == 0){
                                 		echo "Chưa Giao Hàng";
                                 	}else{
-                                		echo "Đã Giao Hàng";
+                                		echo "<span class='bg-danger text-white rounded p-1'>Đã Giao Hàng</span>";
                                 	}  ?>
                                 </td>
                                 <td>
                                 	<?php 
-                                		if($value['hoantien'] == 0){
+                                		if($order[$i]['hoantien'] == 0){
                                 			echo "Không";
                                 		}else{
                                 			echo "Đã Hoàn Tiền";
@@ -75,14 +75,13 @@
                                 	?>
                                 		
                                 </td>
-
                                 
                                 <td style="line-height: 50px;">
-                                	<a href="#" class="btn btn-info" value="<?php echo $value['madonhang']; ?>">Giao Hàng</a>
-                                    <a href="#" class="btn btn-warning" >Hoàn Tiền</a>
+                                	<a href="<?php echo base_url('don-hang/giao-hang/').$order[$i]['chitiethoadonID']; ?>" class="btn btn-info giaoHang" value="<?php echo $order[$i]['chitiethoadonID']; ?>">Giao Hàng</a>
+                                    <a href="<?php echo base_url('don-hang/hoan-tien/').$order[$i]['chitiethoadonID']; ?>" class="btn btn-warning" value="<?php echo $order[$i]['chitiethoadonID']; ?>">Hoàn Tiền</a>
                                 </td>
                         	</tr>
-                        <?php endforeach ?>   
+                        <?php } ?>   
 
                         </tbody>
                     </table>
@@ -95,7 +94,7 @@
                         <div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                             <ul class="pagination">
                                 <li class="paginate_button page-item active">
-                                    <input type="hidden" value="5" class="start">
+                                    <input type="hidden" value="10" class="start">
                                     <button class="page-link xemthem">Xem Thêm</button>
                                 </li>
                             </ul>
@@ -140,3 +139,115 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url('static/');?>js/sb-admin-2.min.js"></script>
+
+<script>
+    var base_url =  window.location.origin == "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
+
+    function giaoHang(){
+        $('.giaoHang').click(function(event) {
+            event.preventDefault()
+            var chitiethoadonID = $(this).attr('value')
+            $.post(base_url + '/don-hang/giao-hang/', {chitiethoadonID: chitiethoadonID}, function(data) {
+                if(data == "thanhcong"){
+                    alert("Đơn Hàng Đã Chuyển Sang Trạng Thái Giao Hàng!")
+                    location.reload()
+                }else{
+                    alert(data)
+                }
+                
+            });
+        });
+    }
+
+    function xemthem(){
+        $('.xemthem').click(function(event){
+            event.preventDefault()
+            var start = parseInt($('.start').val()) + 10
+            $('.start').val(start)
+            $('tbody').empty()
+            $.post(base_url+"/don-hang/xem-them/",{
+                start: start
+            },
+            function(data){
+                var dataSearch = JSON.parse(data)      
+                $('tbody').empty()
+                for(var i = 0; i < dataSearch.length; i++){
+
+                    var trangThai = dataSearch[i].dagiaohang == 0 ? "Chưa Giao Hàng" : "Đã Giao Hàng"
+                    var hoanTien = dataSearch[i].hoantien == 0 ? "Không" : "Đã Hoàn Tiền"
+
+                    if(dataSearch[i].dagiaohang == 0){
+                        $('tbody').append('<tr class="odd"><td>'+dataSearch[i].madonhang+'</td> <td>'+dataSearch[i].tenSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td>'+dataSearch[i].giaBan * dataSearch[i].soLuong * 1000+'</td> <td>'+dataSearch[i].thoigian+'</td> <td>'+dataSearch[i].hoTen+'</td> <td>'+dataSearch[i].soDienThoai+'</td> <td>'+dataSearch[i].diaChi+'</td> <td>'+trangThai+'</td> <td>'+hoanTien+'</td> <td style="line-height: 50px;"> <a href="#" class="btn btn-info giaoHang" value="'+dataSearch[i].chitiethoadonID+'">Giao Hàng</a> <a href="#" class="btn btn-warning hoanTien" value="'+dataSearch[i].chitiethoadonID+'">Hoàn Tiền</a> </td> </tr>')
+                    }else{
+                        $('tbody').append('<tr class="odd"><td>'+dataSearch[i].madonhang+'</td> <td>'+dataSearch[i].tenSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td>'+dataSearch[i].giaBan * dataSearch[i].soLuong * 1000+'</td> <td>'+dataSearch[i].thoigian+'</td> <td>'+dataSearch[i].hoTen+'</td> <td>'+dataSearch[i].soDienThoai+'</td> <td>'+dataSearch[i].diaChi+'</td> <td><span class="bg-danger text-white rounded p-1">'+trangThai+'</span></td> <td>'+hoanTien+'</td> <td style="line-height: 50px;"> <a href="#" class="btn btn-info giaoHang" value="'+dataSearch[i].chitiethoadonID+'">Giao Hàng</a> <a href="#" class="btn btn-warning hoanTien" value="'+dataSearch[i].chitiethoadonID+'">Hoàn Tiền</a> </td> </tr>')
+                    }
+                    
+                }
+                $("html, body").animate({ scrollTop: $(document).height() }, 0);
+
+                giaoHang()
+            });        
+        })
+    }
+
+    $(document).ready(function() {
+
+        $('input').keyup(function(event) {
+            var madonhang = $('.timkiemnhanvien').val()
+            $('.xemthem').remove()
+
+            if(madonhang == ""){
+                $.post(base_url+"/don-hang/tim-kiem/",{
+                    soluong: 10
+                },
+                function(data){
+                    var dataSearch = JSON.parse(data)
+                    console.log(dataSearch)
+                    $('tbody').empty()
+                    for(var i = 0; i < dataSearch.length; i++){
+
+                        var trangThai = dataSearch[i].dagiaohang == 0 ? "Chưa Giao Hàng" : "Đã Giao Hàng"
+                        var hoanTien = dataSearch[i].hoantien == 0 ? "Không" : "Đã Hoàn Tiền"
+
+                        if(dataSearch[i].dagiaohang == 0){
+                            $('tbody').append('<tr class="odd"><td>'+dataSearch[i].madonhang+'</td> <td>'+dataSearch[i].tenSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td>'+dataSearch[i].giaBan * dataSearch[i].soLuong * 1000+'</td> <td>'+dataSearch[i].thoigian+'</td> <td>'+dataSearch[i].hoTen+'</td> <td>'+dataSearch[i].soDienThoai+'</td> <td>'+dataSearch[i].diaChi+'</td> <td>'+trangThai+'</td> <td>'+hoanTien+'</td> <td style="line-height: 50px;"> <a href="#" class="btn btn-info giaoHang" value="'+dataSearch[i].chitiethoadonID+'">Giao Hàng</a> <a href="#" class="btn btn-warning hoanTien" value="'+dataSearch[i].chitiethoadonID+'">Hoàn Tiền</a> </td> </tr>')
+                        }else{
+                            $('tbody').append('<tr class="odd"><td>'+dataSearch[i].madonhang+'</td> <td>'+dataSearch[i].tenSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td>'+dataSearch[i].giaBan * dataSearch[i].soLuong * 1000+'</td> <td>'+dataSearch[i].thoigian+'</td> <td>'+dataSearch[i].hoTen+'</td> <td>'+dataSearch[i].soDienThoai+'</td> <td>'+dataSearch[i].diaChi+'</td> <td><span class="bg-danger text-white rounded p-1">'+trangThai+'</span></td> <td>'+hoanTien+'</td> <td style="line-height: 50px;"> <a href="#" class="btn btn-info giaoHang" value="'+dataSearch[i].chitiethoadonID+'">Giao Hàng</a> <a href="#" class="btn btn-warning hoanTien" value="'+dataSearch[i].chitiethoadonID+'">Hoàn Tiền</a> </td> </tr>')
+                        }
+                        
+                    }
+
+                    giaoHang()
+                });
+                $('.paginate_button').append('<button class="page-link xemthem">Xem Thêm</button>')
+                xemthem()
+            }
+
+            $.post(base_url+"/don-hang/tim-kiem/",{
+                madonhang: madonhang
+            },
+            function(data){
+                var dataSearch = JSON.parse(data)
+                console.log(dataSearch)
+                $('tbody').empty()
+                for(var i = 0; i < dataSearch.length; i++){
+
+                    var trangThai = dataSearch[i].dagiaohang == 0 ? "Chưa Giao Hàng" : "Đã Giao Hàng"
+                    var hoanTien = dataSearch[i].hoantien == 0 ? "Không" : "Đã Hoàn Tiền"
+
+                    if(dataSearch[i].dagiaohang == 0){
+                        $('tbody').append('<tr class="odd"><td>'+dataSearch[i].madonhang+'</td> <td>'+dataSearch[i].tenSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td>'+dataSearch[i].giaBan * dataSearch[i].soLuong * 1000+'</td> <td>'+dataSearch[i].thoigian+'</td> <td>'+dataSearch[i].hoTen+'</td> <td>'+dataSearch[i].soDienThoai+'</td> <td>'+dataSearch[i].diaChi+'</td> <td>'+trangThai+'</td> <td>'+hoanTien+'</td> <td style="line-height: 50px;"> <a href="#" class="btn btn-info giaoHang" value="'+dataSearch[i].chitiethoadonID+'">Giao Hàng</a> <a href="#" class="btn btn-warning hoanTien" value="'+dataSearch[i].chitiethoadonID+'">Hoàn Tiền</a> </td> </tr>')
+                    }else{
+                        $('tbody').append('<tr class="odd"><td>'+dataSearch[i].madonhang+'</td> <td>'+dataSearch[i].tenSanPham+'</td> <td>'+dataSearch[i].soLuong+'</td> <td>'+dataSearch[i].giaBan * dataSearch[i].soLuong * 1000+'</td> <td>'+dataSearch[i].thoigian+'</td> <td>'+dataSearch[i].hoTen+'</td> <td>'+dataSearch[i].soDienThoai+'</td> <td>'+dataSearch[i].diaChi+'</td> <td><span class="bg-danger text-white rounded p-1">'+trangThai+'</span></td> <td>'+hoanTien+'</td> <td style="line-height: 50px;"> <a href="#" class="btn btn-info giaoHang" value="'+dataSearch[i].chitiethoadonID+'">Giao Hàng</a> <a href="#" class="btn btn-warning hoanTien" value="'+dataSearch[i].chitiethoadonID+'">Hoàn Tiền</a> </td> </tr>')
+                    }
+                    
+                }
+
+                giaoHang()
+            });
+        })
+
+        xemthem()
+        giaoHang()
+    });
+</script>
