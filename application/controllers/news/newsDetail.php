@@ -23,10 +23,12 @@ class newsDetail extends CI_Controller {
 
 			if (count($checkNumberTinTuc) >=1){
 				$tinTuc = $this->model_news->getTinTucByDuongDan($duongDan);
+				$tintuclienquan = $this->model_news->getTinTucLienQuan();
 				$data = array(
 					'khachhang' => $khachhang,
 					'logged_in' => $logged_in,
 					'tinTuc' => $tinTuc,
+					'tintuclienquan' => $tintuclienquan,
 				);
 				return $this->load->view('news/newsDetail', $data, FALSE);
 			}else{
@@ -39,8 +41,10 @@ class newsDetail extends CI_Controller {
 		}else{
 			if (count($checkNumberTinTuc) >=1){
 				$tinTuc = $this->model_news->getTinTucByDuongDan($duongDan);
+				$tintuclienquan = $this->model_news->getTinTucLienQuan();
 				$data = array(
 					'tinTuc' => $tinTuc,
+					'tintuclienquan' => $tintuclienquan,
 				);
 				return $this->load->view('news/newsDetail', $data, FALSE);
 			}else{

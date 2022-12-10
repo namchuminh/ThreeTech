@@ -34,7 +34,8 @@
         
           <tr>
             <td data-th="Product">
-              <div class="row">
+              <a style="color: black;" href="<?php echo base_url('san-pham/'.$value['duongDan']);?>">
+                <div class="row">
                 <div class="col-sm-2 hidden-xs"><img src="<?php echo $value['anhChinh']; ?>" alt="Sản phẩm 1" class="img-responsive" width="80">
                 </div>
                 <div class="col-sm-10">
@@ -42,6 +43,8 @@
                   <div style="width: 100%;height: 20px; overflow: hidden;"><?php echo $value['moTa']; ?></div>
                 </div>
               </div>
+              </a>
+              
             </td>
             <td data-th="Price"><?php 
               $giaban = (string)$value['giaBan'];
@@ -74,15 +77,43 @@
             
             <td data-th="Subtotal" class="text-center"><?php
 
-              
-              //echo $sum*1000;//floor($sum*1000/1000000).
-              //echo floor($sum/1000);
-              if(strlen($sum*1000)<=6){
-                echo ($sum%1000).".000"; 
+              $g="";
+              $gia = (string)($sum*1000);
+              for($i=0; $i<strlen($gia); $i++){
+                if(strlen($gia)==9){
+                    $g .= $gia[$i];
+                    if($i==2){
+                      $g .=".";
+                    }
+                    if($i==5){
+                      $g .=".";
+                    }
+                  }else if(strlen($gia)==6){
+                    $g .= $gia[$i];
+                    if($i==2){
+                      $g .=".";
+                    }
+                  }
+                  else if(strlen($gia)==7){
+                    $g .= $gia[$i];
+                    if($i==0){
+                      $g .=".";
+                    }
+                    if($i==3){
+                      $g .=".";
+                    }
+                  }
+                  else if(strlen($gia)==8){
+                    $g .= $gia[$i];
+                    if($i==1){
+                      $g .=".";
+                    }
+                    if($i==4){
+                      $g .=".";
+                    }
+                  }
               }
-              if(strlen($sum*1000)>=7){
-                echo (floor($sum/1000)).'.'.($sum%1000).".000"; 
-              }
+              echo $g;
               
 
            ?></td>
@@ -116,12 +147,44 @@
       <td><a href="<?php echo base_url('gio-hang'); ?>" class="btn btn-warning"><i class="fa fa-angle-left"></i>Trở lại giỏ hàng</a>
       </td>
       <td colspan="2" class="hidden-xs"> </td>
-      <td class="hidden-xs text-center"><strong>Tổng tiền: <?php if(strlen($sum_cart*1000)<=6){
-                echo ($sum_cart%1000).".000"; 
+      <td class="hidden-xs text-center"><strong>Tổng tiền: <?php
+              $g="";
+              $gia_tong = (string)($sum_cart*1000);
+              for($i=0; $i<strlen($gia_tong); $i++){
+                if(strlen($gia_tong)==9){
+                    $g .= $gia_tong[$i];
+                    if($i==2){
+                      $g .=".";
+                    }
+                    if($i==5){
+                      $g .=".";
+                    }
+                  }else if(strlen($gia_tong)==6){
+                    $g .= $gia_tong[$i];
+                    if($i==2){
+                      $g .=".";
+                    }
+                  }
+                  else if(strlen($gia_tong)==7){
+                    $g .= $gia_tong[$i];
+                    if($i==0){
+                      $g .=".";
+                    }
+                    if($i==3){
+                      $g .=".";
+                    }
+                  }
+                  else if(strlen($gia_tong)==8){
+                    $g .= $gia_tong[$i];
+                    if($i==1){
+                      $g .=".";
+                    }
+                    if($i==4){
+                      $g .=".";
+                    }
+                  }
               }
-              if(strlen($sum_cart*1000)>=7){
-                echo (floor($sum_cart/1000)).'.'.($sum_cart%1000).".000"; 
-              } ?> VNĐ</strong>
+              echo $g; ?> VNĐ</strong>
         <input type="hidden" name="tongtien" value="<?php echo $sum_cart*1000; ?>">
       </td>                 
         <td><button type="submit" class="btn btn-success btn-block" name="redirect">Đặt hàng</button></td>

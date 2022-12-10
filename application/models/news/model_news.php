@@ -21,7 +21,11 @@ class model_news extends CI_Model {
 		$result = $this->db->query($sql, array($duongDan));
 		return $result->result_array();
 	}
-
+	public function getTinTucLienQuan(){
+		$sql = "SELECT * FROM tintuc ORDER BY RAND() DESC LIMIT 10";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 }
 
 /* End of file model_news.php */

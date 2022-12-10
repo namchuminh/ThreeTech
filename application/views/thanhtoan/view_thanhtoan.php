@@ -56,19 +56,44 @@
                     <label >Số tiền:</label>
                     <label><?php 
 
-                    $sotien = $_GET['vnp_Amount']/100 ;
-                    if(strlen($sotien)<=6){
-                        echo ($sotien/1000).".000 VNĐ"; 
-                    }
-                    if(strlen($sotien)>=7){
-                        echo (floor($sotien/1000000)).'.'.($sotien%1000000/1000).".000 VNĐ"; 
-                    }
-                    //echo $sotien%1000000/1000;
-                    // if(strlen($sotien) <= 6){
-                    //     echo ($sotien/1000).".000 VNĐ";
-                    // }if(strlen($sotien) >= 7){
-                    //     echo ($sotien/1000000).".000.000 VNĐ";
-                    // }
+                    $sotien = $_GET['vnp_Amount']/100;
+                        $g="";
+                      $gia_tong = (string)($sotien);
+                      for($i=0; $i<strlen($gia_tong); $i++){
+                        if(strlen($gia_tong)==9){
+                            $g .= $gia_tong[$i];
+                            if($i==2){
+                              $g .=".";
+                            }
+                            if($i==5){
+                              $g .=".";
+                            }
+                          }else if(strlen($gia_tong)==6){
+                            $g .= $gia_tong[$i];
+                            if($i==2){
+                              $g .=".";
+                            }
+                          }
+                          else if(strlen($gia_tong)==7){
+                            $g .= $gia_tong[$i];
+                            if($i==0){
+                              $g .=".";
+                            }
+                            if($i==3){
+                              $g .=".";
+                            }
+                          }
+                          else if(strlen($gia_tong)==8){
+                            $g .= $gia_tong[$i];
+                            if($i==1){
+                              $g .=".";
+                            }
+                            if($i==4){
+                              $g .=".";
+                            }
+                          }
+                      }
+                      echo $g." VNĐ";
                     ?>
                     
 
