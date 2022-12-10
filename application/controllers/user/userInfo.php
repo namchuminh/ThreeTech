@@ -19,7 +19,13 @@ class userInfo extends CI_Controller {
 		$khachHangId = $kh[0]['khachHangId'];
 		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
 		$result = $this->model_index->getCustomerLogin($khachhang);
+		$this->load->model('thanhtoan/model_vnpay');
+		$cart = $this->model_vnpay->giaohang($khachHangId);
+		//var_dump($cart);
 		$data = array(
+			// 'chitietsanpham'=>$ctsp,
+			// 'chitiethoadon'=>$cthd,
+			'cart'=>$cart,
 			'customer' => $result,
 			'khachhang' => $khachhang,
 			'logged_in' => $logged_in,
