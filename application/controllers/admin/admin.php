@@ -21,7 +21,7 @@ class admin extends CI_Controller {
 		$soLuongKhachHang = $this->model_admin->soLuongKhachHang();
 		$getKhachHangMoi = $this->model_admin->getKhachHangMoi();
 		$phanTramSanPhamBanChay = $this->model_admin->getPhanTramSanPhamBanChay();
-
+		$donHangChuaGiao = $this->model_admin->getDonHangChuaGiao();
 
 		$data = array(
 			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
@@ -31,6 +31,7 @@ class admin extends CI_Controller {
 			'soLuongKhachHang' => $soLuongKhachHang,
 			'getKhachHangMoi' => $getKhachHangMoi,
 			'phanTramSanPhamBanChay' => $phanTramSanPhamBanChay,
+			'donHangChuaGiao' => count($donHangChuaGiao),
 		);
 		return $this->load->view('admin/index', $data);
 	}

@@ -10,14 +10,14 @@ class model_order extends CI_Model {
 		
 	}
 
-	public function getAllOrder(){
-		$sql = "SELECT vnpay.madonhang, sanpham.tenSanPham, chitiethoadon.soLuong, vnpay.sotien, vnpay.thoigian, khachhang.hoTen, khachhang.soDienThoai, khachhang.diaChi, vnpay.dagiaohang, vnpay.hoantien FROM vnpay, chitiethoadon, khachhang, sanpham WHERE vnpay.madonhang = chitiethoadon.madonhang AND vnpay.khachHangId = khachhang.khachHangId AND chitiethoadon.sanPhamId = sanpham.sanPhamId ORDER BY chitiethoadon.chitiethoadonID DESC";
+	public function getAllOrder($number = 10){
+		$sql = "SELECT vnpay.madonhang, sanpham.tenSanPham, chitiethoadon.soLuong, vnpay.sotien, vnpay.thoigian, dathang.tenNguoiNhan AS hoTen, dathang.soDienThoai, dathang.diaChi, chitiethoadon.dagiaohang, chitiethoadon.hoantien, sanpham.giaBan, chitiethoadon.chitiethoadonID FROM vnpay, chitiethoadon, dathang, sanpham WHERE vnpay.madonhang = chitiethoadon.madonhang AND vnpay.madonhang = dathang.madonhang AND chitiethoadon.sanPhamId = sanpham.sanPhamId ORDER BY chitiethoadon.chitiethoadonID DESC LIMIT ".$number;
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
 
 	public function exportExcel(){
-		$sql = "SELECT vnpay.madonhang, sanpham.tenSanPham, chitiethoadon.soLuong, vnpay.sotien, vnpay.thoigian, khachhang.hoTen, khachhang.soDienThoai, khachhang.diaChi, vnpay.dagiaohang, vnpay.hoantien FROM vnpay, chitiethoadon, khachhang, sanpham WHERE vnpay.madonhang = chitiethoadon.madonhang AND vnpay.khachHangId = khachhang.khachHangId AND chitiethoadon.sanPhamId = sanpham.sanPhamId ORDER BY chitiethoadon.chitiethoadonID DESC";
+		$sql = "SELECT vnpay.madonhang, sanpham.tenSanPham, chitiethoadon.soLuong, vnpay.sotien, vnpay.thoigian, dathang.tenNguoiNhan AS hoTen, dathang.soDienThoai, dathang.diaChi, chitiethoadon.dagiaohang, chitiethoadon.hoantien, sanpham.giaBan, chitiethoadon.chitiethoadonID FROM vnpay, chitiethoadon, dathang, sanpham WHERE vnpay.madonhang = chitiethoadon.madonhang AND vnpay.madonhang = dathang.madonhang AND chitiethoadon.sanPhamId = sanpham.sanPhamId ORDER BY chitiethoadon.chitiethoadonID DESC";
 		$result = $this->db->query($sql)->result_array();
 		
 		$arrExport = array();
@@ -26,7 +26,7 @@ class model_order extends CI_Model {
 				'madonhang' => $result[$i]["madonhang"],
 				'tenSanPham' => $result[$i]["tenSanPham"],
 				'soLuong' => $result[$i]["soLuong"],
-				'sotien' => $result[$i]["sotien"],
+				'giaBan' => $result[$i]["giaBan"] * $result[$i]["soLuong"] * 1000,
 				'thoigian' => $result[$i]["thoigian"],
 				'hoTen' => $result[$i]["hoTen"],
 				'soDienThoai' => $result[$i]["soDienThoai"],
@@ -36,6 +36,25 @@ class model_order extends CI_Model {
 			);	
 		}
 		return $arrExport;
+	}
+
+	public function checkGiaoHang($chitiethoadonID){
+		$sql = "SELECT * FROM chitiethoadon WHERE dagiaohang = 1 AND chitiethoadonID = ?";
+		$result = $this->db->query($sql, array($chitiethoadonID))->result_array();
+		return $result;
+	}
+
+	public function updateGiaoHang($chitiethoadonID){
+		$sql = "UPDATE `chitiethoadon` SET `dagiaohang`= 1 WHERE `chitiethoadonID`= ?";
+		$result = $this->db->query($sql, array($chitiethoadonID));
+		return $result;
+	}
+
+
+	public function searchDonHang($madonhang, $soluong = 10000){
+		$sql = "SELECT vnpay.madonhang, sanpham.tenSanPham, chitiethoadon.soLuong, vnpay.sotien, vnpay.thoigian, dathang.tenNguoiNhan AS hoTen, dathang.soDienThoai, dathang.diaChi, chitiethoadon.dagiaohang, chitiethoadon.hoantien, sanpham.giaBan, chitiethoadon.chitiethoadonID FROM vnpay, chitiethoadon, dathang, sanpham WHERE vnpay.madonhang = chitiethoadon.madonhang AND vnpay.madonhang = dathang.madonhang AND chitiethoadon.sanPhamId = sanpham.sanPhamId AND vnpay.madonhang LIKE '%".$madonhang."%' ORDER BY chitiethoadon.chitiethoadonID DESC LIMIT ".$soluong;
+		$result = $this->db->query($sql);
+		return $result->result_array();
 	}
 }
 

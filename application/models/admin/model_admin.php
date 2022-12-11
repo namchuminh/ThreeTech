@@ -94,6 +94,12 @@ class model_admin extends CI_Model {
 		
 		return $arrPercent;
 	}
+
+	public function getDonHangChuaGiao(){
+		$sql = "SELECT *  FROM `chitiethoadon` WHERE dagiaohang = 0";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 }
 
 /* End of file model_admin.php */
