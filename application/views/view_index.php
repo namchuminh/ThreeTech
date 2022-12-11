@@ -118,13 +118,45 @@
 											<div class="cart_text"><a href="<?php echo base_url('/gio-hang/'); ?>">Cart</a></div>
 											<div class="cart_price">
 
-												<?php
+												<?php 
 													if(isset($cart_price)){
-														echo $cart_price[0]["tongtien"]." VNĐ";
-													}else{
-														echo 0;
+														$g="";
+														//echo $cart_price[0]['tongtien'];
+													    $gia_tong = (string)($cart_price[0]['tongtien']);
+													    for($i=0; $i<strlen($gia_tong); $i++){
+
+													      	if(strlen($gia_tong)==9){
+													          $g .= $gia_tong[$i];
+													          if($i==1){
+													            $g .=".";
+													          }
+													        }
+													        else if(strlen($gia_tong)==7){
+													          $g .= $gia_tong[$i];
+													        }
+													        else if(strlen($gia_tong)==8){
+													          $g .= $gia_tong[$i];
+													          if($i==0){
+													            $g .=".";
+													          }
+													          
+													        }
+													        else if(strlen($gia_tong)==10){
+													          $g .= $gia_tong[$i];
+													          if($i==2){
+													            $g .=".";
+													          }
+													        }else{
+													          $g .= $gia_tong[$i];
+													        
+													        }
+													    }
+													    if($cart_price[0]==null){
+															echo '0';
+														}
+													    echo $g." VNĐ";
 													}
-												?>
+											 ?>
 											</div>
 										</div>
 									</div>

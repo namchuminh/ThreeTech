@@ -22,7 +22,7 @@ class cart extends CI_Controller {
 		$cart_product = $this->model_addToCart->CartKH($khachHangId);
 		// var_dump($cart_product);
 		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+		$cart_price = $this->model_addToCart->cart_price($khachHangId);
 
 		if($this->session->userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
@@ -35,6 +35,7 @@ class cart extends CI_Controller {
 				'logged_in' => $logged_in,
 				'product' => $cart_product,
 				'soLuongSanPham' =>$soLuongSanPham,
+				'cart_price'=> $cart_price,
 			);
 			return $this->load->view('cart/cart', $data);
 		}else{

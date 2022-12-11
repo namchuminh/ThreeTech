@@ -1,5 +1,10 @@
 <?php require(__DIR__.'/layouts/header.php'); ?>    
 <?php require(__DIR__.'/layouts/nav.php'); ?>
+<?php if(isset($tt)){
+
+  echo "<script type='text/javascript'>alert('Cập Nhật Thành Công');</script>";
+
+} ?>
     <div class="container" style="width: 60%;">
       <form action="<?php echo base_url('khach-hang/cap-nhat-khach-hang'); ?>" method="POST" enctype='multipart/form-data' style="box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%); margin: 54px 0px; padding: 70px 26px;">
     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" style="width: 200px;height: 200px;display: block;margin-left: auto;margin-right: auto;">
@@ -13,20 +18,27 @@
         <div class="form-group">
           <label for="first">Họ Tên</label>
           <input type="text" class="form-control" placeholder="họ tên" id="first" value="<?php echo $customer[0]['hoTen'];?>" name="hoTen">
+          <?php if(isset($errht)) {?>
+                  <p style="color: #D8000C;"><i class="fa-solid fa-triangle-exclamation"></i> <?php echo $errht;?></p>
+                <?php } ?>
         </div>
         
       </div>
       <div class="col-md-6">
-        <div class="form-group">
-          <label for="company">Mật Khẩu | <span style="cursor: pointer; color: blue;" id="show-password"><i class="fa-solid fa-eye-slash" id="#td_id"></i></span> </label>
 
-          <input type="password" class="form-control" placeholder="mật khẩu mới" id="password" name="matKhau">
-        </div>
+
+        
+
+
+
         <div class="row">
           <div class="col-md-5">
           <div class="form-group">
             <label for="phone">Số Điện Thoại</label>
             <input type="tel" class="form-control" id="phone" placeholder="số điện thoại" value="<?php echo $customer[0]['soDienThoai'];?>" name="soDienThoai">
+            <?php if(isset($errdt)) {?>
+                  <p style="color: #D8000C;"><i class="fa-solid fa-triangle-exclamation"></i> <?php echo $errdt;?></p>
+                <?php } ?>
           </div>
           </div>
           <div class="col-md-7">
@@ -36,24 +48,58 @@
           </div>
           </div>
       </div>
+
+
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-5">
+              <div id="show-hidden-chage-pass" style="line-height: 100px">Thay đổi mật khẩu!</div>
+              <?php if(isset($messmk)) {?>
+                  <p style="color: #D8000C;"><i class="fa-solid fa-triangle-exclamation"></i> <?php echo $messmk;?></p>
+                <?php } ?>
+
+            </div>
+          <div class="hidden-chage-pass" style="display: none;">
+          <div class="col-md-9">
+          <div class="form-group">
+            <label for="company">Mật Khẩu Cũ | <span style="cursor: pointer; color: blue;" id="show-password"><i class="fa-solid fa-eye-slash" id="#td_id"></i></span> </label>
+
+            <input type="password" class="form-control" placeholder="mật khẩu Cũ" id="password" name="old_matKhau">
+          </div>
+          </div>
+          <div class="col-md-9">
+          <div class="form-group">
+            <label for="company">Mật khẩu mới </label>
+            <input type="password" class="form-control" placeholder="mật khẩu mới" id="password" name="matKhau">
+          </div>
+          </div>
+      </div>
+          
+        </div>
+        </div>
+
+
+
+
     </div>
 
 
    
     </div>
     <!--  row   -->
-
+    <?php if(isset($err)) {?>
+            <div class="text-center" style="margin-top: 30px">
+                <span style="font-weight: bold; color: #0e8ce4; font-size: 16px; color: red" class="small" ><?php echo $err; ?></span>
+            </div>
+    <?php }?>
 
     
     <div class="contact_form_button" style="display: flex;align-items: center;justify-content: space-around;">
       <button type="submit" class="button contact_submit_button" >Cập nhật thông tin</button>
       <div id="show-hidden-menu"><p class="button contact_submit_button" style="text-align: center; line-height: 50px;">Lịch sử mua hàng</p></div>
     </div>
-    <?php if(isset($mess)) {?>
-        <div class="text-center" style="margin-top: 30px">
-            <span style="font-weight: bold; color: #0e8ce4; font-size: 16px;" class="small" ><?php echo $mess; ?></span>
-        </div>
-    <?php }?>
+    
 
 
       
@@ -193,6 +239,14 @@
   $(document).ready(function() {
   $('#show-hidden-menu').click(function() {
     $('.hidden-menu').slideToggle("slow");
+    // Alternative animation for example
+    // slideToggle("fast");
+  });
+});
+
+  $(document).ready(function() {
+  $('#show-hidden-chage-pass').click(function() {
+    $('.hidden-chage-pass').slideToggle("slow");
     // Alternative animation for example
     // slideToggle("fast");
   });

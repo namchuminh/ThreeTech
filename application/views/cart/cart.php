@@ -66,6 +66,9 @@
                     if($i==0){
                       $tienban .=".";
                     }
+                  }else{
+                    $tienban .= $giaban[$i];
+                    
                   }
 
                   
@@ -111,6 +114,9 @@
                     if($i==4){
                       $g .=".";
                     }
+                  }else{
+                    $g .= $gia[$i];
+                    
                   }
               }
               echo $g;
@@ -182,6 +188,9 @@
                     if($i==4){
                       $g .=".";
                     }
+                  }else{
+                    $g .= $gia[$i];
+                    
                   }
               }
               echo $g; ?> VNĐ</strong>
