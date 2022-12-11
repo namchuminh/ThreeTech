@@ -1,5 +1,5 @@
 ###################
-Đề tài "Xây dựng website bán laptop và máy tính" - Môn học Web nâng cao
+Website bán laptop và máy tính
 ###################
 
 Website bán laptop và máy tính được xây dựng từ ngôn ngữ lập trình PHP với Framework chính là Codeigniter 3. Trang web bao gồm các chức năng cơ bản của một hệ thống website bán hàng.  
