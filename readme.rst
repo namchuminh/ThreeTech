@@ -31,7 +31,7 @@ Các Chức Năng Chính
 	- Tra cứu sản phẩm
 	- Tra cứu tin tức
 	- Quản lý giỏ hàng
-	- Thanh toán qua VNPAY
+	- Đặt hàng và Thanh toán qua VNPAY
 
 *******************
 Tài Liệu Tham Khảo
