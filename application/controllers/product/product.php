@@ -11,6 +11,7 @@ class product extends CI_Controller {
 	{
 		$this->load->model('product/model_product');
 		$this->load->model('model_index');
+		$this->load->model('cart/model_addToCart');
 
 		if(count($this->model_product->getDetailProduct($duongDan)) <= 0 && $this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
@@ -18,10 +19,12 @@ class product extends CI_Controller {
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$data = array(
 				'khachhang' => $khachhang,
 				'logged_in' => $logged_in,
 				'soLuongSanPham' => $soLuongSanPham,
+				'cart_price' => $cart_price,
 			);
 			return $this->load->view('view_404', $data);
 		}
@@ -38,7 +41,7 @@ class product extends CI_Controller {
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$chiTietSanPham = $this->model_product->getDetailProduct($duongDan);
 			$chuyenMuc = $this->model_product->getCateByUrl($duongDan);
 			$sanPhamLienQuan = $this->model_product->getProductRelated($duongDan);
@@ -50,6 +53,8 @@ class product extends CI_Controller {
 				'chuyenMuc' => $chuyenMuc,
 				'sanPhamLienQuan' => $sanPhamLienQuan,
 				'sanphamtuongtu' => $sanphamtuongtu,
+				'soluongsanpham' => $soLuongSanPham,
+				'cart_price' => $cart_price,
 			);
 			return $this->load->view('product/productDetail', $data);
 		}else{
