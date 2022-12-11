@@ -17,13 +17,44 @@
 				<div class="col-lg-3">
 
 					<!-- Shop Sidebar -->
+					<!-- Shop Sidebar -->
 					<div class="shop_sidebar">
 						<div class="sidebar_section">
-							<div class="sidebar_title">Chuyên mục</div>
+							<div class="sidebar_title">Chuyên Mục</div>
 							<ul class="sidebar_categories">
-								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-laptop/'); ?>">Laptop</a></li>
-								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-pc/'); ?>">Máy tính</a></li>
-								<li><a href="<?php echo base_url('/chuyen-muc/linh-kien/'); ?>">Linh kiện</a></li>
+								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-pc/'); ?>">Computers &amp; Laptops</a></li>
+								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-laptop/'); ?>">Laptop &amp; Máy Tính Sách Tay</a></li>
+								<li><a href="<?php echo base_url('/chuyen-muc/chuyen-muc/linh-kien/'); ?>">Linh Kiện &amp; Phụ Kiện</a></li>
+							</ul>
+						</div>
+						<div class="sidebar_section filter_by_section">
+							<div class="sidebar_title">Filter By</div>
+							<div class="sidebar_subtitle">Price</div>
+							<div class="filter_price">
+								<div id="slider-range" class="slider_range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 58%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 58%;"></span></div>
+								<p>Range: </p>
+								<p><input type="text" id="amount" class="amount" readonly="" style="border:0; font-weight:bold;"></p>
+							</div>
+						</div>
+						<div class="sidebar_section">
+							<div class="sidebar_subtitle color_subtitle">Color</div>
+							<ul class="colors_list">
+								<li class="color"><a href="#" style="background: #b19c83;"></a></li>
+								<li class="color"><a href="#" style="background: #000000;"></a></li>
+								<li class="color"><a href="#" style="background: #999999;"></a></li>
+								<li class="color"><a href="#" style="background: #0e8ce4;"></a></li>
+								<li class="color"><a href="#" style="background: #df3b3b;"></a></li>
+								<li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
+							</ul>
+						</div>
+						<div class="sidebar_section">
+							<div class="sidebar_subtitle brands_subtitle">Loại Sản Phẩm</div>
+							<ul class="brands_list">
+								<li class="brand"><a href="<?php echo base_url('/noi-bat-moi/'); ?>">Sản Phẩm Nổi Bật</a></li>
+								<li class="brand"><a href="<?php echo base_url('/audio-video/'); ?>">Audio Video</a></li>
+								<li class="brand"><a href="<?php echo base_url('/may-tinh-laptop/'); ?>">Máy Tính &amp; Laptop</a></li>
+								<li class="brand"><a href="<?php echo base_url('/top-20/'); ?>">Top 20</a></li>
+								<li class="brand"><a href="<?php echo base_url('/trend/'); ?>">Trend 2022</a></li>
 							</ul>
 						</div>
 					</div>

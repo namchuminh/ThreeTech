@@ -83,8 +83,23 @@ class adminOrder extends CI_Controller {
 
 	}
 
-	public function hoanTien($chitiethoadonId){
-		echo $chitiethoadonId;
+	public function hoanTien(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/don-hang/'));
+		}
+
+		$chitiethoadonID = $this->input->post('chitiethoadonID');
+		$this->load->model('admin/model_order');
+		$result = $this->model_order->checkHoanTien($chitiethoadonID);
+
+		if(count($result) <= 0){
+			$updateHoanTien= $this->model_order->updateHoanTien($chitiethoadonID);
+			if($updateHoanTien == True){
+				echo "thanhcong";
+			}
+		}else{
+			echo "Đơn Hàng Này Đã Được Hoàn Tiền Trước Đó!";
+		}
 	}
 
 

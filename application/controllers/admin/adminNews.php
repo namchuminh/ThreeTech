@@ -137,6 +137,20 @@ class adminNews extends CI_Controller {
 		);
 		return $this->load->view('admin/updateNews', $data);
 	}
+
+
+	public function searchNews(){
+		if(empty($_POST) || !isset($_POST)){
+			return redirect(base_url('admin/tin-tuc/'));
+		}
+
+		$tieuDe = $this->input->post('tieuDe');
+		$this->load->model('admin/model_news');
+		$result = $this->model_news->searchNews($tieuDe);
+
+		$data = json_encode($result);
+		echo $data;
+	}
 }
 
 /* End of file adminNews.php */

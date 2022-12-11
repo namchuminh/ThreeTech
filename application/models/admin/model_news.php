@@ -40,6 +40,12 @@ class model_news extends CI_Model {
 		return $result;
 	}
 
+	public function searchNews($tieuDe){
+		$sql = "SELECT * FROM tintuc WHERE tieuDe LIKE '%".$tieuDe."%' LIMIT 7";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+
 
 }
 
