@@ -151,7 +151,7 @@
 													        
 													        }
 													    }
-													    if($cart_price[0]==null){
+													    if($cart_price[0]['tongtien']==null){
 															echo '0';
 														}
 													    echo $g." VNĐ";
