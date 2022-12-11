@@ -28,7 +28,7 @@
 
 						<!-- Contact Item -->
 						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
-							<div class="contact_info_image"><img src="<?php echo base_url('static/'); ?>images/contact_1.png" alt=""></div>
+							<div class="contact_info_image"><img src="<?php echo base_url('static/'); ?>images/contact_2.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Email</div>
 								<div class="contact_info_text">threetech@gmail.com</div>
@@ -37,7 +37,7 @@
 
 						<!-- Contact Item -->
 						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
-							<div class="contact_info_image"><img src="<?php echo base_url('static/'); ?>images/contact_1.png" alt=""></div>
+							<div class="contact_info_image"><img src="<?php echo base_url('static/'); ?>images/contact_3.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Địa chỉ</div>
 								<div class="contact_info_text">Bắc Từ Liêm, Hà Nội</div>
