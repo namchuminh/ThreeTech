@@ -12,6 +12,7 @@ class userInfo extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('cart/model_addToCart');
 		$this->load->model('model_index');
 		$khachhang = $this->session->userdata('khachhang');
 		$logged_in = $this->session->userdata('logged_in');
@@ -21,10 +22,13 @@ class userInfo extends CI_Controller {
 		$result = $this->model_index->getCustomerLogin($khachhang);
 		$this->load->model('thanhtoan/model_vnpay');
 		$cart = $this->model_vnpay->giaohang($khachHangId);
+
+		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+		$cart_price = $this->model_addToCart->cart_price($khachHangId);
 		//var_dump($cart);
 		$data = array(
-			// 'chitietsanpham'=>$ctsp,
-			// 'chitiethoadon'=>$cthd,
+			'soLuongSanPham'=>$soLuongSanPham,
+			'cart_price'=>$cart_price,
 			'cart'=>$cart,
 			'customer' => $result,
 			'khachhang' => $khachhang,
@@ -38,35 +42,84 @@ class userInfo extends CI_Controller {
 		$khachhang = $this->session->userdata('khachhang');
 		$this->load->model('model_index');
 		$result = $this->model_index->getCustomerLogin($khachhang);
-
-
-
 		$khachHangId = $result[0]['khachHangId'];
 		$hoTen =$this->input->post('hoTen');
-
-
-		$soDienThoai=$this->input->post('soDienThoai');
-		
+		$soDienThoai=$this->input->post('soDienThoai');		
 		$diaChi=$this->input->post('diaChi');
-
 		$matkhau= $this->input->post('matKhau');
-		
-		
+		$old_matkhau= $this->input->post('old_matKhau');
+
+
+		$this->load->library('user');
+
+		if($hoTen=='' || $soDienThoai=='' || $diaChi==''){
+			$result = $this->model_index->getCustomerLogin($khachhang);
+			$data = array(
+				'customer' => $result,
+				'err'=>"Vui lòng đầy đủ thông tin",
+			);
+			$this->load->view('user/userInfo',$data);
+			return;
+		}
+
+
+		if($this->user->checkUserName($hoTen)!= True){
+			$result = $this->model_index->getCustomerLogin($khachhang);
+			$data = array(
+				'customer' => $result,
+				'errht'=>"Vui lòng nhập lại họ tên",
+			);
+			$this->load->view('user/userInfo',$data);
+			return;
+		}
+
+		if($this->user->checkSdt($soDienThoai)!= True){
+			$result = $this->model_index->getCustomerLogin($khachhang);
+			$data = array(
+				'customer' => $result,
+				'errdt'=>"Vui lòng nhập lại số điện thoại",
+			);
+			$this->load->view('user/userInfo',$data);
+			return;
+		}
 
 
 		$this->load->model('user/model_update');
 		if($matkhau=='' || $matkhau==null){
 			$update = $this->model_update->updateProfile($hoTen, $soDienThoai, $diaChi, $khachHangId);
+			$mess = "ok";
+			$result = $this->model_index->getCustomerLogin($khachhang);
+			$data = array(
+				'customer' => $result,
+				'tt'=>$mess,
+			);
+			
+			$this->load->view('user/userInfo',$data);
+
 		}else{
-			$update = $this->model_update->updateProfileFull($hoTen, $soDienThoai, $diaChi, md5($matkhau), $khachHangId);
+			if($result[0]['matKhau'] == md5($old_matkhau)){
+				$update = $this->model_update->updateProfileFull($hoTen, $soDienThoai, $diaChi, md5($matkhau), $khachHangId);
+				$mess = "ok";
+				$result = $this->model_index->getCustomerLogin($khachhang);
+				$data = array(
+					'customer' => $result,
+					'tt'=>$mess,
+				);
+				
+				$this->load->view('user/userInfo',$data);
+			}else{
+
+				$result = $this->model_index->getCustomerLogin($khachhang);
+				$data = array(
+					'customer' => $result,
+					'messmk' => "Mật khẩu Không Đúng",
+				);
+				
+				$this->load->view('user/userInfo',$data);
+			}
+			
 		}
-		$result = $this->model_index->getCustomerLogin($khachhang);
-		$data = array(
-			'customer' => $result,
-			'mess'=>$message,
-		);
-		$this->load->view('user/userInfo',$data);
-		redirect(base_url('khach-hang/'));
+		
 	}
 
 }
