@@ -16,9 +16,22 @@ Thông Tin Thành Viên
 Các Chức Năng Chính
 **************************
 
--  Đang cập nhật...
--  Đang cập nhật...
--  Đang cập nhật...
+- Dành cho Quản trị (Admin)
+	- Đăng nhập, đăng xuất
+	- Cập nhật thông tin cá nhân
+	- Quản lý sản phẩm
+	- Quản lý nhân viên
+	- Quản lý khách hàng
+	- Quản lý tin tức
+	- Quản lý đơn hàng
+	- Thống kê sản phẩm và doanh thu
+- Dành cho Khách hàng
+	- Đăng ký, đăng nhập, đăng xuất
+	- Cập nhật thông tin cá nhân khách hàng
+	- Tra cứu sản phẩm
+	- Tra cứu tin tức
+	- Quản lý giỏ hàng
+	- Thanh toán qua VNPAY
 
 *******************
 Tài Liệu Tham Khảo
