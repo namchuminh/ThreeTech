@@ -24,7 +24,7 @@
 							<ul class="sidebar_categories">
 								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-pc/'); ?>">Computers &amp; Laptops</a></li>
 								<li><a href="<?php echo base_url('/chuyen-muc/may-tinh-laptop/'); ?>">Laptop &amp; Máy Tính Sách Tay</a></li>
-								<li><a href="<?php echo base_url('/chuyen-muc/chuyen-muc/linh-kien/'); ?>">Linh Kiện &amp; Phụ Kiện</a></li>
+								<li><a href="<?php echo base_url('/chuyen-muc/linh-kien/'); ?>">Linh Kiện &amp; Phụ Kiện</a></li>
 							</ul>
 						</div>
 						<div class="sidebar_section filter_by_section">

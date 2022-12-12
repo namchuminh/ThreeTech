@@ -74,13 +74,14 @@ class product extends CI_Controller {
 
 	public function noiBatMoi(){
 		$this->load->model('model_index');
+		$this->load->model('cart/model_addToCart');
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$this->load->model('product/model_product');
 			$noibatmoi = $this->model_product->getProductNoiBatMoi();
 			$sanphamtuongtu = $this->model_product->getProductTuongTu();
@@ -89,6 +90,8 @@ class product extends CI_Controller {
 				'logged_in' => $logged_in,
 				'noibatmoi' => $noibatmoi,
 				'sanphamtuongtu' => $sanphamtuongtu,
+				'cart_price' => $cart_price,
+				'soluongsanpham' => $soLuongSanPham,
 			);
 			return $this->load->view('product/noibatmoi', $data);
 		}else{
@@ -107,13 +110,14 @@ class product extends CI_Controller {
 
 	public function audioVideo(){
 			$this->load->model('model_index');
+			$this->load->model('cart/model_addToCart');
 			if($this->session->has_userdata('khachhang')){
 				$khachhang = $this->session->userdata('khachhang');
 				$logged_in = $this->session->userdata('logged_in');
 				$kh = $this->model_index->getCustomerLogin($khachhang);
 				$khachHangId = $kh[0]['khachHangId'];
 				$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+				$cart_price = $this->model_addToCart->cart_price($khachHangId);
 				$this->load->model('product/model_product');
 				$audiovideo = $this->model_product->getProductAudioVideo();
 				$sanphamtuongtu = $this->model_product->getProductTuongTu();
@@ -122,6 +126,8 @@ class product extends CI_Controller {
 					'logged_in' => $logged_in,
 					'audiovideo' => $audiovideo,
 					'sanphamtuongtu' => $sanphamtuongtu,
+					'cart_price' => $cart_price,
+					'soluongsanpham' => $soLuongSanPham,
 				);
 				return $this->load->view('product/audiovideo', $data);
 			}else{
@@ -141,13 +147,14 @@ class product extends CI_Controller {
 	public function mayTinhLaptop(){
 
 		$this->load->model('model_index');
+		$this->load->model('cart/model_addToCart');
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$this->load->model('product/model_product');
 			$maytinhlaptop = $this->model_product->getProductMayTinhLaptop();
 			$sanphamtuongtu = $this->model_product->getProductTuongTu();
@@ -156,6 +163,8 @@ class product extends CI_Controller {
 				'logged_in' => $logged_in,
 				'maytinhlaptop' => $maytinhlaptop,
 				'sanphamtuongtu' => $sanphamtuongtu,
+				'cart_price' => $cart_price,
+				'soluongsanpham' => $soLuongSanPham,
 			);
 			return $this->load->view('product/maytinhlaptop', $data);
 		}else{
@@ -174,13 +183,14 @@ class product extends CI_Controller {
 	public function top20(){
 
 		$this->load->model('model_index');
+		$this->load->model('cart/model_addToCart');
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$this->load->model('product/model_product');
 			$top20 = $this->model_product->getProductTop20();
 			$sanphamtuongtu = $this->model_product->getProductTuongTu();
@@ -189,6 +199,8 @@ class product extends CI_Controller {
 				'logged_in' => $logged_in,
 				'top20' => $top20,
 				'sanphamtuongtu' => $sanphamtuongtu,
+				'cart_price' => $cart_price,
+				'soluongsanpham' => $soLuongSanPham,
 			);
 			return $this->load->view('product/top20', $data);
 		}else{
@@ -207,13 +219,14 @@ class product extends CI_Controller {
 	public function trend(){
 
 		$this->load->model('model_index');
+		$this->load->model('cart/model_addToCart');
 		if($this->session->has_userdata('khachhang')){
 			$khachhang = $this->session->userdata('khachhang');
 			$logged_in = $this->session->userdata('logged_in');
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
-
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$this->load->model('product/model_product');
 			$trend = $this->model_product->getProductTrend();
 			$sanphamtuongtu = $this->model_product->getProductTuongTu();
@@ -222,6 +235,8 @@ class product extends CI_Controller {
 				'logged_in' => $logged_in,
 				'trend' => $trend,
 				'sanphamtuongtu' => $sanphamtuongtu,
+				'cart_price' => $cart_price,
+				'soluongsanpham' => $soLuongSanPham,
 			);
 			return $this->load->view('product/trend', $data);
 		}else{
@@ -241,10 +256,11 @@ class product extends CI_Controller {
 		$tenSanPhamCanTim = $this->input->get('product');
 		$this->load->model('model_index');
 		$this->load->model('product/model_product');
+		$this->load->model('cart/model_addToCart');
 
 		$product = $this->model_product->search($tenSanPhamCanTim);
-
-		$this->load->model('model_index');
+		
+		
 		$cothebanquantam = $this->model_index->getProductQuanTam();
 
 		if($this->session->has_userdata('khachhang')){
@@ -253,13 +269,15 @@ class product extends CI_Controller {
 			$kh = $this->model_index->getCustomerLogin($khachhang);
 			$khachHangId = $kh[0]['khachHangId'];
 			$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+			$cart_price = $this->model_addToCart->cart_price($khachHangId);
 			$data = array(
 				'khachhang' => $khachhang,
 				'logged_in' => $logged_in,
-				'soluonsanpham' => $soLuongSanPham,
+				'soluongsanpham' => $soLuongSanPham,
 				'product' => $product,
 				'cothebanquantam' => $cothebanquantam,
 				'tenSanPhamCanTim' => $tenSanPhamCanTim,
+				'cart_price' => $cart_price,
 			);
 
 			return $this->load->view('product/search', $data, FALSE);
