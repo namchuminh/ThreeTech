@@ -91,6 +91,7 @@ $route['don-hang/xem-them'] = 'admin/adminOrder/loadMore';
 $route['don-hang/giao-hang'] = 'admin/adminOrder/giaoHang';
 $route['don-hang/hoan-tien'] = 'admin/adminOrder/hoanTien';
 $route['don-hang/tim-kiem'] = 'admin/adminOrder/searchDonHang';
+$route['tin-tuc/tim-kiem'] = 'admin/adminNews/searchNews';
 
 $route['dang-nhap'] = 'user/userLogin/index';
 $route['xu-ly-dang-nhap'] = 'user/userLogin/actionLogin';
@@ -130,3 +131,5 @@ $route['chuyen-muc/(:any)'] = 'product/category/index/$1';
 
 $route['tin-tuc/(:any)'] = 'news/newsDetail/index/$1';
 $route['tin-tuc'] = 'news/allnews/index';
+
+$route['lien-he'] = 'contact/contact/index';

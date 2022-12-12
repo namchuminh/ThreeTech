@@ -15,8 +15,8 @@
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row">
                     	<div class="col-sm-12 col-md-6">
                     		<div id="dataTable_filter" class="dataTables_filter">
-                        		<label>Search:
-                        			<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                        		<label>Tìm Kiếm:
+                        			<input type="search" class="form-control form-control-sm timkiemnhanvien" placeholder="Nhập tên tin tức..." aria-controls="dataTable">
                         		</label>
                     		</div>
                     	</div>
@@ -79,10 +79,38 @@
 
 <?php require(__DIR__.'/layouts/footer.php'); ?>
 <script>
+    var base_url =  window.location.origin == "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
+    function strip_tags(str) {
+        str = str.toString();
+        return str.replace(/<\/?[^>]+>/gi, '');
+    }
     $(document).ready(function() {
         $('.deleteProductAction').click(function (){
             var url_delete = $(this).attr('value')
             $(".deleteNews").attr("href", url_delete)
+        })
+
+        $('input').keyup(function(event) {
+            var tieuDe = $('.timkiemnhanvien').val()
+            $('.xemthem').remove()
+
+            if(tieuDe == ""){
+                $('.paginate_button').append('<button class="page-link xemthem">Xem Thêm</button>')
+            }
+
+            $.post(base_url+"/tin-tuc/tim-kiem/",{
+                tieuDe: tieuDe
+            },
+            function(data){
+                var dataSearch = JSON.parse(data)
+                console.log(dataSearch)
+                $('tbody').empty()
+                for(var i = 0; i < dataSearch.length; i++){
+                    var noiDung = strip_tags(dataSearch[i].noiDung)
+
+                    $('tbody').append('<tr class="odd"> <td>'+dataSearch[i].tieuDe.slice(0,21)+'...</td> <td>'+noiDung.slice(0,100)+'...</td> <td>'+dataSearch[i].ngayDang+'</td> <td style="line-height: 50px;"> <a href="'+base_url+'/tin-tuc/'+dataSearch[i].duongDan+'" class="btn btn-warning">Xem</a> <a href="'+base_url+'/'+'admin/tin-tuc/sua/'+dataSearch[i].tinTucId+'" class="btn btn-warning">Sửa</a> <a class="btn btn-danger deleteProductAction" value="'+base_url+'/admin/tin-tuc/xoa/'+dataSearch[i].tinTucId+'" href="#" data-toggle="modal" data-target="#deleteNewsModal">Xóa<input type="hidden" class="cate" value=""></a> </td> </tr>')
+                }
+            });
         })
     });
 </script>

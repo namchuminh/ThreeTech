@@ -50,12 +50,34 @@ class model_order extends CI_Model {
 		return $result;
 	}
 
+	public function checkHoanTien($chitiethoadonID){
+		$sql = "SELECT * FROM chitiethoadon WHERE hoantien = 1 AND chitiethoadonID = ?";
+		$result = $this->db->query($sql, array($chitiethoadonID))->result_array();
+		return $result;
+	}
+
+	public function updateHoanTien($chitiethoadonID){
+		$sqlGetSLGB = "SELECT sanpham.giaBan, chitiethoadon.soLuong, chitiethoadon.madonhang FROM sanpham, chitiethoadon WHERE chitiethoadon.sanPhamId = sanpham.sanPhamId AND chitiethoadon.chitiethoadonID = ?";
+		$resultSLGB = $this->db->query($sqlGetSLGB, array($chitiethoadonID))->result_array();
+		$giaBan = $resultSLGB[0]["giaBan"] * $resultSLGB[0]["soLuong"];
+
+		$madonhang = $resultSLGB[0]["madonhang"];
+		
+		$sqlUpdateVNPAY = "UPDATE `vnpay` SET sotien = sotien - ".$giaBan." * 1000 WHERE madonhang = ?";
+		$this->db->query($sqlUpdateVNPAY, array($madonhang));
+
+		$sql = "UPDATE `chitiethoadon` SET `hoantien`= 1 WHERE `chitiethoadonID`= ?";
+		$result = $this->db->query($sql, array($chitiethoadonID));
+		return $result;
+	}
 
 	public function searchDonHang($madonhang, $soluong = 10000){
 		$sql = "SELECT vnpay.madonhang, sanpham.tenSanPham, chitiethoadon.soLuong, vnpay.sotien, vnpay.thoigian, dathang.tenNguoiNhan AS hoTen, dathang.soDienThoai, dathang.diaChi, chitiethoadon.dagiaohang, chitiethoadon.hoantien, sanpham.giaBan, chitiethoadon.chitiethoadonID FROM vnpay, chitiethoadon, dathang, sanpham WHERE vnpay.madonhang = chitiethoadon.madonhang AND vnpay.madonhang = dathang.madonhang AND chitiethoadon.sanPhamId = sanpham.sanPhamId AND vnpay.madonhang LIKE '%".$madonhang."%' ORDER BY chitiethoadon.chitiethoadonID DESC LIMIT ".$soluong;
 		$result = $this->db->query($sql);
 		return $result->result_array();
 	}
+
+
 }
 
 /* End of file model_order.php */

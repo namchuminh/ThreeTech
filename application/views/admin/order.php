@@ -35,14 +35,14 @@
                             <tr role="row">
                                 <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 21px;">Mã Đơn Hàng</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 94px;">Tên Sản Phẩm</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 10px;">Số Lượng</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 20px;">Số Tiền</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 10px;">SL</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Số Tiền</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 101px;">Thời Gian</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 88px;">Khách Hàng</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 88px;">Tên KH</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 80px;">Số Điện Thoại</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 150px;">Địa Chỉ</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 120px;">Trạng Thái</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 100px;">Hoàn Tiền</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 120px;">Hoàn Tiền</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 120px;">Hành Động</th>
                             </tr>
                         </thead>
@@ -78,7 +78,7 @@
                                 
                                 <td style="line-height: 50px;">
                                 	<a href="<?php echo base_url('don-hang/giao-hang/').$order[$i]['chitiethoadonID']; ?>" class="btn btn-info giaoHang" value="<?php echo $order[$i]['chitiethoadonID']; ?>">Giao Hàng</a>
-                                    <a href="<?php echo base_url('don-hang/hoan-tien/').$order[$i]['chitiethoadonID']; ?>" class="btn btn-warning" value="<?php echo $order[$i]['chitiethoadonID']; ?>">Hoàn Tiền</a>
+                                    <a href="<?php echo base_url('don-hang/hoan-tien/').$order[$i]['chitiethoadonID']; ?>" class="btn btn-warning hoanTien" value="<?php echo $order[$i]['chitiethoadonID']; ?>">Hoàn Tiền</a>
                                 </td>
                         	</tr>
                         <?php } ?>   
@@ -140,7 +140,7 @@
 <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url('static/');?>js/sb-admin-2.min.js"></script>
 
-<script>
+<script type="text/javascript">
     var base_url =  window.location.origin == "http://localhost" ? window.location.origin + "/ThreeTech" : window.location.origin
 
     function giaoHang(){
@@ -157,7 +157,22 @@
                 
             });
         });
+
+        $('.hoanTien').click(function(event) {
+            event.preventDefault()
+            var chitiethoadonID = $(this).attr('value')
+            $.post(base_url + '/don-hang/hoan-tien/', {chitiethoadonID: chitiethoadonID}, function(data) {
+                if(data == "thanhcong"){
+                    alert("Đơn Hàng Đã Chuyển Sang Trạng Thái Hoàn Tiền!")
+                    location.reload()
+                }else{
+                    alert(data)
+                }
+            });
+        });
     }
+
+
 
     function xemthem(){
         $('.xemthem').click(function(event){
@@ -202,7 +217,6 @@
                 },
                 function(data){
                     var dataSearch = JSON.parse(data)
-                    console.log(dataSearch)
                     $('tbody').empty()
                     for(var i = 0; i < dataSearch.length; i++){
 
@@ -221,6 +235,7 @@
                 });
                 $('.paginate_button').append('<button class="page-link xemthem">Xem Thêm</button>')
                 xemthem()
+                hoanTien()
             }
 
             $.post(base_url+"/don-hang/tim-kiem/",{
