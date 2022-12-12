@@ -5,6 +5,7 @@
   echo "<script type='text/javascript'>alert('Cập Nhật Thành Công');</script>";
 
 } ?>
+
     <div class="container" style="width: 60%;">
       <form action="<?php echo base_url('khach-hang/cap-nhat-khach-hang'); ?>" method="POST" enctype='multipart/form-data' style="box-shadow: 0 0em 0.5em rgb(15 15 15 / 25%); margin: 54px 0px; padding: 70px 26px;">
     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" style="width: 200px;height: 200px;display: block;margin-left: auto;margin-right: auto;">
@@ -190,6 +191,8 @@
                   if($i==4){
                     $g .=".";
                   }
+                }else{
+                  $g .= $gia_tong[$i];
                 }
             }
             echo $g."VNĐ";
@@ -213,13 +216,14 @@
             </p>
           </td>
           <td style="text-align: center;">
-            <p style="line-height: 30px;">
+            <p style="line-height: 30px; height: 90px; overflow: hidden;">
             <?php 
-            if($value['dagiaohang']==0){
-              echo "đang giao hàng";
+            foreach($chitiethoadon as $key => $value1) { 
+            if($value1['dagiaohang']==0){
+              echo "đang giao hàng"."<br>";
             }else{
-              echo "đã giao hàng";
-            }
+              echo "đã giao hàng"."<br>";
+            }}
            ?>
           </p>
          </td>

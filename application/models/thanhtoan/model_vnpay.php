@@ -21,7 +21,7 @@ class model_vnpay extends CI_Model {
 		return $result->result_array();
 	}
 	public function chitiethoadon($madonhang){
-		$sql = "SELECT sanpham.* , chitiethoadon.soLuong as 'soluongban' FROM chitiethoadon, sanpham WHERE sanpham.sanPhamId = chitiethoadon.sanPhamId and madonhang = ?";
+		$sql = "SELECT sanpham.* , chitiethoadon.soLuong as 'soluongban', chitiethoadon.dagiaohang  as 'dagiaohang' FROM chitiethoadon, sanpham WHERE sanpham.sanPhamId = chitiethoadon.sanPhamId and madonhang = ?";
 		$result = $this->db->query($sql, array($madonhang));
 		return $result->result_array();
 	}
