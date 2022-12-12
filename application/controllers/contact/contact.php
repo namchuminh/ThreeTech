@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contact extends CI_Controller {
+class contact extends CI_Controller {
 
 	public function __construct()
 	{
@@ -28,14 +28,28 @@ class Contact extends CI_Controller {
 			);
 			return $this->load->view('contact/contact', $data);
 		}else{
-			$data = array(
-				
-			);
 			return $this->load->view('contact/contact', $data);
 		}
 
 	}
 
+	public function actionContact(){
+		if(!isset($_POST) || empty($_POST)){
+			return redirect(base_url('lien-he/'));
+		}
+
+		$hoTen = $this->input->post('hoTen');
+		$email = $this->input->post('email');
+		$soDienThoai = $this->input->post('soDienThoai');
+		$tinNhan = $this->input->post('tinNhan');
+
+		$this->load->model('contact/model_contact');
+
+		$result = $this->model_contact->addContact($hoTen, $email, $soDienThoai, $tinNhan);
+
+		echo $result;
+
+	}
 }
 
 /* End of file contact.php */

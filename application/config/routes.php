@@ -133,3 +133,4 @@ $route['tin-tuc/(:any)'] = 'news/newsDetail/index/$1';
 $route['tin-tuc'] = 'news/allnews/index';
 
 $route['lien-he'] = 'contact/contact/index';
+$route['lien-he/xu-ly'] = 'contact/contact/actionContact';
