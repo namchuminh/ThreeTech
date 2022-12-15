@@ -191,6 +191,21 @@ class adminPerson extends CI_Controller {
 		}
 		fclose($out);  
 	}
+
+
+	public function traLuong(){
+		$this->load->model('admin/model_person');
+		$this->load->model('admin/model_admin');
+		$taiKhoan = $this->session->userdata('taikhoan');
+		$tieuDe = "ThreeTech - Trả Lương Nhân Viên!";
+
+		$data = array(
+			'adminLogin' => $this->model_admin->getUserLogin($taiKhoan),
+			'tieuDe' => $tieuDe,
+			'payWage' =>  $this->model_person->getPayWage(),
+		);
+		return $this->load->view('admin/payWage', $data, FALSE);
+	}
 }
 
 /* End of file adminPerson.php */

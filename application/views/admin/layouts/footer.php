@@ -50,5 +50,4 @@
     <script src="<?php echo base_url('static/');?>js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>

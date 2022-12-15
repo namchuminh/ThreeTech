@@ -21,8 +21,7 @@
     <link href="<?php echo base_url('static/');?>css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
-
-<body id="page-top">
+<body id="page-top" style="-ms-overflow-style: none; scrollbar-width: none; -webkit-scrollbar">
 
     <!-- Page Wrapper -->
     <div id="wrapper">

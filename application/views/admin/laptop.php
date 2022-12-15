@@ -11,18 +11,14 @@
                 <h6 class="m-0 font-weight-bold text-primary">Tất cả: Laptop</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive" style="overflow-x: hidden;">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row">
                     	<div class="col-sm-12 col-md-6">
-                    		<div id="dataTable_filter" class="dataTables_filter">
-                        		<label>Search:
-                        			<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
-                        		</label>
-                    		</div>
+                    		
                     	</div>
                     	<div class="col-sm-12 col-md-6">
                     		<div id="dataTable_filter" class="dataTables_filter">
-                        		<a href="<?php echo base_url('san-pham/them/');?>" class="btn btn-primary float-right">Thêm Sản Phẩm</a>
+                        		<a href="<?php echo base_url('san-pham/them/');?>" class="btn btn-primary float-right mb-3">Thêm Sản Phẩm</a>
                     		</div>
                     	</div>
                     </div>

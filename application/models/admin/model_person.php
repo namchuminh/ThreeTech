@@ -71,6 +71,11 @@ class model_person extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getPayWage(){
+		$sql = "SELECT COUNT(chamcong.chamCongId) AS soLuongCong, nhanvien.hoTen, nhanvien.nhanVienId, nhanvien.soDienThoai FROM chamcong, nhanvien WHERE chamcong.nhanVienId = nhanvien.nhanVienId AND DAY(chamcong.thoiGian) >= 1 AND MONTH(chamcong.thoiGian) = MONTH(CURDATE()) AND YEAR(chamcong.thoiGian) = YEAR(CURDATE()) GROUP BY nhanvien.hoTen";
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
 }
 
 /* End of file model_person.php */
