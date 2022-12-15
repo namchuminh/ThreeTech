@@ -175,6 +175,17 @@ class vnpay extends CI_Controller {
 		// // echo $year.$mounht.$days.$hours.$minute.$second;
 		// $time = $year."-".$mounht."-".$days."-".$hours."-".$minute."-".$second;
 
+		$khachhang = $this->session->userdata('khachhang');
+		$this->load->model('model_index');
+		$result = $this->model_index->getCustomerLogin($khachhang);
+		$khachHangId = $result[0]['khachHangId'];
+		// echo $khachHangId;
+		$this->load->model('cart/model_addToCart');
+		$cart_product = $this->model_addToCart->CartKH($khachHangId);
+		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
+		$khachhang = $this->session->userdata('khachhang');
+		$logged_in = $this->session->userdata('logged_in');
+		$cart_price = $this->model_addToCart->cart_price($khachHangId);
 
 		if($_GET['vnp_ResponseCode'] == '00'){
 			$khachhang = $this->session->userdata('khachhang');
@@ -194,12 +205,26 @@ class vnpay extends CI_Controller {
 
 				} 
 				$xoa = $this->model_addToCart->deleteCart($khachHangId);
-				
-				return $this->load->view('thanhtoan/view_thanhtoan');
+				$data = array(
+					'khachhang' => $khachhang,
+					'logged_in' => $logged_in,
+					'messht' => "Vui lòng nhập họ và tên!",
+					'soLuongSanPham' =>$soLuongSanPham,
+					'product' => $cart_product,
+					'cart_price'=> $cart_price,
+				);
+				return $this->load->view('thanhtoan/view_thanhtoan', $data);
 			}
 		}else{
-
-			return $this->load->view('thanhtoan/view_thanhtoan');
+			$data = array(
+				'khachhang' => $khachhang,
+				'logged_in' => $logged_in,
+				'messht' => "Vui lòng nhập họ và tên!",
+				'soLuongSanPham' =>$soLuongSanPham,
+				'product' => $cart_product,
+				'cart_price'=> $cart_price,
+			);
+			return $this->load->view('thanhtoan/view_thanhtoan', $data);
 		}
 	}
 
@@ -221,11 +246,13 @@ class vnpay extends CI_Controller {
 		$soLuongSanPham = $this->model_index->countProduct($khachHangId);
 		$khachhang = $this->session->userdata('khachhang');
 		$logged_in = $this->session->userdata('logged_in');
+		$cart_price = $this->model_addToCart->cart_price($khachHangId);
 		$data = array(	
 			'tongtien'=>$sum,
 			'khachhang' => $khachhang,
 			'logged_in' => $logged_in,
 			'soLuongSanPham' => $soLuongSanPham,
+			'cart_price'=> $cart_price,
 		);
 		$this->load->view('thanhtoan/view_dathang', $data);
 	}
