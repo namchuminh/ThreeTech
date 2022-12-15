@@ -28,7 +28,7 @@ class contact extends CI_Controller {
 			);
 			return $this->load->view('contact/contact', $data);
 		}else{
-			return $this->load->view('contact/contact', $data);
+			return $this->load->view('contact/contact');
 		}
 
 	}
